@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 
 class SignInEmployee extends StatefulWidget {
   @override
-  _SignInState createState() => _SignInState();
+  _SignInEmployeeState createState() => _SignInEmployeeState();
 }
 
-class _SignInState extends State<SignInEmployee> {
+class _SignInEmployeeState extends State<SignInEmployee> {
   final AuthService _auth = AuthService();
 
   @override
