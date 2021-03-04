@@ -30,6 +30,7 @@ class _SignInEmployeeState extends State<SignInEmployee> {
             else {
               print('Signed in');
               print(result.uid);
+              print(result.category);
             }
           },
         ),
