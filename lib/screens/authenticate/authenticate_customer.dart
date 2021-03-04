@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 
 class AuthenticateCustomer extends StatefulWidget {
   @override
@@ -12,4 +12,4 @@ class _AuthenticateCustomerState extends State<AuthenticateCustomer> {
       child: Text('Authenticate'),
     );
   }
-}
+}      */
