@@ -12,7 +12,7 @@ class _SignInState extends State<SignIn> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blueGrey[500],
+        backgroundColor: Colors.amber[500],
         elevation: 0.0,
         title: Text('LOGIN SCREEN'),
       ),
