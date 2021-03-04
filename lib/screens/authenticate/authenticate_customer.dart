@@ -9,6 +9,6 @@ class AuthenticateCustomer extends StatefulWidget {
 class _AuthenticateCustomerState extends State<AuthenticateCustomer> {
   @override
   Widget build(BuildContext context) {
-    return SignIn();
+    return SignInCustomer();
   }
 }      

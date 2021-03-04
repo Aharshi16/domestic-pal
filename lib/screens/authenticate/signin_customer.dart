@@ -1,12 +1,12 @@
 import 'package:domestic_pal/services/auth_customer.dart';
 import 'package:flutter/material.dart';
 
-class SignIn extends StatefulWidget {
+class SignInCustomer extends StatefulWidget {
   @override
-  _SignInState createState() => _SignInState();
+  _SignInCustomerState createState() => _SignInCustomerState();
 }
 
-class _SignInState extends State<SignIn> {
+class _SignInCustomerState extends State<SignInCustomer> {
   final AuthService _authCustomer = AuthService();
   @override
   Widget build(BuildContext context) {
