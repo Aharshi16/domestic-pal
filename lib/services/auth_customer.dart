@@ -1,16 +1,17 @@
 import 'package:domestic_pal/models/customer.dart';
+import 'package:domestic_pal/models/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthService {
   final FirebaseAuth _authCustomer = FirebaseAuth.instance;
 
   //create user object on FIrebaeUser
-  Customer _userFromFirebase(FirebaseUser user) {
-    return user != null ? Customer(uid: user.uid) : null;
+  User _userFromFirebase(FirebaseUser user) {
+    return user != null ? User(uid: user.uid, category:'C') : null;
   }
 
   //auth changes user stream
-  Stream<Customer> get user {
+  Stream<User> get user {
     return _authCustomer.onAuthStateChanged
       .map(_userFromFirebase);
   }
