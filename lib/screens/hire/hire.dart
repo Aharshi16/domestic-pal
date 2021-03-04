@@ -1,4 +1,6 @@
 import 'package:domestic_pal/models/user.dart';
+import 'package:domestic_pal/screens/authenticate/authenticate_customer.dart';
+import 'package:domestic_pal/screens/authenticate/authenticate_employee.dart';
 import 'package:flutter/material.dart';
 
 class Hire extends StatelessWidget {
@@ -15,10 +17,10 @@ class Hire extends StatelessWidget {
             style: TextStyle(fontSize: 30.0),
           ),
           SizedBox(height: 20.0),
+          //FOR CUSTOMERS
           FlatButton(
             onPressed: () {
-              // change category to customer
-              
+              AuthenticateCustomer();
             },
             minWidth: 115.0,
             color: Colors.red[800],
@@ -27,8 +29,11 @@ class Hire extends StatelessWidget {
               style: TextStyle(fontSize: 20.0),
             ),
           ),
+          //FOR EMPLOYEES
           FlatButton(
-            onPressed: () {},
+            onPressed: () {
+              AuthenticateEmployee();
+            },
             minWidth: 60.0,
             color: Colors.amber[800],
             child: Text(
@@ -41,4 +46,3 @@ class Hire extends StatelessWidget {
     ));
   }
 }
-
