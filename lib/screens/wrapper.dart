@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'package:domestic_pal/screens/hire/hire.dart';
 
 class Wrapper extends StatelessWidget {
@@ -6,4 +6,4 @@ class Wrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     return Hire();
   }
-}
+}   */
