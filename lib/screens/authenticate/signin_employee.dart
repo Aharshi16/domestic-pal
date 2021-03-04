@@ -1,4 +1,4 @@
-import 'package:domestic_pal/services/auth_customer.dart';
+//import 'package:domestic_pal/services/auth_customer.dart';
 import 'package:domestic_pal/services/auth_employee.dart';
 import 'package:flutter/material.dart';
 
@@ -26,7 +26,7 @@ class _SignInState extends State<SignIn> {
           onPressed: () async {
             dynamic result = await _auth.signInAnon();
             if (result == null)
-              print('Error signing in')
+              print('Error signing in');
             else {
               print('Signed in');
               print(result);
