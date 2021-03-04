@@ -1,3 +1,4 @@
+import 'package:domestic_pal/screens/authenticate/signin_customer.dart';
 import 'package:domestic_pal/screens/wrapper.dart';
 import 'package:flutter/material.dart';
 
@@ -7,7 +8,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Wrapper(),
+      home: SignIn(),
     );
   }
 }
