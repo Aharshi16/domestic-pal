@@ -37,3 +37,4 @@ class Hire extends StatelessWidget {
     ));
   }
 }
+

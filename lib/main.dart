@@ -1,20 +1,21 @@
-import 'package:domestic_pal/screens/hire/hire.dart';
-//import 'package:brew_crew/services/auth.dart';
-//import 'package:domestic_pal/screens/wrapper.dart';
+import 'package:domestic_pal/models/customer.dart';
+//import 'package:domestic_pal/screens/authenticate/signin_customer.dart';
+import 'package:domestic_pal/screens/wrapper.dart';
+import 'package:domestic_pal/services/auth_customer.dart';
 import 'package:flutter/material.dart';
-//import 'package:provider/provider.dart';
-//import 'package:brew_crew/models/user.dart';
+import 'package:provider/provider.dart';
 
-void main() {
-  runApp(MyApp());
-}
+
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Hire(),
+    return StreamProvider<Customer>.value(
+      value: AuthService().user,
+      child: MaterialApp(
+        home: Wrapper(),
+      ),
     );
   }
 }

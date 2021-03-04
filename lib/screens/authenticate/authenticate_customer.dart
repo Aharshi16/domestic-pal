@@ -1,4 +1,5 @@
-/*import 'package:flutter/material.dart';
+import 'package:domestic_pal/screens/authenticate/signin_customer.dart';
+import 'package:flutter/material.dart';
 
 class AuthenticateCustomer extends StatefulWidget {
   @override
@@ -8,8 +9,6 @@ class AuthenticateCustomer extends StatefulWidget {
 class _AuthenticateCustomerState extends State<AuthenticateCustomer> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text('Authenticate'),
-    );
+    return SignIn();
   }
-}      */
+}      
