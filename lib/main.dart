@@ -5,6 +5,7 @@ import 'package:domestic_pal/services/auth_customer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
