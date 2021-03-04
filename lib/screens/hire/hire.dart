@@ -1,3 +1,4 @@
+import 'package:domestic_pal/models/user.dart';
 import 'package:flutter/material.dart';
 
 class Hire extends StatelessWidget {
@@ -15,7 +16,10 @@ class Hire extends StatelessWidget {
           ),
           SizedBox(height: 20.0),
           FlatButton(
-            onPressed: () {},
+            onPressed: () {
+              // change category to customer
+              
+            },
             minWidth: 115.0,
             color: Colors.red[800],
             child: Text(
