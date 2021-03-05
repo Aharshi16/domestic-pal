@@ -3,8 +3,8 @@ import 'package:domestic_pal/services/auth_customer.dart';
 import 'package:domestic_pal/shared/constants.dart';
 
 class RegisterCustomer extends StatefulWidget {
-  @override
   final Function toggleView;
+  @override
   RegisterCustomer({this.toggleView});
   _RegisterCustomerState createState() => _RegisterCustomerState();
 }
@@ -12,10 +12,10 @@ class RegisterCustomer extends StatefulWidget {
 class _RegisterCustomerState extends State<RegisterCustomer> {
   final AuthService _authCustomer = AuthService();
   final _formKey = GlobalKey<FormState>();
-  @override
   String email = '';
   String password = '';
   String error = '';
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -69,6 +69,9 @@ class _RegisterCustomerState extends State<RegisterCustomer> {
                       if (result == null) {
                         setState(() => error =
                             'could not register with those credentials');
+                      } else {
+                        setState(() => error = 'registered successfully');
+                        Navigator.pop(context);
                       }
                     }
                   }),
