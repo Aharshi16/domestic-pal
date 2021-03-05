@@ -71,7 +71,7 @@ class _RegisterEmployeeState extends State<RegisterEmployee> {
                     await _auth.signInWithEmailAndPassword(email, password);
                     if (result == null) {
                       setState(() =>
-                      error = 'could not sign in with those credentials');
+                      error = 'could not register with those credentials');
                     }else {
                       setState(() => error = 'logged in successfully');
                       Navigator.pop(context);
