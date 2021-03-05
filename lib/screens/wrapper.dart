@@ -1,6 +1,6 @@
 import 'package:domestic_pal/models/user.dart';
 import 'package:domestic_pal/screens/authenticate/authenticate_customer.dart';
-import 'package:domestic_pal/screens/authenticate/signin_customer.dart';
+//import 'package:domestic_pal/screens/authenticate/signin_customer.dart';
 import 'package:domestic_pal/screens/hire/hire.dart';
 import 'package:domestic_pal/screens/home_customer/home_customer.dart';
 import 'package:domestic_pal/screens/home_employee/home_employee.dart';

@@ -20,7 +20,10 @@ class Hire extends StatelessWidget {
           //FOR CUSTOMERS
           FlatButton(
             onPressed: () {
-              AuthenticateCustomer();
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => AuthenticateCustomer()),
+              );
             },
             minWidth: 115.0,
             color: Colors.red[800],
@@ -32,7 +35,10 @@ class Hire extends StatelessWidget {
           //FOR EMPLOYEES
           FlatButton(
             onPressed: () {
-              AuthenticateEmployee();
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => AuthenticateEmployee()),
+              );
             },
             minWidth: 60.0,
             color: Colors.amber[800],
