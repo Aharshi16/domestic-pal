@@ -65,10 +65,10 @@ class _RegisterCustomerState extends State<RegisterCustomer> {
                   onPressed: () async {
                     if (_formKey.currentState.validate()) {
                       dynamic result = await _authCustomer
-                          .signInWithEmailAndPassword(email, password);
+                          .registerWithEmailAndPassword(email, password);
                       if (result == null) {
-                        setState(() =>
-                            error = 'could not sign in with those credentials');
+                        setState(() => error =
+                            'could not register with those credentials');
                       }
                     }
                   }),
