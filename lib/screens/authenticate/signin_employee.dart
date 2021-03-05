@@ -72,6 +72,9 @@ class _SignInEmployeeState extends State<SignInEmployee> {
                     if (result == null) {
                       setState(() =>
                           error = 'could not sign in with those credentials');
+                    }else {
+                      setState(() => error = 'logged in successfully');
+                      Navigator.pop(context);
                     }
                   }
                 },
