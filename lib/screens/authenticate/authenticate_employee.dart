@@ -1,3 +1,4 @@
+import 'package:domestic_pal/screens/authenticate/signin_employee.dart';
 import 'package:flutter/material.dart';
 
 class AuthenticateEmployee extends StatefulWidget {
@@ -8,8 +9,6 @@ class AuthenticateEmployee extends StatefulWidget {
 class _AuthenticateEmployeeState extends State<AuthenticateEmployee> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text('Authenticate 2'),
-    );
+    return SignInEmployee();
   }
 }
