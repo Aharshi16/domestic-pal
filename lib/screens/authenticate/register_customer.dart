@@ -1,35 +1,34 @@
-import 'package:domestic_pal/services/auth_customer.dart';
 import 'package:flutter/material.dart';
+import 'package:domestic_pal/services/auth_customer.dart';
 import 'package:domestic_pal/shared/constants.dart';
 
-class SignInCustomer extends StatefulWidget {
-  final Function toggleView;
-  SignInCustomer({this.toggleView});
+class RegisterCustomer extends StatefulWidget {
   @override
-  _SignInCustomerState createState() => _SignInCustomerState();
+  final Function toggleView;
+  RegisterCustomer({this.toggleView});
+  _RegisterCustomerState createState() => _RegisterCustomerState();
 }
 
-class _SignInCustomerState extends State<SignInCustomer> {
+class _RegisterCustomerState extends State<RegisterCustomer> {
   final AuthService _authCustomer = AuthService();
   final _formKey = GlobalKey<FormState>();
-  //text field state
+  @override
   String email = '';
   String password = '';
   String error = '';
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.amber[500],
         elevation: 0.0,
-        title: Text('LOGIN SCREEN'),
+        title: Text('REGISTER SCREEN'),
         actions: <Widget>[
           FlatButton.icon(
             onPressed: () {
               widget.toggleView();
             },
             icon: Icon(Icons.person),
-            label: Text('Register'),
+            label: Text('Log In'),
           )
         ],
       ),
@@ -60,7 +59,7 @@ class _SignInCustomerState extends State<SignInCustomer> {
               RaisedButton(
                   color: Colors.blueGrey[400],
                   child: Text(
-                    'Sign In',
+                    'Register',
                     style: TextStyle(color: Colors.white),
                   ),
                   onPressed: () async {

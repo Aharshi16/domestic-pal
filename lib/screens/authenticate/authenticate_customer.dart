@@ -1,3 +1,4 @@
+import 'package:domestic_pal/screens/authenticate/register_customer.dart';
 import 'package:domestic_pal/screens/authenticate/signin_customer.dart';
 import 'package:flutter/material.dart';
 
@@ -11,9 +12,14 @@ class _AuthenticateCustomerState extends State<AuthenticateCustomer> {
   void toggleView() {
     setState(() => showSignIn = !showSignIn);
   }
+
   @override
   Widget build(BuildContext context) {
-    return SignInCustomer();
+    if (showSignIn == true) {
+      return SignInCustomer(toggleView: toggleView,);
+    } else {
+      return RegisterCustomer(toggleView: toggleView);
+    }
     //if else case for sign in and reg.
   }
-}      
+}
