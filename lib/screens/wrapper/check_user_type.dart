@@ -1,7 +1,6 @@
 import 'package:domestic_pal/screens/home_customer/home_customer.dart';
 import 'package:domestic_pal/screens/home_employee/home_employee.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class CheckUserType extends StatelessWidget {
   final dynamic user;
@@ -12,5 +11,6 @@ class CheckUserType extends StatelessWidget {
       return HomeCustomer();
     }
     return HomeEmployee();
+    
   }
 }
