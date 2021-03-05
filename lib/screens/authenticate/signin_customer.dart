@@ -8,6 +8,9 @@ class SignInCustomer extends StatefulWidget {
 
 class _SignInCustomerState extends State<SignInCustomer> {
   final AuthService _authCustomer = AuthService();
+  //text field state
+  String email = '';
+  String password = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,18 +21,36 @@ class _SignInCustomerState extends State<SignInCustomer> {
       ),
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
-        child: RaisedButton(
-          child: Text('Sign in anon'),
-          onPressed: () async {
-            print('Signed in');
-            dynamic result = await _authCustomer.signInAnon();
-            if (result == null) {
-              print('error ');
-            } else {
-              print(result.uid);
-              print(result.category);
-            }
-          },
+        child: Form(
+          child: Column(
+            children: <Widget>[
+              SizedBox(height: 20.0),
+              TextFormField(
+                onChanged: (val) {
+                  setState(() => email = val);
+                }
+              ),
+              SizedBox(height: 20.0),
+              TextFormField(
+                obscureText: true,
+                onChanged: (val) {
+                  setState(() => password = val);
+                }
+              ),
+              SizedBox(height: 20.0),
+              RaisedButton(
+                color: Colors.blueGrey[400],
+                child: Text(
+                  'Sign In',
+                  style: TextStyle(color:Colors.white),
+                ),
+                onPressed: () async {
+                  print(email);
+                  print(password);
+                }
+              )
+            ],
+          ),
         ),
       ),
     );
