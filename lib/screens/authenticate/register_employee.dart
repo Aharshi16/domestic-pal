@@ -68,12 +68,12 @@ class _RegisterEmployeeState extends State<RegisterEmployee> {
                 onPressed: () async {
                   if (_formKey.currentState.validate()) {
                     dynamic result =
-                    await _auth.signInWithEmailAndPassword(email, password);
+                    await _auth.registerWithEmailAndPassword(email, password);
                     if (result == null) {
                       setState(() =>
                       error = 'could not register with those credentials');
                     }else {
-                      setState(() => error = 'logged in successfully');
+                      setState(() => error = 'Registered successfully');
                       Navigator.pop(context);
                     }
                   }
