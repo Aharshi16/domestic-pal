@@ -7,11 +7,11 @@ class HomeCustomer extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.pink[200],
         elevation: 0.0,
-        title: Text('Customer Screen'),
+        title: Text('Home'),
       ),
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
-        child: Text('hello team'),
+        child: Text('What are you looking for?'),
       ),
     );  
   }
