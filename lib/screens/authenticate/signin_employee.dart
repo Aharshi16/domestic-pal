@@ -2,6 +2,10 @@ import 'package:domestic_pal/services/auth_employee.dart';
 import 'package:flutter/material.dart';
 
 class SignInEmployee extends StatefulWidget {
+
+  final Function toggleView;
+  SignInEmployee({this.toggleView});
+
   @override
   _SignInEmployeeState createState() => _SignInEmployeeState();
 }
@@ -23,6 +27,15 @@ class _SignInEmployeeState extends State<SignInEmployee> {
         backgroundColor: Colors.cyan[400],
         elevation: 0.0,
         title: Text('Sign in as employee'),
+        actions: <Widget>[
+          FlatButton.icon(
+            icon:Icon(Icons.person),
+            label:Text('Register'),
+            onPressed: (){
+              widget.toggleView();
+            },
+          )
+        ],
       ),
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
