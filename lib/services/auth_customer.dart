@@ -1,4 +1,3 @@
-
 import 'package:domestic_pal/models/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -7,13 +6,12 @@ class AuthService {
 
   //create user object on FIrebaeUser
   User _userFromFirebase(FirebaseUser user) {
-    return user != null ? User(uid: user.uid, category:'C') : null;
+    return user != null ? User(uid: user.uid, category: 'C') : null;
   }
 
   //auth changes user stream
   Stream<User> get user {
-    return _authCustomer.onAuthStateChanged
-      .map(_userFromFirebase);
+    return _authCustomer.onAuthStateChanged.map(_userFromFirebase);
   }
 
   //sign in anon
@@ -29,10 +27,17 @@ class AuthService {
     }
   }
 
-  //sign in with emial and password
+  //sign in with email and password
 
   //register ith email password
 
   //sign out
-
+  Future signOut() async {
+    try {
+      return await _authCustomer.signOut();
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
 }
