@@ -70,7 +70,8 @@ class _RegisterCustomerState extends State<RegisterCustomer> {
                         setState(() => error =
                             'could not register with those credentials');
                       } else {
-                        
+                        setState(() => error = 'registered successfully');
+                        Navigator.pop(context);
                       }
                     }
                   }),
