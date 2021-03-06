@@ -9,8 +9,6 @@ class CheckUserType extends StatelessWidget {
   Widget build(BuildContext context) {
     if (user.category == 'C') {
       return HomeCustomer();
-    }
-    return HomeEmployee();
-    
+    } else if (user.category == 'E') return HomeEmployee();
   }
 }
