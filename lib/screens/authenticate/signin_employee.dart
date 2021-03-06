@@ -77,7 +77,7 @@ class _SignInEmployeeState extends State<SignInEmployee> {
                       Navigator.pop(context);
                     }
                   }
-                },
+                }
               ),
               SizedBox(height: 12.0),
               Text(
