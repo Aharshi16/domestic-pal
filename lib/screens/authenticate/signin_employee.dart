@@ -11,7 +11,7 @@ class SignInEmployee extends StatefulWidget {
 }
 
 class _SignInEmployeeState extends State<SignInEmployee> {
-  final AuthService _auth = AuthService();
+  final AuthService _authEmployee = AuthService();
   final _formKey = GlobalKey<FormState>();
 
   //text field state
@@ -79,6 +79,7 @@ class _SignInEmployeeState extends State<SignInEmployee> {
                                 builder: (context) => HomeEmployee()),
                             (Route<dynamic> route) => false);
                       }
+
                     }
                   }),
               SizedBox(height: 12.0),

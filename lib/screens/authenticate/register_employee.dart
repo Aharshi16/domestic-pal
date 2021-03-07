@@ -11,7 +11,9 @@ class RegisterEmployee extends StatefulWidget {
 }
 
 class _RegisterEmployeeState extends State<RegisterEmployee> {
+
   final AuthService _auth = AuthService();
+
   final _formKey = GlobalKey<FormState>();
 
   String email = '';
@@ -66,18 +68,21 @@ class _RegisterEmployeeState extends State<RegisterEmployee> {
                 ),
                 onPressed: () async {
                   if (_formKey.currentState.validate()) {
+
                     dynamic result = await _auth
-                        .registerWithEmailAndPasswordEmployee(email, password);
+  .registerWithEmailAndPasswordEmployee(email, password);
                     if (result == null) {
                       setState(() =>
                           error = 'could not register with those credentials');
                     } else {
                       setState(() => error = 'Registered successfully');
 
+
                       Navigator.of(context).pushAndRemoveUntil(
                             MaterialPageRoute(
                                 builder: (context) => HomeEmployee()),
                             (Route<dynamic> route) => false);
+
                     }
                   }
                 },
