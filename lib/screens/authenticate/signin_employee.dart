@@ -67,7 +67,7 @@ class _SignInEmployeeState extends State<SignInEmployee> {
                   ),
                   onPressed: () async {
                     if (_formKey.currentState.validate()) {
-                      dynamic result = await _auth
+                      dynamic result = await _authEmployee
                           .signInWithEmailAndPasswordEmployee(email, password);
                       if (result == null) {
                         setState(() =>
@@ -79,7 +79,6 @@ class _SignInEmployeeState extends State<SignInEmployee> {
                                 builder: (context) => HomeEmployee()),
                             (Route<dynamic> route) => false);
                       }
-
                     }
                   }),
               SizedBox(height: 12.0),
