@@ -8,19 +8,16 @@ class AuthenticateEmployee extends StatefulWidget {
 }
 
 class _AuthenticateEmployeeState extends State<AuthenticateEmployee> {
-
   bool showSignIn = true;
-  void toggleView(){
+  void toggleView() {
     setState(() => showSignIn = !showSignIn);
   }
 
   @override
   Widget build(BuildContext context) {
-    //return SignInEmployee();
-    //return RegisterEmployee();
-    if(showSignIn == true){
+    if (showSignIn == true) {
       return SignInEmployee(toggleView: toggleView);
-    }else{
+    } else {
       return RegisterEmployee(toggleView: toggleView);
     }
   }

@@ -1,3 +1,4 @@
+import 'package:domestic_pal/screens/home_employee/home_employee.dart';
 import 'package:domestic_pal/services/auth_employee.dart';
 import 'package:flutter/material.dart';
 
@@ -59,25 +60,28 @@ class _SignInEmployeeState extends State<SignInEmployee> {
               ),
               SizedBox(height: 20.0),
               RaisedButton(
-                color: Colors.cyan[400],
-                child: Text(
-                  'Sign in',
-                  style: TextStyle(color: Colors.white),
-                ),
-                onPressed: () async {
-                  if (_formKey.currentState.validate()) {
-                    dynamic result = await _authEmployee
-                        .signInWithEmailAndPasswordEmployee(email, password);
-                    if (result == null) {
-                      setState(() =>
-                          error = 'could not sign in with those credentials');
-                    } else {
-                      setState(() => error = 'logged in successfully');
-                      Navigator.pop(context);
+                  color: Colors.cyan[400],
+                  child: Text(
+                    'Sign in',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  onPressed: () async {
+                    if (_formKey.currentState.validate()) {
+                      dynamic result = await _auth
+                          .signInWithEmailAndPasswordEmployee(email, password);
+                      if (result == null) {
+                        setState(() =>
+                            error = 'could not sign in with those credentials');
+                      } else {
+                        setState(() => error = 'logged in successfully');
+                        Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                                builder: (context) => HomeEmployee()),
+                            (Route<dynamic> route) => false);
+                      }
+
                     }
-                  }
-                }
-              ),
+                  }),
               SizedBox(height: 12.0),
               Text(
                 error,

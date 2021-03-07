@@ -1,3 +1,4 @@
+import 'package:domestic_pal/screens/hire/hire.dart';
 import 'package:domestic_pal/services/auth_employee.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,11 @@ class HomeEmployee extends StatelessWidget {
             icon: Icon(Icons.person),
             label: Text('Logout'),
             onPressed: () async {
+              print("logged out of employee");
               await _auth.signOut();
+              Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(builder: (context) => Hire()),
+                  (Route<dynamic> route) => false);
             },
           )
         ],

@@ -22,6 +22,7 @@ class Wrapper extends StatelessWidget {
       return HomeEmployee();
     }*/
 
-    return (user == null) ? Hire() : CheckUserType(user: user,);
+    //return (user == null) ? Hire() : CheckUserType(user: user,);
+    if (user == null) return Hire();
   }
 }
