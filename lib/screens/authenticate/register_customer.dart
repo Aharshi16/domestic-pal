@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:domestic_pal/services/auth_customer.dart';
 import 'package:domestic_pal/shared/constants.dart';
+//import 'package:domestic_pal/screens/home_employe';
+//import 'package:domestic_pal/screens/home_employee/home_employee.dart';
+import 'package:domestic_pal/screens/home_customer/home_customer.dart';
 
 class RegisterCustomer extends StatefulWidget {
   final Function toggleView;
@@ -21,7 +24,7 @@ class _RegisterCustomerState extends State<RegisterCustomer> {
       appBar: AppBar(
         backgroundColor: Colors.amber[500],
         elevation: 0.0,
-        title: Text('REGISTER SCREEN'),
+        title: Text('CUSTOMER REG'),
         actions: <Widget>[
           FlatButton.icon(
             onPressed: () {
@@ -71,7 +74,9 @@ class _RegisterCustomerState extends State<RegisterCustomer> {
                             'could not register with those credentials');
                       } else {
                         setState(() => error = 'registered successfully');
-                        Navigator.pop(context);
+                        //Navigator.pop(context);
+                        
+                            Navigator.pop(context);
                       }
                     }
                   }),

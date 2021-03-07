@@ -16,10 +16,11 @@ class _AuthenticateCustomerState extends State<AuthenticateCustomer> {
   @override
   Widget build(BuildContext context) {
     if (showSignIn == true) {
-      return SignInCustomer(toggleView: toggleView,);
+      return SignInCustomer(
+        toggleView: toggleView,
+      );
     } else {
       return RegisterCustomer(toggleView: toggleView);
     }
-    //if else case for sign in and reg.
   }
 }

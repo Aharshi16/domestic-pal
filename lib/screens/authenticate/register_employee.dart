@@ -1,17 +1,16 @@
+import 'package:domestic_pal/screens/home_employee/home_employee.dart';
 import 'package:flutter/material.dart';
 import 'package:domestic_pal/services/auth_employee.dart';
 
 class RegisterEmployee extends StatefulWidget {
-
   final Function toggleView;
-  RegisterEmployee ({this.toggleView});
+  RegisterEmployee({this.toggleView});
 
   @override
   _RegisterEmployeeState createState() => _RegisterEmployeeState();
 }
 
 class _RegisterEmployeeState extends State<RegisterEmployee> {
-
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
 
@@ -26,12 +25,12 @@ class _RegisterEmployeeState extends State<RegisterEmployee> {
       appBar: AppBar(
         backgroundColor: Colors.cyan[400],
         elevation: 0.0,
-        title: Text('REGISTER SCREEN'),
+        title: Text('EMPLOYEE REG'),
         actions: <Widget>[
           FlatButton.icon(
-            icon:Icon(Icons.person),
-            label:Text('Sign In'),
-            onPressed: (){
+            icon: Icon(Icons.person),
+            label: Text('Sign In'),
+            onPressed: () {
               widget.toggleView();
             },
           )
@@ -67,15 +66,18 @@ class _RegisterEmployeeState extends State<RegisterEmployee> {
                 ),
                 onPressed: () async {
                   if (_formKey.currentState.validate()) {
-                    dynamic result =
-                    await _auth.registerWithEmailAndPasswordEmployee(email, password);
+                    dynamic result = await _auth
+                        .registerWithEmailAndPasswordEmployee(email, password);
                     if (result == null) {
                       setState(() =>
-                      error = 'could not register with those credentials');
-                    }else {
+                          error = 'could not register with those credentials');
+                    } else {
                       setState(() => error = 'Registered successfully');
-                      
-                      Navigator.pop(context);
+
+                      Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                                builder: (context) => HomeEmployee()),
+                            (Route<dynamic> route) => false);
                     }
                   }
                 },
