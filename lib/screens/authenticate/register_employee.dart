@@ -2,17 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:domestic_pal/services/auth_employee.dart';
 
 class RegisterEmployee extends StatefulWidget {
-
   final Function toggleView;
-  RegisterEmployee ({this.toggleView});
+  RegisterEmployee({this.toggleView});
 
   @override
   _RegisterEmployeeState createState() => _RegisterEmployeeState();
 }
 
 class _RegisterEmployeeState extends State<RegisterEmployee> {
-
-  final AuthService _auth = AuthService();
+  final AuthService _authEmployee = AuthService();
   final _formKey = GlobalKey<FormState>();
 
   String email = '';
@@ -29,9 +27,9 @@ class _RegisterEmployeeState extends State<RegisterEmployee> {
         title: Text('REGISTER SCREEN'),
         actions: <Widget>[
           FlatButton.icon(
-            icon:Icon(Icons.person),
-            label:Text('Sign In'),
-            onPressed: (){
+            icon: Icon(Icons.person),
+            label: Text('Sign In'),
+            onPressed: () {
               widget.toggleView();
             },
           )
@@ -67,14 +65,14 @@ class _RegisterEmployeeState extends State<RegisterEmployee> {
                 ),
                 onPressed: () async {
                   if (_formKey.currentState.validate()) {
-                    dynamic result =
-                    await _auth.registerWithEmailAndPasswordEmployee(email, password);
+                    dynamic result = await _authEmployee
+                        .registerWithEmailAndPasswordEmployee(email, password);
                     if (result == null) {
                       setState(() =>
-                      error = 'could not register with those credentials');
-                    }else {
+                          error = 'could not register with those credentials');
+                    } else {
                       setState(() => error = 'Registered successfully');
-                      
+
                       Navigator.pop(context);
                     }
                   }

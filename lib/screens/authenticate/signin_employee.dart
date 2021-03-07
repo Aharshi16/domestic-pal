@@ -2,7 +2,6 @@ import 'package:domestic_pal/services/auth_employee.dart';
 import 'package:flutter/material.dart';
 
 class SignInEmployee extends StatefulWidget {
-
   final Function toggleView;
   SignInEmployee({this.toggleView});
 
@@ -11,7 +10,7 @@ class SignInEmployee extends StatefulWidget {
 }
 
 class _SignInEmployeeState extends State<SignInEmployee> {
-  final AuthService _auth = AuthService();
+  final AuthService _authEmployee = AuthService();
   final _formKey = GlobalKey<FormState>();
 
   //text field state
@@ -29,9 +28,9 @@ class _SignInEmployeeState extends State<SignInEmployee> {
         title: Text('Sign in as employee'),
         actions: <Widget>[
           FlatButton.icon(
-            icon:Icon(Icons.person),
-            label:Text('Register'),
-            onPressed: (){
+            icon: Icon(Icons.person),
+            label: Text('Register'),
+            onPressed: () {
               widget.toggleView();
             },
           )
@@ -67,12 +66,12 @@ class _SignInEmployeeState extends State<SignInEmployee> {
                 ),
                 onPressed: () async {
                   if (_formKey.currentState.validate()) {
-                    dynamic result =
-                        await _auth.signInWithEmailAndPasswordEmployee(email, password);
+                    dynamic result = await _authEmployee
+                        .signInWithEmailAndPasswordEmployee(email, password);
                     if (result == null) {
                       setState(() =>
                           error = 'could not sign in with those credentials');
-                    }else {
+                    } else {
                       setState(() => error = 'logged in successfully');
                       Navigator.pop(context);
                     }

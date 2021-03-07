@@ -1,12 +1,17 @@
 import 'package:domestic_pal/models/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService {
   final FirebaseAuth _authEmployee = FirebaseAuth.instance;
 
   //create user obj based on FirebaseUser
   User _userFromFirebaseUser(FirebaseUser user) {
-    return user != null ? User(uid: user.uid, category: 'E') : null;
+    return user != null
+        ? User(
+            uid: user.uid, /*category: 'E'*/
+          )
+        : null;
   }
 
   //auth changes user stream
@@ -17,11 +22,14 @@ class AuthService {
   //sign in anon
 
   //sign in with email and password
-  Future signInWithEmailAndPasswordEmployee(String email, String password) async {
+  Future signInWithEmailAndPasswordEmployee(
+      String email, String password) async {
     try {
       AuthResult result = await _authEmployee.signInWithEmailAndPassword(
           email: email, password: password);
       FirebaseUser user = result.user;
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setBool('isEmployee', true);
       return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
@@ -30,11 +38,14 @@ class AuthService {
   }
 
   //register with email and password
-  Future registerWithEmailAndPasswordEmployee(String email, String password) async {
+  Future registerWithEmailAndPasswordEmployee(
+      String email, String password) async {
     try {
       AuthResult result = await _authEmployee.createUserWithEmailAndPassword(
           email: email, password: password);
       FirebaseUser user = result.user;
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setBool('isEmployee', true);
       return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
