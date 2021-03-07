@@ -76,7 +76,10 @@ class _RegisterCustomerState extends State<RegisterCustomer> {
                         setState(() => error = 'registered successfully');
                         //Navigator.pop(context);
                         
-                            Navigator.pop(context);
+                            Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                                builder: (context) => HomeCustomer()),
+                            (Route<dynamic> route) => false);
                       }
                     }
                   }),

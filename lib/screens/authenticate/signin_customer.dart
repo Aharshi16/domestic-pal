@@ -1,3 +1,4 @@
+import 'package:domestic_pal/screens/home_customer/home_customer.dart';
 import 'package:domestic_pal/services/auth_customer.dart';
 import 'package:flutter/material.dart';
 import 'package:domestic_pal/shared/constants.dart';
@@ -72,7 +73,10 @@ class _SignInCustomerState extends State<SignInCustomer> {
                             error = 'could not sign in with those credentials');
                       } else {
                         setState(() => error = 'logged in successfully');
-                        Navigator.pop(context);
+                        Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                                builder: (context) => HomeCustomer()),
+                            (Route<dynamic> route) => false);
                       }
                     }
                   }),

@@ -67,8 +67,7 @@ class _SignInEmployeeState extends State<SignInEmployee> {
                   ),
                   onPressed: () async {
                     if (_formKey.currentState.validate()) {
-                      dynamic result = await _auth
-                          .signInWithEmailAndPasswordEmployee(email, password);
+                      dynamic result = await _authEmployee.signInWithEmailAndPasswordEmployee(email, password);
                       if (result == null) {
                         setState(() =>
                             error = 'could not sign in with those credentials');

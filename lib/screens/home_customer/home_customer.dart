@@ -1,3 +1,4 @@
+import 'package:domestic_pal/screens/hire/hire.dart';
 import 'package:domestic_pal/services/auth_customer.dart';
 import 'package:flutter/material.dart';
 
@@ -14,6 +15,10 @@ class HomeCustomer extends StatelessWidget {
           FlatButton.icon(
               onPressed: () async {
                 await _auth.signOut();
+                Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                                builder: (context) => Hire()),
+                            (Route<dynamic> route) => false);
               },
               icon: Icon(Icons.person),
               label: Text('logout')
