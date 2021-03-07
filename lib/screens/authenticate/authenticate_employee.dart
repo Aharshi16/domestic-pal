@@ -18,7 +18,7 @@ class _AuthenticateEmployeeState extends State<AuthenticateEmployee> {
   Widget build(BuildContext context) {
     //return SignInEmployee();
     //return RegisterEmployee();
-    if(showSignIn){
+    if(showSignIn == true){
       return SignInEmployee(toggleView: toggleView);
     }else{
       return RegisterEmployee(toggleView: toggleView);
