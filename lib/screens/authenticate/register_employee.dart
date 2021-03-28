@@ -40,7 +40,7 @@ class _RegisterEmployeeState extends State<RegisterEmployee> {
                 'Register as an Employee',
                 style: TextStyle(color: Colors.cyan[800], fontSize: 20.0),
               ),
-              SizedBox(height: 80.0),
+              SizedBox(height: 40.0),
               TextFormField(
                 decoration: textInputDecorationEmp.copyWith(hintText: 'Email'),
                 validator: (val) => val.isEmpty ? 'Enter an email' : null,
@@ -88,7 +88,7 @@ class _RegisterEmployeeState extends State<RegisterEmployee> {
                 error,
                 style: TextStyle(color: Colors.red, fontSize: 14.0),
               ),
-              SizedBox(height: 15.0),
+              SizedBox(height: 5.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
