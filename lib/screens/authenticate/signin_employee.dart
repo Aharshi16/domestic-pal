@@ -23,20 +23,11 @@ class _SignInEmployeeState extends State<SignInEmployee> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.cyan[100],
+      backgroundColor: Colors.cyan[50],
       appBar: AppBar(
-        backgroundColor: Colors.cyan[400],
+        backgroundColor: Colors.cyan[800],
         elevation: 0.0,
-        title: Text('Sign in as employee'),
-        actions: <Widget>[
-          FlatButton.icon(
-            icon: Icon(Icons.person),
-            label: Text('Register'),
-            onPressed: () {
-              widget.toggleView();
-            },
-          )
-        ],
+        title: Text('domesticPal'),
       ),
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
@@ -45,6 +36,11 @@ class _SignInEmployeeState extends State<SignInEmployee> {
           child: Column(
             children: <Widget>[
               SizedBox(height: 20.0),
+              Text(
+                'Sign In as an Employee',
+                style: TextStyle(color: Colors.cyan[800], fontSize: 20.0),
+              ),
+              SizedBox(height: 80.0),
               TextFormField(
                 decoration: textInputDecorationEmp.copyWith(hintText: 'Email'),
                 validator: (val) => val.isEmpty ? 'Enter an email' : null,
@@ -64,7 +60,7 @@ class _SignInEmployeeState extends State<SignInEmployee> {
               ),
               SizedBox(height: 20.0),
               RaisedButton(
-                  color: Colors.cyan[400],
+                  color: Colors.cyan[800],
                   child: Text(
                     'Sign in',
                     style: TextStyle(color: Colors.white),
@@ -92,6 +88,23 @@ class _SignInEmployeeState extends State<SignInEmployee> {
                 error,
                 style: TextStyle(color: Colors.red, fontSize: 14.0),
               ),
+              SizedBox(height: 15.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'New user?',
+                    style: TextStyle(color: Colors.grey, fontSize: 14.0),
+                  ),
+                  FlatButton(
+                    child:
+                        Text('Register', style: TextStyle(color: Colors.cyan)),
+                    onPressed: () {
+                      widget.toggleView();
+                    },
+                  )
+                ],
+              )
             ],
           ),
         ),

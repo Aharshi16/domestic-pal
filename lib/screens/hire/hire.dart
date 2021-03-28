@@ -7,7 +7,7 @@ class Hire extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.blueGrey[100],
+        backgroundColor: Colors.lime[100],
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -44,7 +44,7 @@ class Hire extends StatelessWidget {
                   );
                 },
                 minWidth: 60.0,
-                color: Colors.cyan[400],
+                color: Colors.cyan[800],
                 child: Text(
                   'Get hired',
                   style: TextStyle(fontSize: 20.0),
