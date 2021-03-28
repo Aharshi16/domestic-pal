@@ -1,6 +1,7 @@
 import 'package:domestic_pal/screens/home_employee/home_employee.dart';
 import 'package:domestic_pal/services/auth_employee.dart';
 import 'package:flutter/material.dart';
+import 'package:domestic_pal/shared/constants.dart';
 
 class SignInEmployee extends StatefulWidget {
   final Function toggleView;
@@ -45,6 +46,7 @@ class _SignInEmployeeState extends State<SignInEmployee> {
             children: <Widget>[
               SizedBox(height: 20.0),
               TextFormField(
+                decoration: textInputDecorationEmp.copyWith(hintText: 'Email'),
                 validator: (val) => val.isEmpty ? 'Enter an email' : null,
                 onChanged: (val) {
                   setState(() => email = val);
@@ -53,6 +55,8 @@ class _SignInEmployeeState extends State<SignInEmployee> {
               SizedBox(height: 20.0),
               TextFormField(
                 obscureText: true,
+                decoration:
+                    textInputDecorationEmp.copyWith(hintText: 'Password'),
                 validator: (val) => val.length < 6 ? 'Enter a password' : null,
                 onChanged: (val) {
                   setState(() => password = val);
@@ -67,7 +71,8 @@ class _SignInEmployeeState extends State<SignInEmployee> {
                   ),
                   onPressed: () async {
                     if (_formKey.currentState.validate()) {
-                      dynamic result = await _authEmployee.signInWithEmailAndPasswordEmployee(email, password);
+                      dynamic result = await _authEmployee
+                          .signInWithEmailAndPasswordEmployee(email, password);
                       /*dynamic result = await _authEmployee
                           .signInWithEmailAndPasswordEmployee(email, password);*/
                       if (result == null) {
