@@ -1,7 +1,7 @@
 import 'package:domestic_pal/screens/home_employee/update.dart';
 import 'package:domestic_pal/screens/home_employee/view.dart';
-//import 'package:domestic_pal/screens/hire/hire.dart';
-//import 'package:domestic_pal/services/auth_employee.dart';
+import 'package:domestic_pal/screens/hire/hire.dart';
+import 'package:domestic_pal/services/auth_employee.dart';
 import 'package:flutter/material.dart';
 
 /*class HomeEmployee extends StatelessWidget {
@@ -68,6 +68,7 @@ class _home_employeeState extends State<HomeEmployee> {
 
 class MyDrawer extends StatelessWidget {
   final Function onTap;
+  final AuthService _auth = AuthService();
 
   MyDrawer({this.onTap});
 
@@ -123,10 +124,17 @@ class MyDrawer extends StatelessWidget {
             ),
             Divider(height: 1),
             ListTile(
-              leading: Icon(Icons.exit_to_app),
-              title: Text('Logout'),
-              onTap: () => onTap(context, 0),
-            ),
+                leading: FlatButton.icon(
+              icon: Icon(Icons.person),
+              label: Text('Logout'),
+              onPressed: () async {
+                print("logged out of employee");
+                await _auth.signOut();
+                Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(builder: (context) => Hire()),
+                    (Route<dynamic> route) => false);
+              },
+            )),
           ],
         ),
       ),
