@@ -7,7 +7,7 @@ class Hire extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.lime[100],
+        backgroundColor: Colors.lime[50],
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
