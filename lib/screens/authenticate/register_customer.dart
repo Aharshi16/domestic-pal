@@ -24,16 +24,7 @@ class _RegisterCustomerState extends State<RegisterCustomer> {
       appBar: AppBar(
         backgroundColor: Colors.amber[500],
         elevation: 0.0,
-        title: Text('CUSTOMER REG'),
-        actions: <Widget>[
-          FlatButton.icon(
-            onPressed: () {
-              widget.toggleView();
-            },
-            icon: Icon(Icons.person),
-            label: Text('Log In'),
-          )
-        ],
+        title: Text('domesticPal'),
       ),
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
@@ -42,6 +33,11 @@ class _RegisterCustomerState extends State<RegisterCustomer> {
           child: Column(
             children: <Widget>[
               SizedBox(height: 20.0),
+              Text(
+                'Register as a Customer',
+                style: TextStyle(color: Colors.grey, fontSize: 20.0),
+              ),
+              SizedBox(height: 40.0),
               TextFormField(
                   decoration: textInputDecoration.copyWith(hintText: 'Email'),
                   validator: (val) => val.isEmpty ? 'Enter an email' : null,
@@ -88,6 +84,23 @@ class _RegisterCustomerState extends State<RegisterCustomer> {
                 error,
                 style: TextStyle(color: Colors.red, fontSize: 14.0),
               ),
+               SizedBox(height: 5.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Have an account?',
+                    style: TextStyle(color: Colors.grey, fontSize: 14.0),
+                  ),
+                  FlatButton(
+                    child:
+                        Text('Sign In', style: TextStyle(color: Colors.orange)),
+                    onPressed: () {
+                      widget.toggleView();
+                    },
+                  )
+                ],
+              )
             ],
           ),
         ),

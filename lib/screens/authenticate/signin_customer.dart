@@ -23,16 +23,7 @@ class _SignInCustomerState extends State<SignInCustomer> {
       appBar: AppBar(
         backgroundColor: Colors.amber[500],
         elevation: 0.0,
-        title: Text('LOGIN SCREEN'),
-        actions: <Widget>[
-          FlatButton.icon(
-            onPressed: () {
-              widget.toggleView();
-            },
-            icon: Icon(Icons.person),
-            label: Text('Register'),
-          )
-        ],
+        title: Text('domesticPal'),
       ),
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
@@ -41,6 +32,11 @@ class _SignInCustomerState extends State<SignInCustomer> {
           child: Column(
             children: <Widget>[
               SizedBox(height: 20.0),
+               Text(
+                'Sign In as a Customer',
+                style: TextStyle(color: Colors.grey, fontSize: 20.0),
+              ),
+              SizedBox(height: 40.0),
               TextFormField(
                   decoration: textInputDecoration.copyWith(hintText: 'Email'),
                   validator: (val) => val.isEmpty ? 'Enter an email' : null,
@@ -85,6 +81,23 @@ class _SignInCustomerState extends State<SignInCustomer> {
                 error,
                 style: TextStyle(color: Colors.red, fontSize: 14.0),
               ),
+               SizedBox(height: 5.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'New user?',
+                    style: TextStyle(color: Colors.grey, fontSize: 14.0),
+                  ),
+                  FlatButton(
+                    child:
+                        Text('Register', style: TextStyle(color: Colors.orange)),
+                    onPressed: () {
+                      widget.toggleView();
+                    },
+                  )
+                ],
+              )
             ],
           ),
         ),
