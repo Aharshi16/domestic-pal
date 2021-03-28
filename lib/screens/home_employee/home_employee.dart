@@ -1,3 +1,5 @@
+import 'package:domestic_pal/screens/Update_Details/update.dart';
+import 'package:domestic_pal/screens/View%20_Details/view.dart';
 import 'package:domestic_pal/screens/hire/hire.dart';
 import 'package:domestic_pal/services/auth_employee.dart';
 import 'package:flutter/material.dart';
@@ -36,12 +38,12 @@ class HomeEmployee extends StatefulWidget {
 }
 
 class _home_employeeState extends State<HomeEmployee> {
-  int index=0;
+  int index = 0;
   List<Widget> list = [
     ViewDetails(),
     UpdateDetails(),
   ];
-  
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -51,29 +53,28 @@ class _home_employeeState extends State<HomeEmployee> {
           title: Text("Navigation Drawer"),
         ),
         body: list[index],
-        drawer: MyDrawer(onTap: (ctx,i){
-          setState(() {
-            index=i;
-            Navigator.pop(ctx);
-          });
-        },),
+        drawer: MyDrawer(
+          onTap: (ctx, i) {
+            setState(() {
+              index = i;
+              Navigator.pop(ctx);
+            });
+          },
+        ),
       ),
     );
   }
 }
 
 class MyDrawer extends StatelessWidget {
-
   final Function onTap;
 
-  MyDrawer({
-    this.onTap
-});
+  MyDrawer({this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: MediaQuery.of(context).size.width*0.8,
+      width: MediaQuery.of(context).size.width * 0.8,
       child: Drawer(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -89,28 +90,23 @@ class MyDrawer extends StatelessWidget {
                     Container(
                       width: 60,
                       height: 60,
-                      child: CircleAvatar(
-
-                      ),
+                      child: CircleAvatar(),
                     ),
-                    SizedBox(height: 15,),
+                    SizedBox(
+                      height: 15,
+                    ),
                     Text(
                       'Username from firebase',
                       style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white
-                      ),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white),
                     ),
                     SizedBox(height: 3),
                     Text(
                       'Mail ID from firebase',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 12
-                      ),
+                      style: TextStyle(color: Colors.white, fontSize: 12),
                     ),
-
                   ],
                 ),
               ),
@@ -118,18 +114,18 @@ class MyDrawer extends StatelessWidget {
             ListTile(
               leading: Icon(Icons.remove_red_eye),
               title: Text('View Details'),
-              onTap: ()=>onTap(context,0),
+              onTap: () => onTap(context, 0),
             ),
             ListTile(
               leading: Icon(Icons.update_outlined),
               title: Text('Update Details'),
-              onTap: ()=>onTap(context,1),
+              onTap: () => onTap(context, 1),
             ),
             Divider(height: 1),
             ListTile(
               leading: Icon(Icons.exit_to_app),
               title: Text('Logout'),
-              onTap: ()=>onTap(context,0),
+              onTap: () => onTap(context, 0),
             ),
           ],
         ),
@@ -137,5 +133,3 @@ class MyDrawer extends StatelessWidget {
     );
   }
 }
-
-
