@@ -1,7 +1,7 @@
-import 'package:domestic_pal/screens/Update_Details/update.dart';
-import 'package:domestic_pal/screens/View%20_Details/view.dart';
-import 'package:domestic_pal/screens/hire/hire.dart';
-import 'package:domestic_pal/services/auth_employee.dart';
+import 'package:domestic_pal/screens/home_employee/update.dart';
+import 'package:domestic_pal/screens/home_employee/view.dart';
+//import 'package:domestic_pal/screens/hire/hire.dart';
+//import 'package:domestic_pal/services/auth_employee.dart';
 import 'package:flutter/material.dart';
 
 /*class HomeEmployee extends StatelessWidget {
