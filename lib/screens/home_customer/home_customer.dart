@@ -8,7 +8,7 @@ class HomeCustomer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.indigo[200],
         elevation: 0.0,
         title: Text('Customer Home Screen'),
         actions: <Widget>[
@@ -31,7 +31,7 @@ class HomeCustomer extends StatelessWidget {
       ),
       body: Padding(
         //padding: const EdgeInsets.fromLTRB(50.0, 10.0, 20.0, 20.0),
-        padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 10.0),
+        padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
         child: Column(
           children: <Widget>[
             SizedBox(height: 80.0),
@@ -64,7 +64,7 @@ class HomeCustomer extends StatelessWidget {
                 onPressed: () {},
                 padding: EdgeInsets.all(10.0),
                 //color: Color.fromRGBO(0, 160, 227, 1),
-                color: Colors.black,
+                color: Colors.pink[200],
                 textColor: Colors.white,
                 child: Text('MAID', style: TextStyle(fontSize: 20)),
               ),
@@ -93,7 +93,7 @@ class HomeCustomer extends StatelessWidget {
                 onPressed: () {},
                 padding: EdgeInsets.all(10.0),
                 //color: Color.fromRGBO(0, 160, 227, 1),
-                color: Colors.black,
+                color: Colors.orange[200],
                 textColor: Colors.white,
                 child: Text('COOK', style: TextStyle(fontSize: 20)),
               ),
@@ -122,7 +122,7 @@ class HomeCustomer extends StatelessWidget {
                 onPressed: () {},
                 padding: EdgeInsets.all(10.0),
                 //color: Color.fromRGBO(0, 160, 227, 1),
-                color: Colors.black,
+                color: Colors.blue[200],
                 textColor: Colors.white,
                 child: Text('BABY SITTER', style: TextStyle(fontSize: 20)),
               ),
