@@ -1,3 +1,4 @@
+import 'package:domestic_pal/screens/home_customer/update_details.dart';
 import 'package:flutter/material.dart';
 import 'package:domestic_pal/services/auth_customer.dart';
 import 'package:domestic_pal/shared/constants.dart';
@@ -74,7 +75,7 @@ class _RegisterCustomerState extends State<RegisterCustomer> {
                         
                             Navigator.of(context).pushAndRemoveUntil(
                             MaterialPageRoute(
-                                builder: (context) => HomeCustomer()),
+                                builder: (context) => UpdateCustomerDetails()),
                             (Route<dynamic> route) => false);
                       }
                     }
