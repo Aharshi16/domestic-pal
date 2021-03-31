@@ -1,3 +1,4 @@
+import 'package:domestic_pal/screens/home_customer/home_customer.dart';
 import 'package:flutter/material.dart';
 import 'package:domestic_pal/shared/constants.dart';
 
@@ -7,8 +8,7 @@ class UpdateCustomerDetails extends StatefulWidget {
 }
 
 class _UpdateCustomerDetailsState extends State<UpdateCustomerDetails> {
-  @override
-
+  
   final _formKey = GlobalKey<FormState>();
 
   String name = '';
@@ -69,30 +69,13 @@ class _UpdateCustomerDetailsState extends State<UpdateCustomerDetails> {
                     print(name);
                     print(phonenumber);
                     print(city);
+                    Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                                builder: (context) => HomeCustomer()),
+                            (Route<dynamic> route) => false);
                   }
                   ),
-              /*SizedBox(height: 12.0),
-              Text(
-                error,
-                style: TextStyle(color: Colors.red, fontSize: 14.0),
-              ),
-               SizedBox(height: 5.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'New user?',
-                    style: TextStyle(color: Colors.grey, fontSize: 14.0),
-                  ),
-                  FlatButton(
-                    child:
-                        Text('Register', style: TextStyle(color: Colors.orange)),
-                    onPressed: () {
-                      widget.toggleView();
-                    },
-                  )
-                ],
-              )*/
+              
             ],
           ),
         ),
