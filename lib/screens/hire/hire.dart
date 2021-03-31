@@ -35,6 +35,7 @@ class Hire extends StatelessWidget {
                 ),
               ),
               //FOR EMPLOYEES
+              SizedBox(height: 10.0),
               FlatButton(
                 onPressed: () {
                   Navigator.push(
@@ -43,8 +44,8 @@ class Hire extends StatelessWidget {
                         builder: (context) => AuthenticateEmployee()),
                   );
                 },
-                minWidth: 60.0,
-                color: Colors.cyan[800],
+                minWidth: 115.0,
+                color: Colors.cyan[600],
                 child: Text(
                   'Get hired',
                   style: TextStyle(fontSize: 20.0),
