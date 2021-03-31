@@ -49,8 +49,10 @@ class _home_employeeState extends State<HomeEmployee> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        backgroundColor: Colors.cyan[50],
         appBar: AppBar(
-          title: Text("Navigation Drawer"),
+          title: Text("domesticPal"),
+          backgroundColor: Colors.cyan[800],
         ),
         body: list[index],
         drawer: MyDrawer(
