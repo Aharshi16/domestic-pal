@@ -9,7 +9,7 @@ class DatabaseService {
       Firestore.instance.collection('empDetails');
 
   Future updateUserData(
-      String userCatagory,
+      String userCatagory, 
       String name,
       int phoneNo,
       String gender,
