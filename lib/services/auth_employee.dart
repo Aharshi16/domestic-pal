@@ -1,9 +1,9 @@
 import 'package:domestic_pal/models/user.dart';
+import 'package:domestic_pal/services/database_employee.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthService {
   final FirebaseAuth _authEmployee = FirebaseAuth.instance;
-
 
   //create user obj based on FirebaseUser
   User _userFromFirebaseUser(FirebaseUser user) {
@@ -38,6 +38,10 @@ class AuthService {
       AuthResult result = await _authEmployee.createUserWithEmailAndPassword(
           email: email, password: password);
       FirebaseUser user = result.user;
+
+      //create a new document for the user with the uid
+      await DatabaseService(uid: user.uid)
+          .updateUserData('E', 'new user', null, null, null, 0, 0, null);
       return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
