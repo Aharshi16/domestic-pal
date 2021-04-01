@@ -1,15 +1,179 @@
 import 'package:flutter/material.dart';
 
-class UpdateDetails extends StatelessWidget {
+class UpdateDetails extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return FormScreenState();
+  }
+}
+
+class FormScreenState extends State<UpdateDetails> {
+  String name;
+  String gender;
+  String location;
+  String workExperience;
+  String phoneNo;
+  String jobProfile;
+  String rating;
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  Widget _buildname() {
+    return TextFormField(
+      decoration: InputDecoration(labelText: 'Name'),
+      maxLength: 10,
+      validator: (String value) {
+        if (value.isEmpty) {
+          return 'Name is Required';
+        }
+
+        return null;
+      },
+      onSaved: (String value) {
+        name = value;
+      },
+    );
+  }
+
+  Widget _buildphoneNumber() {
+    return TextFormField(
+      decoration: InputDecoration(labelText: 'Phone Number'),
+      validator: (String value) {
+        if (value.isEmpty) {
+          return 'Phone Number is Required';
+        }
+
+        /*if (!RegExp(
+            r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
+            .hasMatch(value)) {
+          return 'Please enter a valid email Address';
+        }*/
+
+        return null;
+      },
+      onSaved: (String value) {
+        phoneNo = value;
+      },
+    );
+  }
+
+  Widget _buildgender() {
+    return TextFormField(
+      decoration: InputDecoration(labelText: 'Gender'),
+      keyboardType: TextInputType.visiblePassword,
+      validator: (String value) {
+        if (value.isEmpty) {
+          return 'Gender is Required';
+        }
+
+        return null;
+      },
+      onSaved: (String value) {
+        gender = value;
+      },
+    );
+  }
+
+  Widget _buillocation() {
+    return TextFormField(
+      decoration: InputDecoration(labelText: 'Location'),
+      keyboardType: TextInputType.url,
+      validator: (String value) {
+        if (value.isEmpty) {
+          return 'Location is Required';
+        }
+
+        return null;
+      },
+      onSaved: (String value) {
+        location = value;
+      },
+    );
+  }
+
+  Widget _buildworkExperience() {
+    return TextFormField(
+      decoration: InputDecoration(labelText: 'Work Experience'),
+      keyboardType: TextInputType.phone,
+      validator: (String value) {
+        if (value.isEmpty) {
+          return 'Work Experience is Required';
+        }
+
+        return null;
+      },
+      onSaved: (String value) {
+        workExperience = value;
+      },
+    );
+  }
+
+  Widget _buildrating() {
+    return TextFormField(
+      decoration: InputDecoration(labelText: 'Ratings'),
+      keyboardType: TextInputType.number,
+      validator: (String value) {
+        int calories = int.tryParse(value);
+
+        if (calories == null || calories <= 0) {
+          return 'Ratings must be greater than 0';
+        }
+
+        return null;
+      },
+      onSaved: (String value) {
+        rating = value;
+      },
+    );
+
+
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Text('Update Details',
-            style: TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.w600,
-            )),
+    return Scaffold(
+      appBar: AppBar(title: Text("Update Details")),
+      body: SingleChildScrollView(
+        child: Container(
+          margin: EdgeInsets.all(24),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                _buildname(),
+                _buildphoneNumber(),
+                _buildgender(),
+                _buillocation(),
+                _buildrating(),
+                _buildworkExperience(),
+                SizedBox(height: 100),
+                RaisedButton(
+                  child: Text(
+                    'Submit',
+                    style: TextStyle(color: Colors.blue, fontSize: 16),
+                  ),
+                  onPressed: () {
+                    if (!_formKey.currentState.validate()) {
+                      return;
+                    }
+
+                    _formKey.currentState.save();
+
+                    print(name);
+                    print(phoneNo);
+                    print(gender);
+                    print(location);
+                    print(workExperience);
+                    print(rating);
+
+                    //Send to API
+                  },
+                )
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

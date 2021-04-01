@@ -28,4 +28,11 @@ class DatabaseService {
       'jobProfile': jobProfile
     });
   }
+
+  //get employeeCollection stream
+  Stream<QuerySnapshot> get empDetails {
+    return employeeCollection.snapshots();
+  }
 }
+
+
