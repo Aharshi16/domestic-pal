@@ -7,9 +7,17 @@ class DatabaseCustomerService {
   //collection reference
   final CollectionReference customerCollection =
       Firestore.instance.collection('customers');
-  Future updateCustomerUserData(String userCatagory, String name, String phone, String city) async {
-    return await customerCollection
-        .document(uid)
-        .setData({'userCatagory': userCatagory, 'name': name, 'phone': phone, 'city': city});
+  Future updateCustomerUserData(
+      String userCatagory, String name, String phone, String city) async {
+    return await customerCollection.document(uid).setData({
+      'userCatagory': userCatagory,
+      'name': name,
+      'phone': phone,
+      'city': city
+    });
+  }
+
+  Stream<QuerySnapshot> get customers {
+    return customerCollection.snapshots();
   }
 }
