@@ -3,8 +3,8 @@ import 'package:domestic_pal/screens/home_employee/view.dart';
 import 'package:domestic_pal/screens/hire/hire.dart';
 import 'package:domestic_pal/services/auth_employee.dart';
 import 'package:flutter/material.dart';
-import 'package:domestic_pal/services/database_employee.dart';
-import 'package:provider/provider.dart';
+//import 'package:domestic_pal/services/database_employee.dart';
+//import 'package:provider/provider.dart';
 
 /*class HomeEmployee extends StatelessWidget {
   final AuthService _auth = AuthService();

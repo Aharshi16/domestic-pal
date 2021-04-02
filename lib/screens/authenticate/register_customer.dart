@@ -4,7 +4,7 @@ import 'package:domestic_pal/services/auth_customer.dart';
 import 'package:domestic_pal/shared/constants.dart';
 //import 'package:domestic_pal/screens/home_employe';
 //import 'package:domestic_pal/screens/home_employee/home_employee.dart';
-import 'package:domestic_pal/screens/home_customer/home_customer.dart';
+//import 'package:domestic_pal/screens/home_customer/home_customer.dart';
 
 class RegisterCustomer extends StatefulWidget {
   final Function toggleView;
@@ -28,7 +28,7 @@ class _RegisterCustomerState extends State<RegisterCustomer> {
         title: Text('domesticPal'),
       ),
       body: SingleChildScrollView(
-              child: Container(
+        child: Container(
           padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
           child: Form(
             key: _formKey,
@@ -51,8 +51,9 @@ class _RegisterCustomerState extends State<RegisterCustomer> {
                     decoration:
                         textInputDecoration.copyWith(hintText: 'Password'),
                     obscureText: true,
-                    validator: (val) =>
-                        val.length < 6 ? 'Enter a password 6+ chars long' : null,
+                    validator: (val) => val.length < 6
+                        ? 'Enter a password 6+ chars long'
+                        : null,
                     onChanged: (val) {
                       setState(() => password = val);
                     }),
@@ -73,10 +74,11 @@ class _RegisterCustomerState extends State<RegisterCustomer> {
                         } else {
                           setState(() => error = 'registered successfully');
                           //Navigator.pop(context);
-                          
-                              Navigator.of(context).pushAndRemoveUntil(
+
+                          Navigator.of(context).pushAndRemoveUntil(
                               MaterialPageRoute(
-                                  builder: (context) => UpdateCustomerDetails()),
+                                  builder: (context) =>
+                                      UpdateCustomerDetails()),
                               (Route<dynamic> route) => false);
                         }
                       }
@@ -86,7 +88,7 @@ class _RegisterCustomerState extends State<RegisterCustomer> {
                   error,
                   style: TextStyle(color: Colors.red, fontSize: 14.0),
                 ),
-                 SizedBox(height: 5.0),
+                SizedBox(height: 5.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -95,8 +97,8 @@ class _RegisterCustomerState extends State<RegisterCustomer> {
                       style: TextStyle(color: Colors.grey, fontSize: 14.0),
                     ),
                     FlatButton(
-                      child:
-                          Text('Sign In', style: TextStyle(color: Colors.orange)),
+                      child: Text('Sign In',
+                          style: TextStyle(color: Colors.orange)),
                       onPressed: () {
                         widget.toggleView();
                       },
