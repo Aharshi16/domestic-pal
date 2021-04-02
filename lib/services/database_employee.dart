@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:domestic_pal/models/user.dart';
 
 class DatabaseService {
   final String uid;
@@ -29,8 +30,22 @@ class DatabaseService {
     });
   }
 
+  //employee details from snapshot
+  List<EmployeeUserData> _employeeDetailsFromSnapshot(QuerySnapshot snapshot) {
+    return snapshot.documents.map((doc) {
+      return EmployeeUserData(
+        name: doc.data['name'] ?? '',
+        phoneNo: doc.data['phoneNo'] ?? 0,
+        gender: doc.data['gender'] ?? '',
+        location: doc.data['location'] ?? '',
+        jobProfile: doc.data['jobProfile'] ?? '',
+        workExperience: doc.data['workExperience'] ?? 0,
+      );
+    }).toList();
+  }
+
   //get employeeCollection stream
-  Stream<QuerySnapshot> get empDetails {
-    return employeeCollection.snapshots();
+  Stream<List<EmployeeUserData>> get empDetails {
+    return employeeCollection.snapshots().map(_employeeDetailsFromSnapshot);
   }
 }

@@ -11,3 +11,20 @@ class CustomerUserData {
 
   CustomerUserData({this.name, this.phone, this.city});
 }
+
+class EmployeeUserData {
+  final String name;
+  final int phoneNo;
+  final String gender;
+  final String location;
+  final int workExperience;
+  final String jobProfile;
+
+  EmployeeUserData(
+      {this.name,
+      this.phoneNo,
+      this.gender,
+      this.location,
+      this.jobProfile,
+      this.workExperience});
+}

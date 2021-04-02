@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+//import 'package:domestic_pal/services/auth_employee.dart';
+//import 'package:domestic_pal/services/database_employee.dart';
+//import 'package:provider/provider.dart';
 
 class UpdateDetails extends StatefulWidget {
   @override
@@ -14,14 +17,12 @@ class FormScreenState extends State<UpdateDetails> {
   String workExperience;
   String phoneNo;
   String jobProfile;
-  String rating;
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   Widget _buildname() {
     return TextFormField(
       decoration: InputDecoration(labelText: 'Name'),
-      maxLength: 10,
       validator: (String value) {
         if (value.isEmpty) {
           return 'Name is Required';
@@ -38,6 +39,7 @@ class FormScreenState extends State<UpdateDetails> {
   Widget _buildphoneNumber() {
     return TextFormField(
       decoration: InputDecoration(labelText: 'Phone Number'),
+      maxLength: 10,
       validator: (String value) {
         if (value.isEmpty) {
           return 'Phone Number is Required';
@@ -108,9 +110,9 @@ class FormScreenState extends State<UpdateDetails> {
     );
   }
 
-  Widget _buildrating() {
+  Widget _buildjobProfile() {
     return TextFormField(
-      decoration: InputDecoration(labelText: 'Ratings'),
+      decoration: InputDecoration(labelText: 'Job Profile'),
       keyboardType: TextInputType.number,
       validator: (String value) {
         int calories = int.tryParse(value);
@@ -122,54 +124,93 @@ class FormScreenState extends State<UpdateDetails> {
         return null;
       },
       onSaved: (String value) {
-        rating = value;
+        jobProfile = value;
       },
     );
-
-
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Update Details")),
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.all(24),
+          margin: EdgeInsets.all(30),
           child: Form(
             key: _formKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                _buildname(),
-                _buildphoneNumber(),
-                _buildgender(),
-                _buillocation(),
-                _buildrating(),
-                _buildworkExperience(),
-                SizedBox(height: 100),
-                RaisedButton(
+                Container(
+                  padding: EdgeInsets.all(6.0),
+                  color: Colors.cyan[100],
                   child: Text(
-                    'Submit',
-                    style: TextStyle(color: Colors.blue, fontSize: 16),
+                    'Update Details',
+                    style: TextStyle(color: Colors.cyan[900], fontSize: 25.0),
                   ),
-                  onPressed: () {
-                    if (!_formKey.currentState.validate()) {
-                      return;
-                    }
+                ),
+                _buildname(),
+                SizedBox(
+                  height: 20.0,
+                ),
+                _buildphoneNumber(),
+                SizedBox(
+                  height: 20.0,
+                ),
+                _buildgender(),
+                SizedBox(
+                  height: 20.0,
+                ),
+                _buillocation(),
+                SizedBox(
+                  height: 20.0,
+                ),
+                _buildjobProfile(),
+                SizedBox(
+                  height: 20.0,
+                ),
+                _buildworkExperience(),
+                SizedBox(height: 30),
+                Container(
+                  margin: EdgeInsets.all(10),
+                  height: 50.0,
+                  width: 150.0,
+                  decoration: BoxDecoration(
+                    boxShadow: <BoxShadow>[
+                      BoxShadow(
+                        color: Colors.blue.withOpacity(0.1),
+                        blurRadius: 1,
+                        offset: Offset(5, 5),
+                      ),
+                    ],
+                  ),
+                  child: RaisedButton(
+                    elevation: 30,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                        side: BorderSide(color: Colors.white)),
+                    onPressed: () {
+                      if (!_formKey.currentState.validate()) {
+                        return;
+                      }
 
-                    _formKey.currentState.save();
+                      _formKey.currentState.save();
 
-                    print(name);
-                    print(phoneNo);
-                    print(gender);
-                    print(location);
-                    print(workExperience);
-                    print(rating);
+                      print(name);
+                      print(phoneNo);
+                      print(gender);
+                      print(location);
+                      print(workExperience);
+                      print(jobProfile);
 
-                    //Send to API
-                  },
-                )
+                      //Send to API
+                    },
+                    padding: EdgeInsets.all(10.0),
+                    //color: Color.fromRGBO(0, 160, 227, 1),
+                    color: Colors.cyan[200],
+                    textColor: Colors.white,
+                    child: Text('SUBMIT', style: TextStyle(fontSize: 20)),
+                  ),
+                ),
               ],
             ),
           ),
