@@ -23,6 +23,7 @@ class _ViewDetailsState extends State<ViewDetails> {
         body: ListView(
           padding: const EdgeInsets.all(8),
           children: <Widget>[
+            SizedBox(height: 20.0),
             Container(
               height: 50,
               width: 50,
