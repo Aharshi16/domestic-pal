@@ -3,6 +3,8 @@ import 'package:domestic_pal/screens/home_employee/view.dart';
 import 'package:domestic_pal/screens/hire/hire.dart';
 import 'package:domestic_pal/services/auth_employee.dart';
 import 'package:flutter/material.dart';
+import 'package:domestic_pal/services/database_employee.dart';
+import 'package:provider/provider.dart';
 
 /*class HomeEmployee extends StatelessWidget {
   final AuthService _auth = AuthService();
@@ -51,7 +53,7 @@ class _home_employeeState extends State<HomeEmployee> {
       home: Scaffold(
         backgroundColor: Colors.cyan[50],
         appBar: AppBar(
-          title: Text("domesticPal"),
+          title: Text("Employee Home Screen"),
           backgroundColor: Colors.cyan[800],
         ),
         body: list[index],

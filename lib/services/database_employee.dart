@@ -9,7 +9,7 @@ class DatabaseService {
       Firestore.instance.collection('empDetails');
 
   Future updateUserData(
-      String userCatagory,
+      String userCatagory, 
       String name,
       int phoneNo,
       String gender,
@@ -29,8 +29,14 @@ class DatabaseService {
     });
   }
 
+<<<<<<< HEAD
   //get employee stream
+=======
+  //get employeeCollection stream
+>>>>>>> f2468b6a0376201423d7934e6e5e34023e340d33
   Stream<QuerySnapshot> get empDetails {
     return employeeCollection.snapshots();
   }
 }
+
+
