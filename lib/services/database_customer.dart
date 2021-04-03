@@ -1,4 +1,7 @@
+
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:domestic_pal/models/user.dart';
 
 class DatabaseCustomerService {
   final String uid;
@@ -19,5 +22,21 @@ class DatabaseCustomerService {
 
   Stream<QuerySnapshot> get customers {
     return customerCollection.snapshots();
+  }
+
+  //get user doc stream
+  Stream<CustomerUserData> get customerUserData {
+    return customerCollection.document(uid).snapshots().map(_customerUserDataFromSnapshot);
+  }
+
+  //user data from snapshot
+  CustomerUserData _customerUserDataFromSnapshot(DocumentSnapshot snapshot) {
+    return CustomerUserData(
+      uid: uid,
+      userCategory: snapshot.data['userCategory'],
+      name: snapshot.data['name'],
+      phone: snapshot.data['phone'],
+      city: snapshot.data['city'],
+    );
   }
 }

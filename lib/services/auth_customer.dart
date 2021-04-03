@@ -49,7 +49,7 @@ class AuthService {
       FirebaseUser user = result.user;
 
       await DatabaseCustomerService(uid: user.uid)
-          .updateCustomerUserData('C', 'new customer', '', '');
+          .updateCustomerUserData('C', 'new customer', null, null);
 
       return _userFromFirebase(user);
     } catch (e) {

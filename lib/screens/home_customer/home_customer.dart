@@ -1,4 +1,5 @@
 import 'package:domestic_pal/screens/hire/hire.dart';
+import 'package:domestic_pal/screens/home_customer/settings_form.dart';
 import 'package:domestic_pal/services/auth_customer.dart';
 import 'package:flutter/material.dart';
 
@@ -6,6 +7,17 @@ class HomeCustomer extends StatelessWidget {
   final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
+    void _showSettingsPanel() {
+      showModalBottomSheet(
+          context: context,
+          builder: (context) {
+            return Container(
+              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 60.0),
+              child: SettingsForm(),
+            );
+          });
+    }
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.indigo[200],
@@ -13,20 +25,23 @@ class HomeCustomer extends StatelessWidget {
         title: Text('Customer Home Screen'),
         actions: <Widget>[
           FlatButton.icon(
-              onPressed: () async {
-                await _auth.signOut();
-                Navigator.of(context).pushAndRemoveUntil(
-                    MaterialPageRoute(builder: (context) => Hire()),
-                    (Route<dynamic> route) => false);
-              },
-              icon: Icon(
-                Icons.person,
-                color: Colors.white,
-              ),
-              label: Text(
-                'logout',
-                style: TextStyle(color: Colors.white),
-              ))
+            onPressed: () async {
+              await _auth.signOut();
+              Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(builder: (context) => Hire()),
+                  (Route<dynamic> route) => false);
+            },
+            icon: Icon(
+              Icons.person,
+            ),
+            label: Text(
+              'logout',
+            ),
+          ),
+          FlatButton.icon(
+              onPressed: () => _showSettingsPanel(),
+              icon: Icon(Icons.settings),
+              label: Text('Settings'))
         ],
       ),
       body: Padding(

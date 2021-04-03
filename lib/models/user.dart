@@ -5,11 +5,13 @@ class User {
 }
 
 class CustomerUserData {
+  final String uid;
+  final String userCategory;
   final String name;
   final String phone;
   final String city;
 
-  CustomerUserData({this.name, this.phone, this.city});
+  CustomerUserData({this.uid, this.userCategory, this.name, this.phone, this.city});
 }
 
 class EmployeeUserData {
