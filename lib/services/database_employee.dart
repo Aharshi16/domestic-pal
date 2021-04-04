@@ -48,7 +48,7 @@ class DatabaseService {
     return employeeCollection.snapshots();
   }
 
-  //get employeeCollection stream
+  //get employeeCollection doc stream
   Stream<EmployeeUserData> get empDetails {
     return employeeCollection
         .document(uid)
