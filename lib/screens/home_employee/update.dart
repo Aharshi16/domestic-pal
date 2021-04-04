@@ -2,25 +2,48 @@ import 'package:flutter/material.dart';
 
 class UpdateDetails extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() {
-    return FormScreenState();
-  }
+  _UpdateDetailsState createState() => _UpdateDetailsState();
 }
 
-class FormScreenState extends State<UpdateDetails> {
+class _UpdateDetailsState extends State<UpdateDetails> {
+  List jobProfile =[false,false,false];
+  int currentValue = 0;
+  int _groupValue = -1;
+  bool _show = true;
+  bool _accept = true;
+
   String name;
-  String gender;
-  String location;
-  String workExperience;
   String phoneNo;
-  String jobProfile;
-  String rating;
+  String address;
+  String gender;
+  String locality;
+  String workExperience;
+
+
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+  //color Converter
+  _hexToColor(String code) =>
+      Color(int.parse(code.substring(1, 7), radix: 16) + 0xFF000000);
+
+
+//InputDecoration
+  _inputDecoration(label) => InputDecoration(
+      labelText: label,
+      fillColor: Colors.white,
+      border: new OutlineInputBorder(
+          borderRadius: new BorderRadius.circular(18.0),
+          borderSide: new BorderSide()));
+
+//TextStyle
+  _textStyle() => TextStyle(color: _hexToColor("#F2A03D"), fontSize: 14.0);
+
+
   Widget _buildname() {
     return TextFormField(
-      decoration: InputDecoration(labelText: 'Name'),
+      decoration: _inputDecoration('Name'),
+      style: _textStyle(),
       validator: (String value) {
         if (value.isEmpty) {
           return 'Name is Required';
@@ -34,11 +57,13 @@ class FormScreenState extends State<UpdateDetails> {
     );
   }
 
+  //phoneNumber Field
   Widget _buildphoneNumber() {
     return TextFormField(
-      decoration: InputDecoration(labelText: 'Phone Number'),
+      decoration: _inputDecoration('Phone Number'),
       keyboardType: TextInputType.phone,
       maxLength: 10,
+      style: _textStyle(),
       validator: (String value) {
         if (value.isEmpty) {
           return 'Phone Number is Required';
@@ -52,111 +77,158 @@ class FormScreenState extends State<UpdateDetails> {
     );
   }
 
-  Widget _buildgender() {
+  //addressField
+  Widget _buildaddress() {
     return TextFormField(
-      decoration: InputDecoration(labelText: 'Gender'),
+      decoration: _inputDecoration('Address'),
+      style: _textStyle(),
       validator: (String value) {
-        if (value.isEmpty) {
-          return 'Gender is Required';
+        if(value.isEmpty) {
+          return 'Address is Required';
         }
-
         return null;
       },
       onSaved: (String value) {
-        gender = value;
+        address = value;
       },
     );
   }
 
-  Widget _buillocation() {
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'Location'),
-      validator: (String value) {
-        if (value.isEmpty) {
-          return 'Location is Required';
-        }
+  //gender radioButton
+  Widget _buildgender(int groupValue, handleRadioValueChanged) {
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
+      Text(
+        'Gender',
+        style: new TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+      ),
+      Row(
+        children: <Widget>[
+          Radio(value: 0, groupValue: groupValue, onChanged: handleRadioValueChanged),
+          Text(
+            "Male",
+            style: new TextStyle(
+                fontSize: 14.0
+            ),
+          ),
+          Radio(value: 1, groupValue: groupValue, onChanged: handleRadioValueChanged),
+          Text(
+            "Female",
+            style: new TextStyle(
+              fontSize: 14.0,
+            ),
+          ),
+          Radio(value: 2, groupValue: groupValue, onChanged: handleRadioValueChanged),
+          Text(
+            "Others",
+            style: new TextStyle(
+              fontSize: 14.0,
+            ),
+          )
+        ],
+      )
+    ],
+    );
+  }
 
+  Widget _buildlocality() {
+    return TextFormField(
+      decoration: _inputDecoration('Location'),
+      style: _textStyle(),
+      validator: (String value) {
+        if(value.isEmpty) {
+          return 'Locality is Required';
+        }
         return null;
       },
       onSaved: (String value) {
-        location = value;
+        locality = value;
       },
     );
   }
 
-  Widget _buildworkExperience() {
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'Work Experience'),
-      validator: (String value) {
-        if (value.isEmpty) {
-          return 'Work Experience is Required';
-        }
-
-        return null;
-      },
-      onSaved: (String value) {
-        workExperience = value;
-      },
+  _checkbox(title,int index, bool boolValue, handleCheckBox) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        Checkbox(
+          value: boolValue,
+          onChanged: (bool value){
+            boolValue=value;
+            handleCheckBox(index, boolValue);
+          },
+        ),
+        Text(title),
+      ],
     );
   }
 
-  Widget _buildrating() {
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'Ratings'),
-      keyboardType: TextInputType.number,
-      validator: (String value) {
-        int calories = int.tryParse(value);
 
-        if (calories == null || calories <= 0) {
-          return 'Ratings must be greater than 0';
-        }
-
-        return null;
-      },
-      onSaved: (String value) {
-        rating = value;
-      },
-    );
+  void _handleCheckBox (int index, bool isActive) {
+    setState(() {
+      this.jobProfile[index] = isActive;
+    });
   }
+
+  void _changedDropDownItem(value){
+    setState(() {
+      this.currentValue = value;
+    });
+  }
+
+  void _handleRadioValueChanged(int value){
+    setState(() {
+      this._groupValue = value;
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
-          margin: EdgeInsets.all(24),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                _buildname(),
-                _buildphoneNumber(),
-                _buildgender(),
-                _buillocation(),
-                _buildrating(),
-                _buildworkExperience(),
-                SizedBox(height: 100),
-                RaisedButton(
-                  child: Text(
-                    'Submit',
-                    style: TextStyle(color: Colors.blue, fontSize: 16),
-                  ),
-                  onPressed: () {
-                    if (!_formKey.currentState.validate()) {
-                      return;
-                    }
+      body: Container(
+        padding: EdgeInsets.all(8.0),
+        child: ListView(
+          children: <Widget>[
+            _buildname(),
+            SizedBox(height: 8.0,),
+            _buildphoneNumber(),
+            SizedBox(height: 8.0,),
+            _buildaddress(),
+            SizedBox(height: 8.0,),
+            _buildgender(_groupValue, _handleRadioValueChanged),
+            SizedBox(height: 8.0,),
+            _buildlocality(),
+            SizedBox(height: 8.0,),
+            Text("Job Profile",
+              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),),
+            SizedBox(height: 8.0,),
+            _checkbox("Maid", 0, jobProfile[0], _handleCheckBox),
+            _checkbox("Cook", 1, jobProfile[1], _handleCheckBox),
+            _checkbox("Babysitter", 2, jobProfile[2], _handleCheckBox),
+            SizedBox(height: 8.0,),
+            RaisedButton(
+              child: Text(
+                'Submit',
+                style: TextStyle(color: Colors.blue, fontSize: 16),
+              ),
+              onPressed: () {
+                if (!_formKey.currentState.validate()) {
+                  return;
+                }
 
-                    _formKey.currentState.save();
+                _formKey.currentState.save();
 
-                  
+                print(name);
+                print(phoneNo);
+                print(gender);
+                print(locality);
+                print(workExperience);
 
-                    //Send to API
-                  },
-                )
-              ],
-            ),
-          ),
+                //Send to API
+              },
+            )
+
+          ],
         ),
       ),
     );
