@@ -38,6 +38,7 @@ class FormScreenState extends State<UpdateDetails> {
     return TextFormField(
       decoration: InputDecoration(labelText: 'Phone Number'),
       keyboardType: TextInputType.phone,
+      maxLength: 10,
       validator: (String value) {
         if (value.isEmpty) {
           return 'Phone Number is Required';
@@ -116,14 +117,11 @@ class FormScreenState extends State<UpdateDetails> {
         rating = value;
       },
     );
-
-
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Update Details")),
       body: SingleChildScrollView(
         child: Container(
           margin: EdgeInsets.all(24),

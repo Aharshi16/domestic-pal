@@ -17,9 +17,6 @@ class _ViewDetailsState extends State<ViewDetails> {
       value: DatabaseService().empDetails,
       child: Scaffold(
         backgroundColor: Colors.cyan[50],
-        /*appBar: AppBar(
-          title: Text('View Details Page'),
-        ),*/
         body: ListView(
           padding: const EdgeInsets.all(8),
           children: <Widget>[
@@ -86,27 +83,12 @@ class _ViewDetailsState extends State<ViewDetails> {
             SizedBox(
               height: 12,
             ),
-            /*Container(
-              height: 50,
-              width: 50,
-              margin: const EdgeInsets.all(10),
-              color: Colors.cyan[300],
-              child: Text('Date of Birth:',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 16,
-                    color: Colors.black,
-                  )),
-            ),
-            SizedBox(
-              height: 12,
-            ),*/
             Container(
               height: 50,
               width: 50,
               margin: const EdgeInsets.all(10),
               color: Colors.cyan[300],
-              child: Text('Job Profile:',
+              child: Text('Rating',
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
                     fontSize: 16,
@@ -121,6 +103,21 @@ class _ViewDetailsState extends State<ViewDetails> {
               width: 50,
               margin: const EdgeInsets.all(10),
               color: Colors.cyan[200],
+              child: Text('Job Profile:',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16,
+                    color: Colors.black,
+                  )),
+            ),
+            SizedBox(
+              height: 12,
+            ),
+            Container(
+              height: 50,
+              width: 50,
+              margin: const EdgeInsets.all(10),
+              color: Colors.cyan[100],
               child: Text('Work Experience:',
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
