@@ -1,4 +1,4 @@
-import 'package:domestic_pal/screens/home_employee/home_employee.dart';
+import 'package:domestic_pal/screens/home_employee/update.dart';
 import 'package:domestic_pal/shared/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:domestic_pal/services/auth_employee.dart';
@@ -89,7 +89,7 @@ class _RegisterEmployeeState extends State<RegisterEmployee> {
 
                               Navigator.of(context).pushAndRemoveUntil(
                                   MaterialPageRoute(
-                                      builder: (context) => HomeEmployee()),
+                                      builder: (context) => UpdateDetails()),
                                   (Route<dynamic> route) => false);
                             }
                           }

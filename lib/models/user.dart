@@ -20,6 +20,7 @@ class EmployeeUserData {
   final String userCategory;
   final String name;
   final int phoneNo;
+  final String aadharNo;
   final String gender;
   final String location;
   final int workExperience;
@@ -30,6 +31,7 @@ class EmployeeUserData {
       this.userCategory,
       this.name,
       this.phoneNo,
+      this.aadharNo,
       this.gender,
       this.location,
       this.jobProfile,

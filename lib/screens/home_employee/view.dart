@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 //import 'package:domestic_pal/services/auth_employee.dart';
-import 'package:domestic_pal/services/database_employee.dart';
-import 'package:provider/provider.dart';
-import 'package:domestic_pal/models/user.dart';
+//import 'package:domestic_pal/services/database_employee.dart';
+//import 'package:provider/provider.dart';
+//import 'package:domestic_pal/models/user.dart';
 
 class ViewDetails extends StatefulWidget {
   @override

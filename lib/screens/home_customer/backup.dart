@@ -1,5 +1,5 @@
-import 'package:domestic_pal/screens/hire/hire.dart';
-import 'package:domestic_pal/services/auth_customer.dart';
+//import 'package:domestic_pal/screens/hire/hire.dart';
+//import 'package:domestic_pal/services/auth_customer.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {

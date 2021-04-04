@@ -36,10 +36,10 @@ import 'package:flutter/material.dart';
 }*/
 class HomeEmployee extends StatefulWidget {
   @override
-  _home_employeeState createState() => _home_employeeState();
+  _HomeEmployeeState createState() => _HomeEmployeeState();
 }
 
-class _home_employeeState extends State<HomeEmployee> {
+class _HomeEmployeeState extends State<HomeEmployee> {
   int index = 0;
   List<Widget> list = [
     ViewDetails(),
