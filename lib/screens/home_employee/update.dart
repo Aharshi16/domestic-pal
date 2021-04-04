@@ -149,12 +149,7 @@ class FormScreenState extends State<UpdateDetails> {
 
                     _formKey.currentState.save();
 
-                    print(name);
-                    print(phoneNo);
-                    print(gender);
-                    print(location);
-                    print(workExperience);
-                    print(rating);
+                  
 
                     //Send to API
                   },
