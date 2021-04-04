@@ -1,5 +1,3 @@
-
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:domestic_pal/models/user.dart';
 
@@ -26,7 +24,10 @@ class DatabaseCustomerService {
 
   //get user doc stream
   Stream<CustomerUserData> get customerUserData {
-    return customerCollection.document(uid).snapshots().map(_customerUserDataFromSnapshot);
+    return customerCollection
+        .document(uid)
+        .snapshots()
+        .map(_customerUserDataFromSnapshot);
   }
 
   //user data from snapshot

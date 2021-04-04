@@ -31,21 +31,22 @@ class DatabaseService {
   }
 
   //employee details from snapshot
-  List<EmployeeUserData> _employeeDetailsFromSnapshot(QuerySnapshot snapshot) {
-    return snapshot.documents.map((doc) {
-      return EmployeeUserData(
-        name: doc.data['name'] ?? '',
-        phoneNo: doc.data['phoneNo'] ?? 0,
-        gender: doc.data['gender'] ?? '',
-        location: doc.data['location'] ?? '',
-        jobProfile: doc.data['jobProfile'] ?? '',
-        workExperience: doc.data['workExperience'] ?? 0,
-      );
-    }).toList();
+  EmployeeUserData _employeeDetailsFromSnapshot(DocumentSnapshot snapshot) {
+    return EmployeeUserData(
+      name: snapshot.data['name'] ?? '',
+      phoneNo: snapshot.data['phoneNo'] ?? 0,
+      gender: snapshot.data['gender'] ?? '',
+      location: snapshot.data['location'] ?? '',
+      jobProfile: snapshot.data['jobProfile'] ?? '',
+      workExperience: snapshot.data['workExperience'] ?? 0,
+    );
   }
 
   //get employeeCollection stream
-  Stream<List<EmployeeUserData>> get empDetails {
-    return employeeCollection.snapshots().map(_employeeDetailsFromSnapshot);
+  Stream<EmployeeUserData> get empDetails {
+    return employeeCollection
+        .document(uid)
+        .snapshots()
+        .map(_employeeDetailsFromSnapshot);
   }
 }
