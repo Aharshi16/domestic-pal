@@ -10,7 +10,7 @@ class DatabaseService {
       Firestore.instance.collection('empDetails');
 
   Future updateUserData(
-      String userCatagory,
+      String userCategory,
       String name,
       int phoneNo,
       String gender,
@@ -19,7 +19,7 @@ class DatabaseService {
       int rating,
       String jobProfile) async {
     return await employeeCollection.document(uid).setData({
-      'userCatagory': userCatagory,
+      'userCategory': userCategory,
       'name': name,
       'phoneNo': phoneNo,
       'gender': gender,
@@ -33,6 +33,8 @@ class DatabaseService {
   //employee details from snapshot
   EmployeeUserData _employeeDetailsFromSnapshot(DocumentSnapshot snapshot) {
     return EmployeeUserData(
+      uid: snapshot.data['uid'],
+      userCategory: snapshot.data['userCategory'],
       name: snapshot.data['name'] ?? '',
       phoneNo: snapshot.data['phoneNo'] ?? 0,
       gender: snapshot.data['gender'] ?? '',
@@ -40,6 +42,10 @@ class DatabaseService {
       jobProfile: snapshot.data['jobProfile'] ?? '',
       workExperience: snapshot.data['workExperience'] ?? 0,
     );
+  }
+
+  Stream<QuerySnapshot> get employees {
+    return employeeCollection.snapshots();
   }
 
   //get employeeCollection stream
