@@ -270,7 +270,7 @@ class _UpdateDetailsState extends State<UpdateDetails> {
                         }
                         Navigator.of(context).pushAndRemoveUntil(
                             MaterialPageRoute(
-                                builder: (context) => ViewDetails()),
+                                builder: (context) => HomeEmployee()),
                             (Route<dynamic> route) => false);
                         _formKey.currentState.save();
 

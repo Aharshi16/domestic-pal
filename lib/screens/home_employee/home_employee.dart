@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 //import 'package:domestic_pal/services/database_employee.dart';
 //import 'package:provider/provider.dart';
 
-/*class HomeEmployee extends StatelessWidget {
+class HomeEmployee extends StatelessWidget {
   final AuthService _auth = AuthService();
 
   @override
@@ -33,8 +33,8 @@ import 'package:flutter/material.dart';
       ),
     );
   }
-}*/
-class HomeEmployee extends StatefulWidget {
+}
+/*class HomeEmployee extends StatefulWidget {
   @override
   _HomeEmployeeState createState() => _HomeEmployeeState();
 }
@@ -144,4 +144,4 @@ class MyDrawer extends StatelessWidget {
       ),
     );
   }
-}
+}*/
