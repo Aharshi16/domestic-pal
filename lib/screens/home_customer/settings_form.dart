@@ -1,5 +1,6 @@
 import 'package:domestic_pal/models/user.dart';
 import 'package:domestic_pal/services/database_customer.dart';
+import 'package:domestic_pal/shared/cusloading.dart';
 import 'package:flutter/material.dart';
 import 'package:domestic_pal/shared/constants.dart';
 import 'package:provider/provider.dart';
@@ -84,6 +85,7 @@ class _SettingsFormState extends State<SettingsForm> {
             );
           } else {
             //return a loading a screen
+            return CusLoading();
           }
         });
   }
