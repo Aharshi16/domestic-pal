@@ -39,7 +39,7 @@ class _UpdateCustomerDetailsState extends State<UpdateCustomerDetails> {
                     children: <Widget>[
                       SizedBox(height: 20.0),
                       Text(
-                        'Update Details',
+                        'Register Details',
                         style: TextStyle(color: Colors.grey, fontSize: 20.0),
                       ),
                       SizedBox(height: 40.0),
