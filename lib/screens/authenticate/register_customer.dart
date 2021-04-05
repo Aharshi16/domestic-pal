@@ -24,7 +24,7 @@ class _RegisterCustomerState extends State<RegisterCustomer> {
   @override
   Widget build(BuildContext context) {
     return loading
-        ? Loading()
+        ? CusLoading()
         : Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.amber[500],
