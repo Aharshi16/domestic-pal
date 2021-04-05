@@ -2,6 +2,7 @@ import 'package:domestic_pal/screens/home_customer/home_customer.dart';
 import 'package:domestic_pal/services/auth_customer.dart';
 import 'package:flutter/material.dart';
 import 'package:domestic_pal/shared/constants.dart';
+import 'package:domestic_pal/shared/cusloading.dart';
 
 class SignInCustomer extends StatefulWidget {
   final Function toggleView;
@@ -13,14 +14,17 @@ class SignInCustomer extends StatefulWidget {
 class _SignInCustomerState extends State<SignInCustomer> {
   final AuthService _authCustomer = AuthService();
   final _formKey = GlobalKey<FormState>();
+  bool loading = false;
   //text field state
   String email = '';
   String password = '';
   String error = '';
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
+    return loading
+        ? Loading()
+        : Scaffold(
+        appBar: AppBar(
         backgroundColor: Colors.amber[500],
         elevation: 0.0,
         title: Text('domesticPal'),
@@ -64,11 +68,13 @@ class _SignInCustomerState extends State<SignInCustomer> {
                     ),
                     onPressed: () async {
                       if (_formKey.currentState.validate()) {
+                        setState(() => loading = true);
                         dynamic result = await _authCustomer
                             .signInWithEmailAndPassword(email, password);
                         if (result == null) {
                           setState(() => error =
                               'could not sign in with those credentials');
+                              loading = false;
                         } else {
                           setState(() => error = 'logged in successfully');
                           Navigator.of(context).pushAndRemoveUntil(

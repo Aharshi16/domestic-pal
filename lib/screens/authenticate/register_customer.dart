@@ -2,6 +2,7 @@ import 'package:domestic_pal/screens/home_customer/update_details.dart';
 import 'package:flutter/material.dart';
 import 'package:domestic_pal/services/auth_customer.dart';
 import 'package:domestic_pal/shared/constants.dart';
+import 'package:domestic_pal/shared/cusloading.dart';
 //import 'package:domestic_pal/screens/home_employe';
 //import 'package:domestic_pal/screens/home_employee/home_employee.dart';
 //import 'package:domestic_pal/screens/home_customer/home_customer.dart';
@@ -16,12 +17,15 @@ class RegisterCustomer extends StatefulWidget {
 class _RegisterCustomerState extends State<RegisterCustomer> {
   final AuthService _authCustomer = AuthService();
   final _formKey = GlobalKey<FormState>();
+  bool loading = false;
   String email = '';
   String password = '';
   String error = '';
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return loading
+        ? Loading()
+        : Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.amber[500],
         elevation: 0.0,
@@ -66,11 +70,13 @@ class _RegisterCustomerState extends State<RegisterCustomer> {
                     ),
                     onPressed: () async {
                       if (_formKey.currentState.validate()) {
+                        setState(() => loading = true);
                         dynamic result = await _authCustomer
                             .registerWithEmailAndPassword(email, password);
                         if (result == null) {
                           setState(() => error =
                               'could not register with those credentials');
+                               loading = false;
                         } else {
                           setState(() => error = 'registered successfully');
                           //Navigator.pop(context);
