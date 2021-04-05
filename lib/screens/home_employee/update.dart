@@ -51,9 +51,8 @@ class _UpdateDetailsState extends State<UpdateDetails> {
       validator: (String value) {
         if (value.isEmpty) {
           return 'Name is Required';
-        } else {
-          return null;
         }
+        return null;
       },
       onChanged: (value) => setState(() => name = value),
       onSaved: (String value) {
@@ -72,9 +71,9 @@ class _UpdateDetailsState extends State<UpdateDetails> {
       validator: (String value) {
         if (value.isEmpty) {
           return 'Phone Number is Required';
-        } else {
-          return null;
         }
+        return null;
+
       },
       onChanged: (value) => setState(() => phoneNo = value),
       onSaved: (String value) {
@@ -83,18 +82,19 @@ class _UpdateDetailsState extends State<UpdateDetails> {
     );
   }
 
-  //addressField
-  Widget _buildaddress(EmployeeUserData userData) {
+  //aadharNo Field
+  Widget _buildaadharNo(EmployeeUserData userData) {
     return TextFormField(
       initialValue: userData.aadharNo,
       decoration: _inputDecoration('AadharNo'),
       style: _textStyle(),
+      maxLength: 12,
       validator: (String value) {
         if (value.isEmpty) {
           return 'AadharNo is required';
-        } else {
-          return null;
         }
+          return null;
+
       },
       onChanged: (value) => setState(() => name = value),
       onSaved: (String value) {
@@ -156,9 +156,8 @@ class _UpdateDetailsState extends State<UpdateDetails> {
       validator: (String value) {
         if (value.isEmpty) {
           return 'Locality is Required';
-        } else {
-          return null;
         }
+          return null;
       },
       onSaved: (String value) {
         location = value;
@@ -224,7 +223,7 @@ class _UpdateDetailsState extends State<UpdateDetails> {
                     SizedBox(
                       height: 8.0,
                     ),
-                    _buildaddress(userData),
+                    _buildaadharNo(userData),
                     SizedBox(
                       height: 8.0,
                     ),
@@ -249,7 +248,19 @@ class _UpdateDetailsState extends State<UpdateDetails> {
                     _checkbox("Babysitter", 2, jobProfile[2], _handleCheckBox),
                     SizedBox(
                       height: 8.0,
+                    ),Text('Work Experience',
+                      style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
                     ),
+                    Slider(
+                      value: (workExperience ?? 0).toDouble(),
+                      activeColor: Colors.brown[workExperience ?? 0],
+                      inactiveColor: Colors.brown[workExperience ?? 0],
+                      min: 0.0,
+                      max: 10.0,
+                      divisions: 10,
+                      onChanged: (val) => setState(() => workExperience = val.round()),
+                    ),
+                    SizedBox(height: 8.0,),
                     RaisedButton(
                       child: Text(
                         'Submit',
@@ -274,11 +285,11 @@ class _UpdateDetailsState extends State<UpdateDetails> {
                             (Route<dynamic> route) => false);
                         _formKey.currentState.save();
 
-                        print(name);
+                        /*print(name);
                         print(phoneNo);
                         print(gender);
                         print(location);
-                        print(workExperience);
+                        print(workExperience);*/
 
                         //Send to API
                       },
