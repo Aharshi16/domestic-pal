@@ -55,7 +55,6 @@ class _UpdateCustomerDetailsState extends State<UpdateCustomerDetails> {
                       TextFormField(
                           decoration: textInputDecoration.copyWith(
                               hintText: 'phone number'),
-                          obscureText: true,
                           validator: (val) => val.length < 10
                               ? 'Enter a phone number 10 chars long'
                               : null,
