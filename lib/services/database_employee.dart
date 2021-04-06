@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:domestic_pal/models/user.dart';
 
-class DatabaseService {
+class DatabaseEmployeeService {
   final String uid;
-  DatabaseService({this.uid});
+  DatabaseEmployeeService({this.uid});
 
   //Employee collection reference
   final CollectionReference employeeCollection =
@@ -35,7 +35,8 @@ class DatabaseService {
   //employee details from snapshot
   EmployeeUserData _employeeDetailsFromSnapshot(DocumentSnapshot snapshot) {
     return EmployeeUserData(
-      uid: snapshot.data['uid'],
+      //uid: snapshot.data['uid'],
+      uid: uid,
       userCategory: snapshot.data['userCategory'],
       name: snapshot.data['name'] ?? '',
       phoneNo: snapshot.data['phoneNo'] ?? 0,
