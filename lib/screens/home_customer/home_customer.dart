@@ -1,5 +1,6 @@
 import 'package:domestic_pal/screens/hire/hire.dart';
 import 'package:domestic_pal/screens/home_customer/settings_form.dart';
+import 'package:domestic_pal/screens/home_customer/view_list.dart';
 import 'package:domestic_pal/services/auth_customer.dart';
 import 'package:flutter/material.dart';
 
@@ -76,7 +77,10 @@ class HomeCustomer extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(5.0),
                     side: BorderSide(color: Colors.white)),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,MaterialPageRoute(builder: (context) => Maidlist()),
+                                );
+                },
                 padding: EdgeInsets.all(10.0),
                 //color: Color.fromRGBO(0, 160, 227, 1),
                 color: Colors.pink[200],
@@ -105,7 +109,10 @@ class HomeCustomer extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(5.0),
                     side: BorderSide(color: Colors.white)),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,MaterialPageRoute(builder: (context) => Cooklist()),
+                                );
+                },
                 padding: EdgeInsets.all(10.0),
                 //color: Color.fromRGBO(0, 160, 227, 1),
                 color: Colors.orange[200],
@@ -134,7 +141,10 @@ class HomeCustomer extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(5.0),
                     side: BorderSide(color: Colors.white)),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,MaterialPageRoute(builder: (context) => Babysitterlist()),
+                                );
+                },
                 padding: EdgeInsets.all(10.0),
                 //color: Color.fromRGBO(0, 160, 227, 1),
                 color: Colors.blue[200],
