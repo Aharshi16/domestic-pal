@@ -27,7 +27,7 @@ class HomeEmployee extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.cyan[50],
       appBar: AppBar(
-        title: Text('Employee home screen'),
+        title: Text('domesticPal'),
         backgroundColor: Colors.cyan[400],
         elevation: 0.0,
         actions: <Widget>[
@@ -49,6 +49,7 @@ class HomeEmployee extends StatelessWidget {
           )
         ],
       ),
+      body:ViewDetails(),
     );
   }
 }
