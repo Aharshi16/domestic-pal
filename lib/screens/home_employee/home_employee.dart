@@ -1,3 +1,5 @@
+import 'package:domestic_pal/screens/home_employee/settings2.dart';
+import 'package:domestic_pal/screens/home_employee/settings_form.dart';
 import 'package:domestic_pal/screens/home_employee/update.dart';
 import 'package:domestic_pal/screens/home_employee/view.dart';
 import 'package:domestic_pal/screens/hire/hire.dart';
@@ -11,10 +13,26 @@ class HomeEmployee extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+     /*_showSettingsPanel(){
+      /*showModalBottomSheet(
+        context: context,
+        builder: (context) {
+          return Container(
+            padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 60.0),
+            child: SettingsForm2(),
+            //SettingsForm(),
+          );
+        //}
+      );*/
+      return Scaffold(
+        body:SettingsForm2(),
+      );
+    }*/
     return Scaffold(
       backgroundColor: Colors.cyan[50],
       appBar: AppBar(
-        title: Text('Employee home screen'),
+        title: Text('domesticPal'),
         backgroundColor: Colors.cyan[400],
         elevation: 0.0,
         actions: <Widget>[
@@ -28,9 +46,20 @@ class HomeEmployee extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => Hire()),
                   (Route<dynamic> route) => false);
             },
+          ),
+          FlatButton.icon(
+              icon: Icon(Icons.settings),
+              label: Text('Settings'),
+              onPressed: () async {
+                Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(builder: (context) => SettingsForm2()),
+                 (Route<dynamic>route) => false);
+          },
+
           )
         ],
       ),
+      body:ViewDetails(),
     );
   }
 }

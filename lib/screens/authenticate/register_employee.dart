@@ -1,5 +1,5 @@
 import 'package:domestic_pal/screens/home_employee/update.dart';
-import 'package:domestic_pal/shared/loading.dart';
+import 'package:domestic_pal/shared/emploading.dart';
 import 'package:flutter/material.dart';
 import 'package:domestic_pal/services/auth_employee.dart';
 import 'package:domestic_pal/shared/constants.dart';
@@ -25,7 +25,7 @@ class _RegisterEmployeeState extends State<RegisterEmployee> {
   @override
   Widget build(BuildContext context) {
     return loading
-        ? Loading()
+        ? emploading()
         : Scaffold(
             backgroundColor: Colors.cyan[50],
             appBar: AppBar(
