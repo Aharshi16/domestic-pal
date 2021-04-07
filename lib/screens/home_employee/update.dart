@@ -43,6 +43,8 @@ class _UpdateDetailsState extends State<UpdateDetails> {
 //TextStyle
   _textStyle() => TextStyle(color: _hexToColor("#F2A03D"), fontSize: 14.0);
 
+
+
   Widget _buildname(EmployeeUserData userData) {
     return TextFormField(
       initialValue: userData.name,
