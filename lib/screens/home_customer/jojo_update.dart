@@ -1,4 +1,4 @@
-import 'package:domestic_pal/models/user.dart';
+/*import 'package:domestic_pal/models/user.dart';
 import 'package:domestic_pal/screens/home_customer/home_customer.dart';
 import 'package:domestic_pal/services/database_customer.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +39,7 @@ class _UpdateCustomerDetailsState extends State<UpdateCustomerDetails> {
                     children: <Widget>[
                       SizedBox(height: 20.0),
                       Text(
-                        'Register Details',
+                        'Update Details',
                         style: TextStyle(color: Colors.grey, fontSize: 20.0),
                       ),
                       SizedBox(height: 40.0),
@@ -99,4 +99,4 @@ class _UpdateCustomerDetailsState extends State<UpdateCustomerDetails> {
           );
         });
   }
-}
+}*/
