@@ -11,8 +11,9 @@ class UpdateEmployeeDetails extends StatefulWidget {
 }
 
 class _UpdateEmployeeDetailsState extends State<UpdateEmployeeDetails> {
-
   final _formKey = GlobalKey<FormState>();
+  final List<String> genders = ['Male', 'Female', 'Others'];
+  final List<String> jobs = ['Maid', 'Cook', 'Baby Sitter'];
 
   String _name;
   String _phone;
@@ -28,7 +29,7 @@ class _UpdateEmployeeDetailsState extends State<UpdateEmployeeDetails> {
     final user = Provider.of<User>(context);
     return StreamBuilder<EmployeeUserData>(
         stream: DatabaseEmployeeService(uid: user.uid).empDetails,
-        builder: (context,snapshot){
+        builder: (context, snapshot) {
           EmployeeUserData userData = snapshot.data;
           return Scaffold(
             appBar: AppBar(
@@ -38,7 +39,7 @@ class _UpdateEmployeeDetailsState extends State<UpdateEmployeeDetails> {
             ),
             body: SingleChildScrollView(
               child: Container(
-                padding: EdgeInsets.symmetric(vertical: 20.0,horizontal: 50.0),
+                padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
                 child: Form(
                   key: _formKey,
                   child: Column(
@@ -46,39 +47,101 @@ class _UpdateEmployeeDetailsState extends State<UpdateEmployeeDetails> {
                       SizedBox(height: 8.0),
                       Text(
                         'Register Details',
-                        style: TextStyle(color: Colors.grey,fontSize: 20.0),
+                        style: TextStyle(color: Colors.grey, fontSize: 20.0),
                       ),
                       SizedBox(height: 8.0),
+                      //name
                       TextFormField(
-                        decoration: textInputDecorationEmp.copyWith(hintText: 'Name'),
+                        decoration:
+                            textInputDecorationEmp.copyWith(hintText: 'Name'),
                         validator: (val) => val.isEmpty ? 'Enter a name' : null,
                         onChanged: (val) {
                           setState(() {
-                            _name=val;
+                            _name = val;
                           });
                         },
                       ),
                       SizedBox(height: 8.0),
+                      //Phone no
                       TextFormField(
-                        decoration: textInputDecorationEmp.copyWith(hintText: 'Phone Number'),
-                        validator: (val) => val.length < 10 ? 'Enter a valid Phone Number' : null,
-                        onChanged: (val){
+                        decoration: textInputDecorationEmp.copyWith(
+                            hintText: 'Phone Number'),
+                        maxLength: 10,
+                        validator: (val) => val.length < 10
+                            ? 'Enter a valid Phone Number'
+                            : null,
+                        onChanged: (val) {
                           setState(() {
                             _phone = val;
                           });
                         },
                       ),
                       SizedBox(height: 8.0),
+                      //aadhar
                       TextFormField(
-                        decoration: textInputDecorationEmp.copyWith(hintText: 'Location'),
-                        validator: (val) => val.isEmpty ? 'Enter the location' : null,
+                        decoration:
+                            textInputDecorationEmp.copyWith(hintText: 'aadhar'),
+                        maxLength: 12,
+                        validator: (val) =>
+                            val.isEmpty ? 'Enter the aadhar no' : null,
                         onChanged: (val) {
                           setState(() {
-                            _location=val;
+                            _aadhar = val;
                           });
                         },
                       ),
                       SizedBox(height: 8.0),
+                      //gender drop down
+                      DropdownButtonFormField(
+                        hint: Text(
+                          'Gender',
+                          style: TextStyle(fontSize: 15.0, color: Colors.grey),
+                        ),
+                        items: genders.map((gender) {
+                          return DropdownMenuItem(
+                            value: gender,
+                            child: Text('$gender'),
+                          );
+                        }).toList(),
+                        onChanged: (val) => setState(() => _gender = val),
+                      ),
+                      SizedBox(height: 10.0),
+                      //Location
+                      TextFormField(
+                        decoration:
+                            textInputDecorationEmp.copyWith(hintText: 'City'),
+                        validator: (val) =>
+                            val.isEmpty ? 'Enter the city' : null,
+                        onChanged: (val) {
+                          setState(() {
+                            _location = val;
+                          });
+                        },
+                      ),
+                      SizedBox(height: 10.0),
+                      //jobprofile dropdown
+                      DropdownButtonFormField(
+                        decoration: textInputDecorationEmp,
+                        hint: Text(
+                          'Select Job Profile',
+                          style: TextStyle(fontSize: 15.0, color: Colors.grey),
+                        ),
+                        items: jobs.map((job) {
+                          return DropdownMenuItem(
+                            value: job,
+                            child: Text('$job'),
+                          );
+                        }).toList(),
+                        onChanged: (val) => setState(() => _jobProfile = val),
+                      ),
+                      SizedBox(height: 8.0),
+                      //WorkExperience slider
+                      Slider(
+                        min: 100.0,
+                        max: 700.0,
+                        divisions: 6,
+                        // onChanged: (val) => setState(() => _workExperience = val.round()),
+                      ),
                       RaisedButton(
                         color: Colors.blueGrey[400],
                         child: Text(
@@ -87,21 +150,23 @@ class _UpdateEmployeeDetailsState extends State<UpdateEmployeeDetails> {
                         ),
                         onPressed: () async {
                           if (_formKey.currentState.validate()) {
-                            await DatabaseEmployeeService(uid: user.uid).updateEmployeeUserData(
-                                'E',
-                                _name ?? userData.name,
-                                _phone ?? userData.phoneNo ,
-                                _gender ?? userData.gender,
-                                _aadhar ?? userData.aadharNo,
-                                _location ?? userData.location,
-                                _workExperience ?? userData.workExperience,
-                                _rating ?? 0,
-                                _jobProfile ?? userData.jobProfile,
+                            await DatabaseEmployeeService(uid: user.uid)
+                                .updateEmployeeUserData(
+                              'E',
+                              _name ?? userData.name,
+                              _phone ?? userData.phoneNo,
+                              _gender ?? userData.gender,
+                              _aadhar ?? userData.aadharNo,
+                              _location ?? userData.location,
+                              _workExperience ?? userData.workExperience,
+                              _rating ?? 0,
+                              _jobProfile ?? userData.jobProfile,
                             );
                           }
                           Navigator.of(context).pushAndRemoveUntil(
-                              MaterialPageRoute(builder: (context) => HomeEmployee()),
-                                  (Route<dynamic>route) => false);
+                              MaterialPageRoute(
+                                  builder: (context) => HomeEmployee()),
+                              (Route<dynamic> route) => false);
                         },
                       )
                     ],
@@ -110,7 +175,6 @@ class _UpdateEmployeeDetailsState extends State<UpdateEmployeeDetails> {
               ),
             ),
           );
-        }
-    );
+        });
   }
 }
