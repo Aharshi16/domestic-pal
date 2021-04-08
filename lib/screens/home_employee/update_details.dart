@@ -135,13 +135,24 @@ class _UpdateEmployeeDetailsState extends State<UpdateEmployeeDetails> {
                         onChanged: (val) => setState(() => _jobProfile = val),
                       ),
                       SizedBox(height: 8.0),
-                      //WorkExperience slider
-                      Slider(
+                      //WorkExperience
+                      TextFormField(
+                        decoration: textInputDecorationEmp.copyWith(
+                            hintText: 'Work Experience'),
+                        validator: (val) =>
+                            val.isEmpty ? 'Enter the Work Experience' : null,
+                        onChanged: (val) {
+                          setState(() {
+                            _workExperience = val;
+                          });
+                        },
+                      ),
+                      /*Slider(
                         min: 100.0,
                         max: 700.0,
                         divisions: 6,
                         // onChanged: (val) => setState(() => _workExperience = val.round()),
-                      ),
+                      ),*/
                       RaisedButton(
                         color: Colors.blueGrey[400],
                         child: Text(
