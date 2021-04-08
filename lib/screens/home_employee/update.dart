@@ -1,6 +1,5 @@
 import 'package:domestic_pal/models/user.dart';
 import 'package:domestic_pal/screens/home_employee/home_employee.dart';
-import 'package:domestic_pal/screens/home_employee/view.dart';
 import 'package:domestic_pal/services/database_employee.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -23,7 +22,7 @@ class _UpdateDetailsState extends State<UpdateDetails> {
   String gender;
   String aadharNo;
   String location;
-  int workExperience;
+  String workExperience;
   int rating;
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -43,11 +42,8 @@ class _UpdateDetailsState extends State<UpdateDetails> {
 //TextStyle
   _textStyle() => TextStyle(color: _hexToColor("#F2A03D"), fontSize: 14.0);
 
-
-
-  Widget _buildname(EmployeeUserData userData) {
+  Widget _buildname() {
     return TextFormField(
-      initialValue: userData.name,
       decoration: _inputDecoration('Name'),
       style: _textStyle(),
       validator: (String value) {
@@ -64,7 +60,7 @@ class _UpdateDetailsState extends State<UpdateDetails> {
   }
 
   //phoneNumber Field
-  Widget _buildphoneNumber(EmployeeUserData userData) {
+  Widget _buildphoneNumber() {
     return TextFormField(
       decoration: _inputDecoration('Phone Number'),
       keyboardType: TextInputType.phone,
@@ -75,7 +71,6 @@ class _UpdateDetailsState extends State<UpdateDetails> {
           return 'Phone Number is Required';
         }
         return null;
-
       },
       onChanged: (value) => setState(() => phoneNo = value),
       onSaved: (String value) {
@@ -85,9 +80,8 @@ class _UpdateDetailsState extends State<UpdateDetails> {
   }
 
   //aadharNo Field
-  Widget _buildaadharNo(EmployeeUserData userData) {
+  Widget _buildaadharNo() {
     return TextFormField(
-      initialValue: userData.aadharNo,
       decoration: _inputDecoration('AadharNo'),
       style: _textStyle(),
       maxLength: 12,
@@ -95,8 +89,7 @@ class _UpdateDetailsState extends State<UpdateDetails> {
         if (value.isEmpty) {
           return 'AadharNo is required';
         }
-          return null;
-
+        return null;
       },
       onChanged: (value) => setState(() => name = value),
       onSaved: (String value) {
@@ -150,16 +143,15 @@ class _UpdateDetailsState extends State<UpdateDetails> {
     );
   }
 
-  Widget _buildlocation(EmployeeUserData userData) {
+  Widget _buildlocation() {
     return TextFormField(
-      initialValue: userData.location,
       decoration: _inputDecoration('Location'),
       style: _textStyle(),
       validator: (String value) {
         if (value.isEmpty) {
           return 'Locality is Required';
         }
-          return null;
+        return null;
       },
       onSaved: (String value) {
         location = value;
@@ -200,25 +192,27 @@ class _UpdateDetailsState extends State<UpdateDetails> {
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
     return StreamBuilder<EmployeeUserData>(
-      stream: DatabaseEmployeeService(uid: user.uid).empDetails,
+        stream: DatabaseEmployeeService(uid: user.uid).empDetails,
         builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            EmployeeUserData userData = snapshot.data;
-      return Scaffold(
-        body: Container(
-          padding: EdgeInsets.all(15.0),
-          child: (
-               ListView(
+          /*if (snapshot.hasData) {*/
+          EmployeeUserData userData = snapshot.data;
+          return Scaffold(
+            body: SingleChildScrollView(
+              child: Container(
+                padding: EdgeInsets.all(15.0),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
                     children: <Widget>[
-                      _buildname(userData),
+                      _buildname(),
                       SizedBox(
                         height: 8.0,
                       ),
-                      _buildphoneNumber(userData),
+                      _buildphoneNumber(),
                       SizedBox(
                         height: 8.0,
                       ),
-                      _buildaadharNo(userData),
+                      _buildaadharNo(),
                       SizedBox(
                         height: 8.0,
                       ),
@@ -226,7 +220,7 @@ class _UpdateDetailsState extends State<UpdateDetails> {
                       SizedBox(
                         height: 8.0,
                       ),
-                      _buildlocation(userData),
+                      _buildlocation(),
                       SizedBox(
                         height: 8.0,
                       ),
@@ -240,22 +234,30 @@ class _UpdateDetailsState extends State<UpdateDetails> {
                       ),
                       _checkbox("Maid", 0, jobProfile[0], _handleCheckBox),
                       _checkbox("Cook", 1, jobProfile[1], _handleCheckBox),
-                      _checkbox("Babysitter", 2, jobProfile[2], _handleCheckBox),
+                      _checkbox(
+                          "Babysitter", 2, jobProfile[2], _handleCheckBox),
                       SizedBox(
                         height: 8.0,
-                      ),Text('Work Experience',
-                        style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+                      ),
+                      /*Text(
+                        'Work Experience',
+                        style: TextStyle(
+                            fontSize: 16.0, fontWeight: FontWeight.bold),
                       ),
                       Slider(
-                        value: (workExperience ?? 0).toDouble(),
+                        value: (workExperience ?? userData.workExperience)
+                            .toDouble(),
                         activeColor: Colors.brown[workExperience ?? 0],
                         inactiveColor: Colors.brown[workExperience ?? 0],
                         min: 0.0,
                         max: 10.0,
                         divisions: 10,
-                        onChanged: (val) => setState(() => workExperience = val.round()),
+                        onChanged: (val) =>
+                            setState(() => workExperience = val.round()),
+                      ),*/
+                      SizedBox(
+                        height: 8.0,
                       ),
-                      SizedBox(height: 8.0,),
                       RaisedButton(
                         child: Text(
                           'Submit',
@@ -263,16 +265,17 @@ class _UpdateDetailsState extends State<UpdateDetails> {
                         ),
                         onPressed: () async {
                           if (_formKey.currentState.validate()) {
-                            await DatabaseEmployeeService(uid: user.uid).updateUserData(
-                                'E',
-                                name ?? userData.name,
-                                phoneNo ?? userData.phoneNo,
-                                gender ?? userData.gender,
-                                aadharNo ?? userData.aadharNo,
-                                location ?? userData.location,
-                                workExperience ?? userData.workExperience,
-                                rating ?? '0',
-                                jobProfile ?? userData.jobProfile);
+                            await DatabaseEmployeeService(uid: user.uid)
+                                .updateUserData(
+                                    'E',
+                                    name ?? userData.name,
+                                    phoneNo ?? userData.phoneNo,
+                                    gender ?? userData.gender,
+                                    aadharNo ?? userData.aadharNo,
+                                    location ?? userData.location,
+                                    workExperience ?? userData.workExperience,
+                                    rating ?? '0',
+                                    jobProfile ?? userData.jobProfile);
                           }
                           Navigator.of(context).pushAndRemoveUntil(
                               MaterialPageRoute(
@@ -281,27 +284,22 @@ class _UpdateDetailsState extends State<UpdateDetails> {
                           _formKey.currentState.save();
 
                           /*print(name);
-                          print(phoneNo);
-                          print(gender);
-                          print(location);
-                          print(workExperience);*/
+                            print(phoneNo);
+                            print(gender);
+                            print(location);
+                            print(workExperience);*/
 
                           //Send to API
                         },
                       ),
                     ],
-
-               )
+                  ),
                 ),
-                 ),
-                );
-                };
-              });
-
-
-
+              ),
+            ),
+          );
+          /*}
+          return CircularProgressIndicator();*/
+        });
   }
 }
-
-
-

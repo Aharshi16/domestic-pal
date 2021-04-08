@@ -19,11 +19,11 @@ class EmployeeUserData {
   final String uid;
   final String userCategory;
   final String name;
-  final int phoneNo;
+  final String phoneNo;
   final String aadharNo;
   final String gender;
   final String location;
-  final int workExperience;
+  final String workExperience;
   final String jobProfile;
 
   EmployeeUserData(
