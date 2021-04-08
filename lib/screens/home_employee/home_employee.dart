@@ -52,7 +52,7 @@ class HomeEmployee extends StatelessWidget {
               label: Text('Settings'),
               onPressed: () async {
                 Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(builder: (context) => SettingsForm2()),
+                  MaterialPageRoute(builder: (context) => SettingsForm()),
                  (Route<dynamic>route) => false);
           },
 
