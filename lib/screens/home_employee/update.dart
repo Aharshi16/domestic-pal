@@ -4,12 +4,12 @@ import 'package:domestic_pal/services/database_employee.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class UpdateDetails extends StatefulWidget {
+class UpdateDetails2 extends StatefulWidget {
   @override
   _UpdateDetailsState createState() => _UpdateDetailsState();
 }
 
-class _UpdateDetailsState extends State<UpdateDetails> {
+class _UpdateDetailsState extends State<UpdateDetails2> {
   List jobProfile = [false, false, false];
   int currentValue = 0;
   int _groupValue = -1;
@@ -266,7 +266,7 @@ class _UpdateDetailsState extends State<UpdateDetails> {
                         onPressed: () async {
                           if (_formKey.currentState.validate()) {
                             await DatabaseEmployeeService(uid: user.uid)
-                                .updateUserData(
+                                .updateEmployeeUserData(
                                     'E',
                                     name ?? userData.name,
                                     phoneNo ?? userData.phoneNo,

@@ -26,6 +26,7 @@ class EmployeeUserData {
   final String workExperience;
   final String jobProfile;
 
+
   EmployeeUserData(
       {this.uid,
       this.userCategory,

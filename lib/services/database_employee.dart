@@ -9,7 +9,7 @@ class DatabaseEmployeeService {
   final CollectionReference employeeCollection =
       Firestore.instance.collection('empDetails');
 
-  Future updateUserData(
+  Future updateEmployeeUserData(
       String userCategory,
       String name,
       String phoneNo,
