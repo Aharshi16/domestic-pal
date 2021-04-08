@@ -11,21 +11,18 @@ class HomeEmployee extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    /*_showSettingsPanel(){
-      /*showModalBottomSheet(
+    _showSettingsPanel(){
+      showModalBottomSheet(
         context: context,
         builder: (context) {
           return Container(
             padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 60.0),
-            child: SettingsForm2(),
-            //SettingsForm(),
+            child: SettingsForm(),
           );
-        //}
-      );*/
-      return Scaffold(
-        body:SettingsForm2(),
+        }
       );
-    }*/
+
+    }
     return Scaffold(
       backgroundColor: Colors.cyan[50],
       appBar: AppBar(
@@ -45,17 +42,13 @@ class HomeEmployee extends StatelessWidget {
             },
           ),
           FlatButton.icon(
-            icon: Icon(Icons.settings),
-            label: Text('Settings'),
-            onPressed: () async {
-              Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(builder: (context) => SettingsForm()),
-                  (Route<dynamic> route) => false);
-            },
+              icon: Icon(Icons.settings),
+              label: Text('Settings'),
+              onPressed: () => _showSettingsPanel(),
           )
         ],
       ),
-      body: ViewDetails(),
+      body:ViewDetails(),
     );
   }
 }
