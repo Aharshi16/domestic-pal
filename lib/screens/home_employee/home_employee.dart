@@ -1,6 +1,4 @@
-import 'package:domestic_pal/screens/home_employee/settings2.dart';
 import 'package:domestic_pal/screens/home_employee/settings_form.dart';
-import 'package:domestic_pal/screens/home_employee/update.dart';
 import 'package:domestic_pal/screens/home_employee/view.dart';
 import 'package:domestic_pal/screens/hire/hire.dart';
 import 'package:domestic_pal/services/auth_employee.dart';
@@ -13,8 +11,7 @@ class HomeEmployee extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-     /*_showSettingsPanel(){
+    /*_showSettingsPanel(){
       /*showModalBottomSheet(
         context: context,
         builder: (context) {
@@ -48,18 +45,17 @@ class HomeEmployee extends StatelessWidget {
             },
           ),
           FlatButton.icon(
-              icon: Icon(Icons.settings),
-              label: Text('Settings'),
-              onPressed: () async {
-                Navigator.of(context).pushAndRemoveUntil(
+            icon: Icon(Icons.settings),
+            label: Text('Settings'),
+            onPressed: () async {
+              Navigator.of(context).pushAndRemoveUntil(
                   MaterialPageRoute(builder: (context) => SettingsForm()),
-                 (Route<dynamic>route) => false);
-          },
-
+                  (Route<dynamic> route) => false);
+            },
           )
         ],
       ),
-      body:ViewDetails(),
+      body: ViewDetails(),
     );
   }
 }

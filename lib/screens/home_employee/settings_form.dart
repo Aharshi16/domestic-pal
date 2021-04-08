@@ -3,9 +3,7 @@ import 'package:domestic_pal/services/database_employee.dart';
 import 'package:domestic_pal/shared/emploading.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:domestic_pal/screens/home_employee/update.dart';
 import 'package:domestic_pal/shared/constants.dart';
-
 
 class SettingsForm extends StatefulWidget {
   @override
@@ -13,7 +11,6 @@ class SettingsForm extends StatefulWidget {
 }
 
 class _SettingsFormState extends State<SettingsForm> {
-
   final _formkey = GlobalKey<FormState>();
   String _currentname;
   String _currentPhone;
@@ -36,33 +33,34 @@ class _SettingsFormState extends State<SettingsForm> {
                   TextFormField(
                     decoration: textInputDecorationEmp,
                     initialValue: userData.name,
-                    validator: (value) => value.isEmpty ? 'Please enter a name' : null,
+                    validator: (value) =>
+                        value.isEmpty ? 'Please enter a name' : null,
                     onChanged: (value) => setState(() => _currentname = value),
                   ),
                   SizedBox(height: 20.0),
                   TextFormField(
                     decoration: textInputDecorationEmp,
                     //initialValue: userData.phoneNo,
-                    validator: (value) => value.isEmpty ? 'Please enter a Phone Number' : null,
+                    validator: (value) =>
+                        value.isEmpty ? 'Please enter a Phone Number' : null,
                     onChanged: (value) => setState(() => _currentPhone = value),
                   ),
                   SizedBox(height: 20.0),
                   TextFormField(
                     decoration: textInputDecorationEmp,
                     initialValue: userData.location,
-                    validator: (value) => value.isEmpty ? 'Please enter a location' : null,
-                    onChanged: (value) => setState(() => _currentLocation = value),
+                    validator: (value) =>
+                        value.isEmpty ? 'Please enter a location' : null,
+                    onChanged: (value) =>
+                        setState(() => _currentLocation = value),
                   )
                 ],
               ),
             );
-          }
-          else {
+          } else {
             return emploading();
           }
-        }
-
-    );
+        });
   }
 }
 /*
@@ -81,4 +79,3 @@ class _SettingsFormState extends State<SettingsForm> {
   }
 }
 */
-
