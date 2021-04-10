@@ -1,4 +1,4 @@
-import 'package:domestic_pal/screens/home_customer/employee_tile.dart';
+/*
 import 'package:domestic_pal/shared/cusloading.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -23,11 +23,24 @@ class Maidlist extends StatelessWidget {
             return ListView.builder(
               itemCount: snapshot.data.documents.length,
               itemBuilder: (context, index) {
-                // DocumentSnapshot empdetailsSnapshot = snapshot.data.documents[index];
-                return EmployeeTile(employee: snapshot.data.documents[index]);
+                DocumentSnapshot empdetails = snapshot.data.documents[index];
+                return ListTile(
+                  title: Text(empdetails['name'] ?? 'default'),
+                  //subtitle: empdetails['rating'] ?? 'default',
+                );
+                /* return Card(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(empdetails['name'] ?? 'default'),
+                    ],
+                  )
+                );*/
               },
             );
           },
         ));
   }
 }
+
+*/

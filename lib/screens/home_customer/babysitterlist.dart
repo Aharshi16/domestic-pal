@@ -2,6 +2,8 @@ import 'package:domestic_pal/shared/cusloading.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import 'employee_tile.dart';
+
 
 class Babysitterlist extends StatelessWidget {
   @override
@@ -20,24 +22,12 @@ class Babysitterlist extends StatelessWidget {
 
             return ListView.builder(
               itemCount: snapshot.data.documents.length,
-              itemBuilder: (context, index){
-                DocumentSnapshot empdetails = snapshot.data.documents[index];
-                return ListTile(
-                  title: Text(empdetails['name'] ?? 'default'),
-                  //subtitle: empdetails['rating'] ?? 'default',
-                );
-               /* return Card(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(empdetails['name'] ?? 'default'),
-                    ],
-                  )
-                );*/
+              itemBuilder: (context, index) {
+                // DocumentSnapshot empdetailsSnapshot = snapshot.data.documents[index];
+                return EmployeeTile(employee: snapshot.data.documents[index]);
               },
             );
           },
-        )
-    );
+        ));
   }
 }
