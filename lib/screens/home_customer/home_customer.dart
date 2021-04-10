@@ -1,6 +1,9 @@
 import 'package:domestic_pal/screens/hire/hire.dart';
 import 'package:domestic_pal/screens/home_customer/settings_form.dart';
-import 'package:domestic_pal/screens/home_customer/view_list.dart';
+//import 'package:domestic_pal/screens/home_customer/view_list.dart';
+import 'package:domestic_pal/screens/home_customer/maidlist.dart';
+import 'package:domestic_pal/screens/home_customer/cooklist.dart';
+import 'package:domestic_pal/screens/home_customer/babysitterlist.dart';
 import 'package:domestic_pal/services/auth_customer.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +26,7 @@ class HomeCustomer extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.indigo[200],
         elevation: 0.0,
-        title: Text('Customer Home Screen'),
+        title: Text('Home'),
         actions: <Widget>[
           FlatButton.icon(
             onPressed: () async {
@@ -33,22 +36,29 @@ class HomeCustomer extends StatelessWidget {
                   (Route<dynamic> route) => false);
             },
             icon: Icon(
-              Icons.person,
+              Icons.exit_to_app,
+              color: Colors.white,
             ),
             label: Text(
-              'logout',
+              'Logout',
+              style: TextStyle(color: Colors.white),
             ),
           ),
           FlatButton.icon(
               onPressed: () => _showSettingsPanel(),
-              icon: Icon(Icons.settings),
-              label: Text('Settings'))
+              icon: Icon(Icons.settings, color: Colors.white),
+              label: Text(
+                'Settings',
+                style: TextStyle(color: Colors.white),
+              ))
         ],
       ),
       body: Padding(
-        //padding: const EdgeInsets.fromLTRB(50.0, 10.0, 20.0, 20.0),
-        padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+        padding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 20.0),
+        //padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             SizedBox(height: 80.0),
             Text(
@@ -78,8 +88,10 @@ class HomeCustomer extends StatelessWidget {
                     borderRadius: BorderRadius.circular(5.0),
                     side: BorderSide(color: Colors.white)),
                 onPressed: () {
-                  Navigator.push(context,MaterialPageRoute(builder: (context) => Maidlist()),
-                                );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Maidlist()),
+                  );
                 },
                 padding: EdgeInsets.all(10.0),
                 //color: Color.fromRGBO(0, 160, 227, 1),
@@ -110,8 +122,10 @@ class HomeCustomer extends StatelessWidget {
                     borderRadius: BorderRadius.circular(5.0),
                     side: BorderSide(color: Colors.white)),
                 onPressed: () {
-                  Navigator.push(context,MaterialPageRoute(builder: (context) => Cooklist()),
-                                );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Cooklist()),
+                  );
                 },
                 padding: EdgeInsets.all(10.0),
                 //color: Color.fromRGBO(0, 160, 227, 1),
@@ -142,8 +156,10 @@ class HomeCustomer extends StatelessWidget {
                     borderRadius: BorderRadius.circular(5.0),
                     side: BorderSide(color: Colors.white)),
                 onPressed: () {
-                  Navigator.push(context,MaterialPageRoute(builder: (context) => Babysitterlist()),
-                                );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Babysitterlist()),
+                  );
                 },
                 padding: EdgeInsets.all(10.0),
                 //color: Color.fromRGBO(0, 160, 227, 1),
