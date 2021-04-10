@@ -17,29 +17,98 @@ class _ViewDetailsState extends State<ViewDetails> {
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
 
-    return StreamBuilder<EmployeeUserData>(
+    return  StreamBuilder<EmployeeUserData>(
         stream: DatabaseEmployeeService(uid: user.uid).empDetails,
         builder: (context, snapshot) {
           EmployeeUserData userData = snapshot.data;
           return Scaffold(
-            backgroundColor: Colors.cyan[50],
+            backgroundColor: Colors.grey[900],
             body: Padding(
               padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  SizedBox(height: 20.0),
+                  CircleAvatar(
+                    backgroundImage: AssetImage('assets/Icon.jpg'),
+                    radius: 40.0,
+
+                  ),
+                      Text(
+                        'Name',
+                        style: TextStyle(
+                          //fontSize: 16,
+                          //fontWeight: FontWeight.w600,
+                          letterSpacing: 2.0,
+                          color: Colors.grey,
+                        ),
+                      ),
+
+                  SizedBox(height: 10.0),
+
+                      Text(
+                        '${userData.name}',
+                        style: TextStyle(
+                          fontSize: 28.0,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 2.0,
+                          color: Colors.amberAccent[200],
+                        ),
+                      ),
+
+                  SizedBox(
+                    height: 30,
+                  ),
+
+                      Text(
+                        'Phone Number',
+                        style: TextStyle(
+                          //fontSize: 16,
+                          //fontWeight: FontWeight.w600,
+                          letterSpacing: 2.0,
+                          color: Colors.grey,
+                        ),
+                      ),
+
+                  SizedBox(height: 10.0),
+
+                      Text(
+                        '${userData.phoneNo}',
+                        style: TextStyle(
+                          fontSize: 28.0,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 2.0,
+                          color: Colors.amberAccent[200],
+                        ),
+                      ),
+
+
+                  SizedBox(
+                    height: 30,
+                  ),
+
                   Text(
-                    'Name: ${userData.name}',
+                    'Location',
                     style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        letterSpacing: 2.0,
-                        color: Colors.black),
+                      //fontSize: 16,
+                      //fontWeight: FontWeight.w600,
+                      letterSpacing: 2.0,
+                      color: Colors.grey,
+                    ),
                   ),
                   SizedBox(
-                    height: 12,
+                    height: 10,
                   ),
-                  Container(
+                  Text(
+                    '${userData.location}',
+                    style: TextStyle(
+                      fontSize: 28.0,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 2.0,
+                      color: Colors.amberAccent[200],
+                    ),
+                  ),
+
+                  /*Container(
                     height: 50,
                     width: 50,
                     margin: const EdgeInsets.all(10),
@@ -125,7 +194,7 @@ class _ViewDetailsState extends State<ViewDetails> {
                           fontSize: 16,
                           color: Colors.black,
                         )),
-                  ),
+                  ),*/
                 ],
               ),
             ),
