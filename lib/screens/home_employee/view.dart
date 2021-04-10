@@ -1,8 +1,10 @@
+import 'package:domestic_pal/models/user.dart';
+import 'package:domestic_pal/services/database_employee.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 //import 'package:domestic_pal/services/auth_employee.dart';
 //import 'package:domestic_pal/services/database_employee.dart';
-//import 'package:provider/provider.dart';
+import 'package:provider/provider.dart';
 //import 'package:domestic_pal/models/user.dart';
 
 class ViewDetails extends StatefulWidget {
@@ -13,118 +15,121 @@ class ViewDetails extends StatefulWidget {
 class _ViewDetailsState extends State<ViewDetails> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.cyan[50],
-      body: ListView(
-        padding: const EdgeInsets.all(8),
-        children: <Widget>[
-          SizedBox(height: 20.0),
-          Container(
-            height: 50,
-            width: 50,
-            margin: const EdgeInsets.all(10),
-            color: Colors.cyan[700],
-            child: Text(
-              'Name:',
-              style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.black),
+    final user = Provider.of<User>(context);
+
+    return StreamBuilder<EmployeeUserData>(
+        stream: DatabaseEmployeeService(uid: user.uid).empDetails,
+        builder: (context, snapshot) {
+          EmployeeUserData userData = snapshot.data;
+          return Scaffold(
+            backgroundColor: Colors.cyan[50],
+            body: Padding(
+              padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
+              child: Column(
+                children: <Widget>[
+                  SizedBox(height: 20.0),
+                  Text(
+                    'Name: ${userData.name}',
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: 2.0,
+                        color: Colors.black),
+                  ),
+                  SizedBox(
+                    height: 12,
+                  ),
+                  Container(
+                    height: 50,
+                    width: 50,
+                    margin: const EdgeInsets.all(10),
+                    color: Colors.cyan[600],
+                    child: Text('Phone No: ${userData.phoneNo}',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
+                          color: Colors.black,
+                        )),
+                  ),
+                  SizedBox(
+                    height: 12,
+                  ),
+                  Container(
+                    height: 50,
+                    width: 50,
+                    margin: const EdgeInsets.all(10),
+                    color: Colors.cyan[500],
+                    child: Text('Gender: ${userData.gender}',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
+                          color: Colors.black,
+                        )),
+                  ),
+                  SizedBox(
+                    height: 12,
+                  ),
+                  Container(
+                    height: 50,
+                    width: 50,
+                    margin: const EdgeInsets.all(10),
+                    color: Colors.cyan[400],
+                    child: Text('Location: ${userData.location}',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
+                          color: Colors.black,
+                        )),
+                  ),
+                  /*SizedBox(
+                    height: 12,
+                  ),
+                  Container(
+                    height: 50,
+                    width: 50,
+                    margin: const EdgeInsets.all(10),
+                    color: Colors.cyan[300],
+                    child: Text('Rating ${userData.}',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
+                          color: Colors.black,
+                        )),
+                  ),*/
+                  SizedBox(
+                    height: 12,
+                  ),
+                  Container(
+                    height: 50,
+                    width: 50,
+                    margin: const EdgeInsets.all(10),
+                    color: Colors.cyan[200],
+                    child: Text('Job Profile: ${userData.jobProfile}',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
+                          color: Colors.black,
+                        )),
+                  ),
+                  SizedBox(
+                    height: 12,
+                  ),
+                  Container(
+                    height: 50,
+                    width: 50,
+                    margin: const EdgeInsets.all(10),
+                    color: Colors.cyan[100],
+                    child: Text('Work Experience: ${userData.workExperience}',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
+                          color: Colors.black,
+                        )),
+                  ),
+                ],
+              ),
             ),
-            padding: EdgeInsets.symmetric(horizontal: 10.0),
-          ),
-          SizedBox(
-            height: 12,
-          ),
-          Container(
-            height: 50,
-            width: 50,
-            margin: const EdgeInsets.all(10),
-            color: Colors.cyan[600],
-            child: Text('Phone No:',
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 16,
-                  color: Colors.black,
-                )),
-          ),
-          SizedBox(
-            height: 12,
-          ),
-          Container(
-            height: 50,
-            width: 50,
-            margin: const EdgeInsets.all(10),
-            color: Colors.cyan[500],
-            child: Text('Gender:',
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 16,
-                  color: Colors.black,
-                )),
-          ),
-          SizedBox(
-            height: 12,
-          ),
-          Container(
-            height: 50,
-            width: 50,
-            margin: const EdgeInsets.all(10),
-            color: Colors.cyan[400],
-            child: Text('Location:',
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 16,
-                  color: Colors.black,
-                )),
-          ),
-          SizedBox(
-            height: 12,
-          ),
-          Container(
-            height: 50,
-            width: 50,
-            margin: const EdgeInsets.all(10),
-            color: Colors.cyan[300],
-            child: Text('Rating',
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 16,
-                  color: Colors.black,
-                )),
-          ),
-          SizedBox(
-            height: 12,
-          ),
-          Container(
-            height: 50,
-            width: 50,
-            margin: const EdgeInsets.all(10),
-            color: Colors.cyan[200],
-            child: Text('Job Profile:',
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 16,
-                  color: Colors.black,
-                )),
-          ),
-          SizedBox(
-            height: 12,
-          ),
-          Container(
-            height: 50,
-            width: 50,
-            margin: const EdgeInsets.all(10),
-            color: Colors.cyan[100],
-            child: Text('Work Experience:',
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 16,
-                  color: Colors.black,
-                )),
-          ),
-        ],
-      ),
-    );
+          );
+        });
   }
 }
