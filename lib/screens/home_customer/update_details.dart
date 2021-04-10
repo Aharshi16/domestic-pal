@@ -55,11 +55,14 @@ class _UpdateCustomerDetailsState extends State<UpdateCustomerDetails> {
                       TextFormField(
                           decoration: textInputDecoration.copyWith(
                               hintText: 'phone number'),
-                          validator: (val) => val.length < 10
+                            maxLength: 10,
+                            validator: (val) => val.length < 10
                               ? 'Enter a phone number 10 chars long'
                               : null,
                           onChanged: (val) {
-                            setState(() => _phonenumber = val);
+                            setState(() { 
+                              _phonenumber = val;
+                            });
                           }),
                       SizedBox(height: 20.0),
                       TextFormField(

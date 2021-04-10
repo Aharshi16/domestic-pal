@@ -9,14 +9,14 @@ class DatabaseEmployeeService {
   final CollectionReference employeeCollection =
       Firestore.instance.collection('empDetails');
 
-  Future updateUserData(
+  Future updateEmployeeUserData(
       String userCategory,
       String name,
       String phoneNo,
       String gender,
       String aadharNo,
       String location,
-      int workExperience,
+      String workExperience,
       int rating,
       String jobProfile) async {
     return await employeeCollection.document(uid).setData({
@@ -38,13 +38,13 @@ class DatabaseEmployeeService {
       //uid: snapshot.data['uid'],
       uid: uid,
       userCategory: snapshot.data['userCategory'],
-      name: snapshot.data['name'] ?? '',
-      phoneNo: snapshot.data['phoneNo'] ?? 0,
-      gender: snapshot.data['gender'] ?? '',
+      name: snapshot.data['name'],
+      phoneNo: snapshot.data['phoneNo'],
+      gender: snapshot.data['gender'],
       aadharNo: snapshot.data['adhaarNo'],
-      location: snapshot.data['location'] ?? '',
-      jobProfile: snapshot.data['jobProfile'] ?? '',
-      workExperience: snapshot.data['workExperience'] ?? 0,
+      location: snapshot.data['location'],
+      jobProfile: snapshot.data['jobProfile'],
+      workExperience: snapshot.data['workExperience'],
     );
   }
 
@@ -52,7 +52,7 @@ class DatabaseEmployeeService {
     return employeeCollection.snapshots();
   }
 
-  //get employeeCollection doc stream
+  //get employee doc stream
   Stream<EmployeeUserData> get empDetails {
     return employeeCollection
         .document(uid)
