@@ -3,6 +3,7 @@ import 'package:domestic_pal/screens/home_employee/home_employee.dart';
 import 'package:domestic_pal/services/database_employee.dart';
 import 'package:domestic_pal/shared/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 class UpdateEmployeeDetails extends StatefulWidget {
@@ -12,7 +13,7 @@ class UpdateEmployeeDetails extends StatefulWidget {
 
 class _UpdateEmployeeDetailsState extends State<UpdateEmployeeDetails> {
   final _formKey = GlobalKey<FormState>();
-  final List<String> genders = ['Male', 'Female', 'Others'];
+  final List<String> genders = ['Female', 'Male', 'Others'];
   final List<String> jobs = ['Maid', 'Cook', 'Baby Sitter'];
 
   String _name;
@@ -66,6 +67,7 @@ class _UpdateEmployeeDetailsState extends State<UpdateEmployeeDetails> {
                       TextFormField(
                         decoration: textInputDecorationEmp.copyWith(
                             hintText: 'Phone Number'),
+                        keyboardType: TextInputType.phone,
                         maxLength: 10,
                         validator: (val) => val.length < 10
                             ? 'Enter a valid Phone Number'
@@ -119,7 +121,7 @@ class _UpdateEmployeeDetailsState extends State<UpdateEmployeeDetails> {
                         },
                       ),
                       SizedBox(height: 10.0),
-                      //jobprofile dropdown
+                      //job profile dropdown
                       DropdownButtonFormField(
                         decoration: textInputDecorationEmp,
                         hint: Text(
