@@ -6,6 +6,12 @@ class EmployeeTile extends StatelessWidget {
   EmployeeTile({this.employee});
   @override
   Widget build(BuildContext context) {
+    String image;
+    if (employee['gender'] == 'Female') {
+      image = 'assets/Icon.jpg';
+    } else {
+      image = 'assets/Final_male.jpeg';
+    }
     return Padding(
       padding: EdgeInsets.only(
         top: 8.0,
@@ -16,7 +22,7 @@ class EmployeeTile extends StatelessWidget {
           leading: CircleAvatar(
             radius: 25.0,
             backgroundColor: Colors.brown,
-            backgroundImage: AssetImage('assets/Icon.jpg'),
+            backgroundImage: AssetImage(image),
           ),
           title: Text(employee['name']),
           subtitle: Text(employee['location']),
