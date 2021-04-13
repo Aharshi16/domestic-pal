@@ -11,18 +11,17 @@ class HomeEmployee extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    _showSettingsPanel(){
+    _showSettingsPanel() {
       showModalBottomSheet(
-        context: context,
-        builder: (context) {
-          return Container(
-            padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 60.0),
-            child: SettingsForm(),
-          );
-        }
-      );
-
+          context: context,
+          builder: (context) {
+            return Container(
+              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 60.0),
+              child: SettingsForm(),
+            );
+          });
     }
+
     return Scaffold(
       backgroundColor: Colors.cyan[50],
       appBar: AppBar(
@@ -30,7 +29,29 @@ class HomeEmployee extends StatelessWidget {
         backgroundColor: Colors.cyan[400],
         elevation: 0.0,
         actions: <Widget>[
-          FlatButton.icon(
+          PopupMenuButton<String>(onSelected: (value) async {
+            if (value == "Logout") {
+              print("logged out of employee");
+              await _auth.signOut();
+              Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(builder: (context) => Hire()),
+                  (Route<dynamic> route) => false);
+            } else if (value == "Settings") {
+              _showSettingsPanel();
+            }
+          }, itemBuilder: (BuildContext context) {
+            return [
+              PopupMenuItem(
+                child: Text("Settings"),
+                value: "Settings",
+              ),
+              PopupMenuItem(
+                child: Text("Logout"),
+                value: "Logout",
+              )
+            ];
+          }),
+          /*FlatButton.icon(
             icon: Icon(Icons.person),
             label: Text('Logout'),
             onPressed: () async {
@@ -42,16 +63,17 @@ class HomeEmployee extends StatelessWidget {
             },
           ),
           FlatButton.icon(
-              icon: Icon(Icons.settings),
-              label: Text('Settings'),
-              onPressed: () => _showSettingsPanel(),
-          )
+            icon: Icon(Icons.settings),
+            label: Text('Settings'),
+            onPressed: () => _showSettingsPanel(),
+          )*/
         ],
       ),
-      body:ViewDetails(),
+      body: ViewDetails(),
     );
   }
 }
+
 /*class HomeEmployee extends StatefulWidget {
   @override
   _HomeEmployeeState createState() => _HomeEmployeeState();

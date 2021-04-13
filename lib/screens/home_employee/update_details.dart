@@ -34,7 +34,7 @@ class _UpdateEmployeeDetailsState extends State<UpdateEmployeeDetails> {
           EmployeeUserData userData = snapshot.data;
           return Scaffold(
             appBar: AppBar(
-              backgroundColor: Colors.blueAccent[500],
+              backgroundColor: Colors.cyan[900],
               elevation: 0.0,
               title: Text('domesticPal'),
             ),
@@ -46,10 +46,10 @@ class _UpdateEmployeeDetailsState extends State<UpdateEmployeeDetails> {
                   child: Column(
                     children: <Widget>[
                       SizedBox(height: 8.0),
-                      Text(
+                      /*Text(
                         'Register Details',
                         style: TextStyle(color: Colors.grey, fontSize: 20.0),
-                      ),
+                      ),*/
                       SizedBox(height: 8.0),
                       //name
                       TextFormField(
@@ -95,10 +95,8 @@ class _UpdateEmployeeDetailsState extends State<UpdateEmployeeDetails> {
                       SizedBox(height: 8.0),
                       //gender drop down
                       DropdownButtonFormField(
-                        hint: Text(
-                          'Gender',
-                          style: TextStyle(fontSize: 15.0, color: Colors.grey),
-                        ),
+                        decoration: textInputDecorationEmp,
+                        hint: Text('Gender'),
                         items: genders.map((gender) {
                           return DropdownMenuItem(
                             value: gender,
@@ -124,10 +122,7 @@ class _UpdateEmployeeDetailsState extends State<UpdateEmployeeDetails> {
                       //job profile dropdown
                       DropdownButtonFormField(
                         decoration: textInputDecorationEmp,
-                        hint: Text(
-                          'Select Job Profile',
-                          style: TextStyle(fontSize: 15.0, color: Colors.grey),
-                        ),
+                        hint: Text('Select Job Profile'),
                         items: jobs.map((job) {
                           return DropdownMenuItem(
                             value: job,
@@ -155,10 +150,11 @@ class _UpdateEmployeeDetailsState extends State<UpdateEmployeeDetails> {
                         divisions: 6,
                         // onChanged: (val) => setState(() => _workExperience = val.round()),
                       ),*/
+                      SizedBox(height: 20),
                       RaisedButton(
-                        color: Colors.blueGrey[400],
+                        color: Colors.cyan[900],
                         child: Text(
-                          'Submit',
+                          'Sign Up',
                           style: TextStyle(color: Colors.white),
                         ),
                         onPressed: () async {
