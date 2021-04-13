@@ -24,17 +24,17 @@ class _ViewDetailsState extends State<ViewDetails> {
         stream: DatabaseEmployeeService(uid: user.uid).empDetails,
         builder: (context, snapshot) {
           EmployeeUserData userData = snapshot.data;
-          if(userData.gender =='Female'){
+          if(userData.gender =='Female') {
             return Scaffold(
               backgroundColor: Colors.grey[900],
               body: Padding(
                 padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  //mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     Center(
                       child: CircleAvatar(
-
                         backgroundImage: AssetImage('assets/Icon.jpg'),
                         radius: 40.0,
                       ),
@@ -65,8 +65,10 @@ class _ViewDetailsState extends State<ViewDetails> {
                       ),
                     ),
 
-                    SizedBox(
-                      height: 30,
+                    //SizedBox(height: 30),
+                    Divider(
+                      height: 50.0,
+                      color: Colors.grey[800],
                     ),
 
                     Text(
@@ -84,7 +86,7 @@ class _ViewDetailsState extends State<ViewDetails> {
                     Text(
                       '${userData.phoneNo}',
                       style: TextStyle(
-                        fontSize: 28.0,
+                        fontSize: 20.0,
                         fontWeight: FontWeight.bold,
                         letterSpacing: 2.0,
                         color: Colors.amberAccent[200],
@@ -92,8 +94,10 @@ class _ViewDetailsState extends State<ViewDetails> {
                     ),
 
 
-                    SizedBox(
-                      height: 30,
+                    //SizedBox(height: 30),
+                    Divider(
+                      height: 50.0,
+                      color: Colors.grey[800],
                     ),
 
                     Text(
@@ -111,7 +115,7 @@ class _ViewDetailsState extends State<ViewDetails> {
                     Text(
                       '${userData.location}',
                       style: TextStyle(
-                        fontSize: 28.0,
+                        fontSize: 20.0,
                         fontWeight: FontWeight.bold,
                         letterSpacing: 2.0,
                         color: Colors.amberAccent[200],
@@ -230,3 +234,134 @@ class _ViewDetailsState extends State<ViewDetails> {
         });
   }
 }
+
+
+/*return Scaffold(
+              backgroundColor: Colors.grey[900],
+              body: Padding(
+                padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Center(
+                      child: CircleAvatar(
+
+                        backgroundImage: AssetImage('assets/Icon.jpg'),
+                        radius: 40.0,
+                      ),
+                    ),
+                    Divider(
+                      height: 90.0,
+                      color: Colors.grey[800],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Expanded(
+                          child: Text(
+                            'Name',
+                            style: TextStyle(
+                              letterSpacing: 2.0,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 100.0),
+                        Expanded(
+                          child: Text(
+                            '${userData.name}',
+                            style: TextStyle(
+                              fontSize: 28.0,
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 2.0,
+                              color: Colors.amberAccent[200],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    //SizedBox(height: 50),
+                    Divider(
+                      height: 50.0,
+                      color: Colors.grey[800],
+                    ),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Expanded(
+                          child: Text(
+                            'Phone No',
+                            style: TextStyle(
+                              //fontSize: 16,
+                              //fontWeight: FontWeight.w600,
+                              letterSpacing: 2.0,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ),
+
+                        SizedBox(width: 100.0),
+
+                        Expanded(
+                          child: Text(
+                            '${userData.phoneNo}',
+                            style: TextStyle(
+                              fontSize: 13.0,
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 2.0,
+                              color: Colors.amberAccent[200],
+                            ),
+                          ),
+                        ),
+                      ],
+
+                    ),
+                    Divider(
+                      height: 50.0,
+                      color: Colors.grey[800],
+                    ),
+
+
+
+
+                    //SizedBox(height: 50,),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Expanded(
+                          child: Text(
+                            'Location',
+                            style: TextStyle(
+                              letterSpacing: 2.0,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 100,
+                        ),
+                        Expanded(
+                          child: Text(
+                            '${userData.location}',
+                            style: TextStyle(
+                              fontSize: 28.0,
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 2.0,
+                              color: Colors.amberAccent[200],
+                            ),
+                          ),
+                        ),
+
+                      ],
+                    ),
+
+
+
+
+                  ],
+                ),
+              ),
+            );
+          }*/
