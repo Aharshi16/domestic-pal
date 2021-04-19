@@ -1,9 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:domestic_pal/screens/home_customer/show_emp_details.dart';
 import 'package:flutter/material.dart';
 
 class EmployeeTile extends StatelessWidget {
   final DocumentSnapshot employee;
   EmployeeTile({this.employee});
+
+
+
+
+
+
   @override
   Widget build(BuildContext context) {
     String image;
@@ -19,6 +26,14 @@ class EmployeeTile extends StatelessWidget {
       child: Card(
         margin: EdgeInsets.fromLTRB(20.0, 6.0, 20.0, 0.0),
         child: ListTile(
+          onTap: () {
+            Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DetailScreen(employee: employee),
+          ),
+        );
+          },
           leading: CircleAvatar(
             radius: 25.0,
             backgroundColor: Colors.brown,
