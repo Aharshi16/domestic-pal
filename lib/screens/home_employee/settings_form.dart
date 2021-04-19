@@ -36,26 +36,40 @@ class _SettingsFormState extends State<SettingsForm> {
               child: Column(
                 children: <Widget>[
                   Text('Update your Settings'),
-                  SizedBox(height: 20.0),
+                  SizedBox(height: 10.0),
                   TextFormField(
                     decoration: textInputDecorationEmp,
                     initialValue: userData.name,
                     validator: (value) => value.isEmpty ? 'Please enter a name' : null,
                     onChanged: (value) => setState(() => _currentname = value),
                   ),
-                  SizedBox(height: 20.0),
+                  SizedBox(height: 10.0),
                   TextFormField(
                     decoration: textInputDecorationEmp,
                     initialValue: userData.phoneNo,
                     validator: (value) => value.isEmpty ? 'Please enter a Phone Number' : null,
                     onChanged: (value) => setState(() => _currentPhone = value),
                   ),
-                  SizedBox(height: 20.0),
+                  SizedBox(height: 10.0),
                   TextFormField(
                     decoration: textInputDecorationEmp,
                     initialValue: userData.location,
                     validator: (value) => value.isEmpty ? 'Please enter a location' : null,
                     onChanged: (value) => setState(() => _currentLocation = value),
+                  ),
+                  SizedBox(height: 10.0),
+                  TextFormField(
+                    decoration: textInputDecorationEmp,
+                    initialValue: userData.aadharNo,
+                    validator: (value) => value.isEmpty ? 'Please enter an aadhar number' : null,
+                    onChanged: (value) => setState(() => _currentaadhar = value),
+                  ),
+                  SizedBox(height: 10.0),
+                  TextFormField(
+                    decoration: textInputDecorationEmp,
+                    initialValue: userData.workExperience,
+                    validator: (value) => value.isEmpty ? 'Please enter your work experience' : null,
+                    onChanged: (value) => setState(() => _currentworkExperience = value),
                   ),
                   SizedBox(height: 20.0),
                   RaisedButton(

@@ -41,7 +41,7 @@ class DatabaseEmployeeService {
       name: snapshot.data['name'],
       phoneNo: snapshot.data['phoneNo'],
       gender: snapshot.data['gender'],
-      aadharNo: snapshot.data['adhaarNo'],
+      aadharNo: snapshot.data['aadharNo'],
       location: snapshot.data['location'],
       jobProfile: snapshot.data['jobProfile'],
       workExperience: snapshot.data['workExperience'],
