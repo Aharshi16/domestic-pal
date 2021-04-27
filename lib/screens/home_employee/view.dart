@@ -29,7 +29,7 @@ class _ViewDetailsState extends State<ViewDetails> {
           else
             image='assets/Final_male.jpeg';
             return Scaffold(
-              backgroundColor: Colors.grey[900],
+              backgroundColor: Colors.white,
               body: Padding(
                 padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
                 child: Column(
