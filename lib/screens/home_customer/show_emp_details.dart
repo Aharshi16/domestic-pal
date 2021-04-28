@@ -61,7 +61,7 @@ class DetailScreen extends StatelessWidget {
                 //SizedBox(width: 10.0),
                 Icon(
                   Icons.location_on_outlined,
-                  size: 50.0,
+                  size: 40.0,
                   color: Colors.red[400],
                 ),
                 Text(
@@ -73,7 +73,7 @@ class DetailScreen extends StatelessWidget {
                 ),
                 Icon(
                   Icons.person_outline,
-                  size: 50.0,
+                  size: 40.0,
                   color: Colors.blue[400],
                 ),
                 SizedBox(width: 4.0),
