@@ -166,10 +166,18 @@ class _ViewDetailsState extends State<ViewDetails> {
         stream: DatabaseEmployeeService(uid: user.uid).empDetails,
         builder: (context, snapshot) {
           EmployeeUserData userData = snapshot.data;
-          if(userData.gender=='Female')
-            image='assets/Icon.jpg';
-          else
-            image='assets/Final_male.jpeg';
+          if(userData.gender=='Female' && userData.jobProfile=='Cook')
+            image='assets/female_cook';
+          else if(userData.gender=='Female' && userData.jobProfile=='Maid')
+            image='assets/Female_maid.png';
+          else if(userData.gender=='Female' && userData.jobProfile=='Baby Sitter')
+            image='assets/Female_babysitter';
+          else if(userData.gender=='Male' && userData.jobProfile=='Cook')
+            image='assets/Male_cook.jpg';
+          else if(userData.gender=='Male' && userData.jobProfile=='Maid')
+            image='assets/male_maid.png';
+          else if(userData.gender=='Male' && userData.jobProfile=='Baby Sitter')
+            image='assets/male_babysitter.png';
           return Scaffold(
             backgroundColor: Colors.white60,
             body: Padding(
@@ -393,88 +401,6 @@ class _ViewDetailsState extends State<ViewDetails> {
                       ],
                     ),
                   ),
-
-
-                  //SizedBox(height: 10.0),
-
-
-
-                  //SizedBox(height: 30),
-                 /* Divider(
-                    height: 50.0,
-                    color: Colors.grey[800],
-                  ),
-
-                  Text(
-                    'Phone Number',
-                    style: TextStyle(
-                      letterSpacing: 2.0,
-                      color: Colors.grey,
-                    ),
-                  ),
-
-                  SizedBox(height: 10.0),
-
-                  Text(
-                    '${userData.phoneNo}',
-                    style: TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 2.0,
-                      color: Colors.black,
-                    ),
-                  ),
-
-
-                  //SizedBox(height: 30),
-                  Divider(
-                    height: 50.0,
-                    color: Colors.grey[800],
-                  ),
-
-                  Text(
-                    'Location',
-                    style: TextStyle(
-                      letterSpacing: 2.0,
-                      color: Colors.grey,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    '${userData.location}',
-                    style: TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 2.0,
-                      color: Colors.black,
-                    ),
-                  ),
-                  Divider(
-                    height: 50.0,
-                    color: Colors.grey[800],
-                  ),
-                  Text(
-                    'Aadhar Number',
-                    style: TextStyle(
-                      letterSpacing: 2.0,
-                      color: Colors.grey,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    '${userData.aadharNo}',
-                    style: TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 2.0,
-                      color: Colors.black,
-                    ),
-                  ),
-                  */
 
                 ],
               ),

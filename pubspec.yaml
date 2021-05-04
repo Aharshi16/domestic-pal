@@ -59,6 +59,13 @@ flutter:
   assets:
      - assets/Final_male.jpeg
      - assets/Icon.jpg
+     - assets/Female_maid.png
+     - assets/Female_babysitter.jpeg
+     - assets/female_cook.png
+     - assets/male_maid.png
+     - assets/male_babysitter.png
+     - assets/Male_cook.jpg
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
