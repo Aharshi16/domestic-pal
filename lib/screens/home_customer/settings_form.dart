@@ -45,8 +45,11 @@ class _SettingsFormState extends State<SettingsForm> {
                   TextFormField(
                     initialValue: userData.phone,
                     decoration: textInputDecoration,
+                    maxLength: 10,
                     validator: (value) =>
-                        value.isEmpty ? 'Please enter phone number' : null,
+                        value.length < 10
+                              ? 'Enter a phone number 10 chars long'
+                              : null,
                     onChanged: (value) => setState(() => _currentPhone = value),
                   ),
                   SizedBox(
