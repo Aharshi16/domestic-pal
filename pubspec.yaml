@@ -25,6 +25,9 @@ dependencies:
     sdk: flutter
 
   
+  
+
+  
 
   #flutter_rating_bar: ^4.0.0
 
@@ -38,6 +41,7 @@ dependencies:
   provider: ^3.1.0
   flutter_spinkit: ^4.0.0
   shared_preferences: ^0.5.12+4
+  flutter_rating_bar: ^3.2.0+1
 
 
 dev_dependencies:

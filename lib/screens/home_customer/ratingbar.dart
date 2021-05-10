@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 
 class RatingBar extends StatefulWidget {
   @override
@@ -41,3 +41,4 @@ class _RatingBarState extends State<RatingBar> {
     );
   }
 }
+*/

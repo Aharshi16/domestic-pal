@@ -87,7 +87,7 @@ class DetailScreen extends StatelessWidget {
               height: 30.0,
             ),
             Text('Rate your experience!', style: TextStyle(fontSize: 25.0)),
-            RatingBar(),
+           // RatingBar(),
             SizedBox(
               height: 200.0,
             ),

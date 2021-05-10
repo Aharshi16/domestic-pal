@@ -1,4 +1,5 @@
-/*import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 
@@ -15,7 +16,7 @@ class _RatingEmployeeState extends State<RatingEmployee> {
        child:  RatingBar.builder(
     initialRating: 3,
     itemCount: 5,
-    itemBuilder: (context, index) {
+    itemBuilder:  (context, index) {
        switch (index) {
           case 0:
              return Icon(
@@ -47,9 +48,9 @@ class _RatingEmployeeState extends State<RatingEmployee> {
     onRatingUpdate: (rating) {
       print(rating);
     },
-;
-      ),
-    );
 
-  
-}*/
+      ),
+    ));
+
+  }
+}
