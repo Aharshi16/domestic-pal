@@ -44,8 +44,8 @@ class _UpdateCustomerDetailsState extends State<UpdateCustomerDetails> {
                       ),
                       SizedBox(height: 40.0),
                       TextFormField(
-                          decoration:
-                              textInputDecoration.copyWith(hintText: 'name'),
+                          decoration: textInputDecoration.copyWith(
+                              labelText: 'Name', hintText: 'Enter name'),
                           validator: (val) =>
                               val.isEmpty ? 'Enter a name' : null,
                           onChanged: (val) {
@@ -54,20 +54,22 @@ class _UpdateCustomerDetailsState extends State<UpdateCustomerDetails> {
                       SizedBox(height: 20.0),
                       TextFormField(
                           decoration: textInputDecoration.copyWith(
-                              hintText: 'phone number'),
-                            maxLength: 10,
-                            validator: (val) => val.length < 10
+                              labelText: "Phone",
+                              hintText: 'Enter phone number'),
+                          keyboardType: TextInputType.phone,
+                          maxLength: 10,
+                          validator: (val) => val.length < 10
                               ? 'Enter a phone number 10 chars long'
                               : null,
                           onChanged: (val) {
-                            setState(() { 
+                            setState(() {
                               _phonenumber = val;
                             });
                           }),
                       SizedBox(height: 20.0),
                       TextFormField(
-                          decoration:
-                              textInputDecoration.copyWith(hintText: 'city'),
+                          decoration: textInputDecoration.copyWith(
+                              labelText: 'City', hintText: 'Enter city'),
                           validator: (val) =>
                               val.isEmpty ? 'Enter a city' : null,
                           onChanged: (val) {
