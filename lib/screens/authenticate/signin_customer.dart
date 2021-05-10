@@ -3,6 +3,7 @@ import 'package:domestic_pal/services/auth_customer.dart';
 import 'package:flutter/material.dart';
 import 'package:domestic_pal/shared/constants.dart';
 import 'package:domestic_pal/shared/cusloading.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class SignInCustomer extends StatefulWidget {
   final Function toggleView;
@@ -20,6 +21,54 @@ class _SignInCustomerState extends State<SignInCustomer> {
   String password = '';
   String error = '';
   bool _showPassword = false;
+
+  FToast fToast;
+
+  @override
+  void initState() {
+    super.initState();
+    fToast = FToast();
+    fToast.init(context);
+  }
+
+  _showToast(message) {
+    Widget toast = Container(
+      padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(25.0),
+        color: Colors.greenAccent,
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(Icons.check),
+          SizedBox(
+            width: 12.0,
+          ),
+          Text(message),
+        ],
+      ),
+    );
+
+    fToast.showToast(
+      child: toast,
+      gravity: ToastGravity.BOTTOM,
+      toastDuration: Duration(seconds: 2),
+    );
+
+    // Custom Toast Position
+    fToast.showToast(
+        child: toast,
+        toastDuration: Duration(seconds: 2),
+        positionedToastBuilder: (context, child) {
+          return Positioned(
+            child: child,
+            top: 16.0,
+            left: 16.0,
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return loading
@@ -61,7 +110,7 @@ class _SignInCustomerState extends State<SignInCustomer> {
                                   _showPassword
                                       ? Icons.visibility
                                       : Icons.visibility_off,
-                                  color: Theme.of(context).primaryColorDark,
+                                  color: Colors.pink[800],
                                 ),
                                 onPressed: () {
                                   setState(() {
@@ -96,9 +145,11 @@ class _SignInCustomerState extends State<SignInCustomer> {
                                 setState(
                                     () => error = 'logged in successfully');
                                 Navigator.of(context).pushAndRemoveUntil(
-                                    MaterialPageRoute(
-                                        builder: (context) => HomeCustomer()),
-                                    (Route<dynamic> route) => false);
+                                  MaterialPageRoute(
+                                      builder: (context) => HomeCustomer()),
+                                  (Route<dynamic> route) => false,
+                                );
+                                _showToast('You have logged in successfully');
                               }
                             }
                           }),
