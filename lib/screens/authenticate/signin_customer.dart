@@ -19,98 +19,117 @@ class _SignInCustomerState extends State<SignInCustomer> {
   String email = '';
   String password = '';
   String error = '';
+  bool _showPassword = false;
   @override
   Widget build(BuildContext context) {
     return loading
         ? CusLoading()
         : Scaffold(
-        appBar: AppBar(
-        backgroundColor: Colors.amber[500],
-        elevation: 0.0,
-        title: Text('domesticPal'),
-      ),
-      body: SingleChildScrollView(
-        child: Container(
-          padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              children: <Widget>[
-                SizedBox(height: 20.0),
-                Text(
-                  'Sign In as a Customer',
-                  style: TextStyle(color: Colors.grey, fontSize: 20.0),
-                ),
-                SizedBox(height: 40.0),
-                TextFormField(
-                    decoration: textInputDecoration.copyWith(hintText: 'Email'),
-                    validator: (val) => val.isEmpty ? 'Enter an email' : null,
-                    onChanged: (val) {
-                      setState(() => email = val);
-                    }),
-                SizedBox(height: 20.0),
-                TextFormField(
-                    decoration:
-                        textInputDecoration.copyWith(hintText: 'Password'),
-                    obscureText: true,
-                    validator: (val) => val.length < 6
-                        ? 'Enter a password 6+ chars long'
-                        : null,
-                    onChanged: (val) {
-                      setState(() => password = val);
-                    }),
-                SizedBox(height: 20.0),
-                RaisedButton(
-                    color: Colors.blueGrey[400],
-                    child: Text(
-                      'Sign In',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    onPressed: () async {
-                      if (_formKey.currentState.validate()) {
-                        setState(() => loading = true);
-                        dynamic result = await _authCustomer
-                            .signInWithEmailAndPassword(email, password);
-                        if (result == null) {
-                          setState(() => error =
-                              'could not sign in with those credentials');
-                              loading = false;
-                        } else {
-                          setState(() => error = 'logged in successfully');
-                          Navigator.of(context).pushAndRemoveUntil(
-                              MaterialPageRoute(
-                                  builder: (context) => HomeCustomer()),
-                              (Route<dynamic> route) => false);
-                        }
-                      }
-                    }),
-                SizedBox(height: 12.0),
-                Text(
-                  error,
-                  style: TextStyle(color: Colors.red, fontSize: 14.0),
-                ),
-                SizedBox(height: 5.0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'New user?',
-                      style: TextStyle(color: Colors.grey, fontSize: 14.0),
-                    ),
-                    FlatButton(
-                      child: Text('Register',
-                          style: TextStyle(color: Colors.orange)),
-                      onPressed: () {
-                        widget.toggleView();
-                      },
-                    )
-                  ],
-                )
-              ],
+            appBar: AppBar(
+              backgroundColor: Colors.amber[500],
+              elevation: 0.0,
+              title: Text('domesticPal'),
             ),
-          ),
-        ),
-      ),
-    );
+            body: SingleChildScrollView(
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    children: <Widget>[
+                      SizedBox(height: 20.0),
+                      Text(
+                        'Sign In as a Customer',
+                        style: TextStyle(color: Colors.grey, fontSize: 20.0),
+                      ),
+                      SizedBox(height: 40.0),
+                      TextFormField(
+                          decoration: textInputDecoration.copyWith(
+                              labelText: 'Email', hintText: 'Enter your email'),
+                          validator: (val) =>
+                              val.isEmpty ? 'Enter an email' : null,
+                          onChanged: (val) {
+                            setState(() => email = val);
+                          }),
+                      SizedBox(height: 20.0),
+                      TextFormField(
+                          decoration: textInputDecoration.copyWith(
+                              labelText: 'Password',
+                              hintText: 'Enter your password',
+                              suffixIcon: IconButton(
+                                icon: Icon(
+                                  _showPassword
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
+                                  color: Theme.of(context).primaryColorDark,
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    _showPassword = !_showPassword;
+                                  });
+                                },
+                              )),
+                          obscureText: !_showPassword,
+                          validator: (val) => val.length < 6
+                              ? 'Enter a password 6+ chars long'
+                              : null,
+                          onChanged: (val) {
+                            setState(() => password = val);
+                          }),
+                      SizedBox(height: 20.0),
+                      RaisedButton(
+                          color: Colors.blueGrey[400],
+                          child: Text(
+                            'Sign In',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          onPressed: () async {
+                            if (_formKey.currentState.validate()) {
+                              setState(() => loading = true);
+                              dynamic result = await _authCustomer
+                                  .signInWithEmailAndPassword(email, password);
+                              if (result == null) {
+                                setState(() => error =
+                                    'could not sign in with those credentials');
+                                loading = false;
+                              } else {
+                                setState(
+                                    () => error = 'logged in successfully');
+                                Navigator.of(context).pushAndRemoveUntil(
+                                    MaterialPageRoute(
+                                        builder: (context) => HomeCustomer()),
+                                    (Route<dynamic> route) => false);
+                              }
+                            }
+                          }),
+                      SizedBox(height: 12.0),
+                      Text(
+                        error,
+                        style: TextStyle(color: Colors.red, fontSize: 14.0),
+                      ),
+                      SizedBox(height: 5.0),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'New user?',
+                            style:
+                                TextStyle(color: Colors.grey, fontSize: 14.0),
+                          ),
+                          FlatButton(
+                            child: Text('Register',
+                                style: TextStyle(color: Colors.orange)),
+                            onPressed: () {
+                              widget.toggleView();
+                            },
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          );
   }
 }
