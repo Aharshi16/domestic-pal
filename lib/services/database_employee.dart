@@ -17,7 +17,7 @@ class DatabaseEmployeeService {
       String aadharNo,
       String location,
       String workExperience,
-      int rating,
+      double rating,
       String jobProfile) async {
     return await employeeCollection.document(uid).setData({
       'userCategory': userCategory,

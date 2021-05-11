@@ -1,22 +1,30 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:domestic_pal/screens/home_customer/ratingbar.dart';
 import 'package:flutter/material.dart';
+import 'package:smooth_star_rating/smooth_star_rating.dart';
 
-class DetailScreen extends StatelessWidget {
+class DetailScreen extends StatefulWidget {
   final DocumentSnapshot employee;
   DetailScreen({this.employee});
 
   @override
+  _DetailScreenState createState() => _DetailScreenState();
+}
+
+class _DetailScreenState extends State<DetailScreen> {
+  //static const List<int> initialRating = [1, 2, 3, 4, 5];
+  static const double initialRating = 3.0;
+  @override
   Widget build(BuildContext context) {
     String image;
-    if (employee['gender'] == 'Female') {
+    if (widget.employee['gender'] == 'Female') {
       image = 'assets/Icon.jpg';
     } else {
       image = 'assets/Final_male.jpeg';
     }
     Color color;
     //if(employee['jobProfile'])
-    switch (employee['jobProfile']) {
+    switch (widget.employee['jobProfile']) {
       case 'Maid':
         color = Colors.pink[300];
         break;
@@ -46,7 +54,7 @@ class DetailScreen extends StatelessWidget {
             ),
             //SizedBox(height: 20),
             Text(
-              employee['name'],
+              widget.employee['name'],
               style: TextStyle(
                 fontSize: 40.0,
               ),
@@ -65,7 +73,7 @@ class DetailScreen extends StatelessWidget {
                   color: Colors.red[400],
                 ),
                 Text(
-                  employee['location'],
+                  widget.employee['location'],
                   style: TextStyle(fontSize: 20.0),
                 ),
                 SizedBox(
@@ -78,7 +86,7 @@ class DetailScreen extends StatelessWidget {
                 ),
                 SizedBox(width: 4.0),
                 Text(
-                  employee['gender'],
+                  widget.employee['gender'],
                   style: TextStyle(fontSize: 20.0),
                 ),
               ],
@@ -87,7 +95,17 @@ class DetailScreen extends StatelessWidget {
               height: 30.0,
             ),
             Text('Rate your experience!', style: TextStyle(fontSize: 25.0)),
-           // RatingBar(),
+            // RatingBar(),
+            SmoothStarRating(
+              size: 40,
+              color: color,
+              rating: initialRating,
+              onRated: (double value) {
+                 widget.employee['rating'] = value;
+              },
+              borderColor: color,
+              allowHalfRating: false,
+            ),
             SizedBox(
               height: 200.0,
             ),

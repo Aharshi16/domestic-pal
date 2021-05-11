@@ -25,7 +25,7 @@ class EmployeeUserData {
   final String location;
   final String workExperience;
   final String jobProfile;
-
+  final double rating;
 
   EmployeeUserData(
       {this.uid,
@@ -36,5 +36,6 @@ class EmployeeUserData {
       this.gender,
       this.location,
       this.jobProfile,
+      this.rating,
       this.workExperience});
 }
