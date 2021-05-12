@@ -3,6 +3,7 @@ import 'package:domestic_pal/services/auth_employee.dart';
 import 'package:domestic_pal/shared/emploading.dart';
 import 'package:flutter/material.dart';
 import 'package:domestic_pal/shared/constants.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 
 class SignInEmployee extends StatefulWidget {
@@ -22,6 +23,54 @@ class _SignInEmployeeState extends State<SignInEmployee> {
   String email = '';
   String password = '';
   String error = '';
+  bool _showPassword = false;
+
+  FToast fToast;
+
+  @override
+  void initState() {
+    super.initState();
+    fToast = FToast();
+    fToast.init(context);
+  }
+
+  _showToast(message) {
+    Widget toast = Container(
+      padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(25.0),
+        color: Colors.greenAccent,
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(Icons.check),
+          SizedBox(
+            width: 12.0,
+          ),
+          Text(message),
+        ],
+      ),
+    );
+
+    fToast.showToast(
+      child: toast,
+      gravity: ToastGravity.BOTTOM,
+      toastDuration: Duration(seconds: 2),
+    );
+
+    // Custom Toast Position
+    fToast.showToast(
+        child: toast,
+        toastDuration: Duration(seconds: 2),
+        positionedToastBuilder: (context, child) {
+          return Positioned(
+            child: child,
+            top: 16.0,
+            left: 16.0,
+          );
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +78,7 @@ class _SignInEmployeeState extends State<SignInEmployee> {
         ? emploading()
         : Scaffold(
             backgroundColor: Colors.cyan[50],
+            //backgroundColor: Colors.black,
             appBar: AppBar(
               backgroundColor: Colors.cyan[800],
               elevation: 0.0,
@@ -58,16 +108,31 @@ class _SignInEmployeeState extends State<SignInEmployee> {
                         },
                       ),
                       SizedBox(height: 20.0),
+
                       TextFormField(
-                        obscureText: true,
-                        decoration: textInputDecorationEmp.copyWith(
-                            hintText: 'Password'),
-                        validator: (val) =>
-                            val.length < 6 ? 'Enter a password' : null,
-                        onChanged: (val) {
-                          setState(() => password = val);
-                        },
-                      ),
+                          decoration: textInputDecorationEmp.copyWith(
+                              labelText: 'Password',
+                              hintText: 'Enter your password',
+                              suffixIcon: IconButton(
+                                icon: Icon(
+                                  _showPassword
+                                      ? Icons.visibility_sharp
+                                      : Icons.visibility_off_sharp,
+                                  color: Colors.blueGrey,
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    _showPassword = !_showPassword;
+                                  });
+                                },
+                              )),
+                          obscureText: !_showPassword,
+                          validator: (val) => val.length < 6
+                              ? 'Enter a password 6+ chars long'
+                              : null,
+                          onChanged: (val) {
+                            setState(() => password = val);
+                          }),
                       SizedBox(height: 40.0),
                       RaisedButton(
                           color: Colors.cyan[800],
@@ -94,6 +159,7 @@ class _SignInEmployeeState extends State<SignInEmployee> {
                                     MaterialPageRoute(
                                         builder: (context) => HomeEmployee()),
                                     (Route<dynamic> route) => false);
+                                _showToast('You have logged in successfully');
                               }
                             }
                           }),

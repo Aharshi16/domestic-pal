@@ -205,11 +205,11 @@ class _ViewDetailsState extends State<ViewDetails> {
                           color: Colors.black12,
                       width: 5),
                       color: Colors.black12,
-                      gradient: new LinearGradient(
-                        colors: [Colors.red, Colors.cyan],
+                      /*gradient: new LinearGradient(
+                        //color: [Colors.red, Colors.cyan],
                         begin: Alignment.centerRight,
                         end: new Alignment(-1.0, -1.0),
-                      ),
+                      ),*/
                       boxShadow: <BoxShadow>[
                         BoxShadow(
                           color: Colors.blue.withOpacity(0.1),
@@ -257,11 +257,11 @@ class _ViewDetailsState extends State<ViewDetails> {
                       border: Border.all(
                           color: Colors.black12,
                           width: 5),
-                      gradient: new LinearGradient(
-                          colors: [Colors.red, Colors.cyan],
+                      /*gradient: new LinearGradient(
+                          //color: [Colors.red, Colors.cyan],
                           begin: Alignment.centerRight,
                           end: new Alignment(-1.0, -1.0),
-                      ),
+                      ),*/
 
                       boxShadow: <BoxShadow>[
                         BoxShadow(
@@ -310,11 +310,11 @@ class _ViewDetailsState extends State<ViewDetails> {
                       border: Border.all(
                           color: Colors.black12,
                           width: 5),
-                      gradient: new LinearGradient(
-                          colors: [Colors.red, Colors.cyan],
+                      /*gradient: new LinearGradient(
+                          //color: [Colors.red, Colors.cyan],
                           begin: Alignment.centerRight,
                           end: Alignment.centerLeft
-                      ),
+                      ),*/
                       boxShadow: <BoxShadow>[
                         BoxShadow(
                           color: Colors.blue.withOpacity(0.1),
@@ -362,11 +362,11 @@ class _ViewDetailsState extends State<ViewDetails> {
                       border: Border.all(
                           color: Colors.black12,
                           width: 5),
-                      gradient: new LinearGradient(
-                        colors: [Colors.red, Colors.cyan],
+                      /*gradient: new LinearGradient(
+                        color: [Colors.red, Colors.cyan],
                         begin: Alignment.centerRight,
                         end: new Alignment(-1.0, -1.0),
-                      ),
+                      ),*/
                       boxShadow: <BoxShadow>[
                         BoxShadow(
                           color: Colors.blue.withOpacity(0.1),
