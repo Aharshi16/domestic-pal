@@ -17,7 +17,7 @@ class DatabaseEmployeeService {
       String aadharNo,
       String location,
       String workExperience,
-      double rating,
+      String rating,
       String jobProfile) async {
     return await employeeCollection.document(uid).setData({
       'userCategory': userCategory,
@@ -32,20 +32,24 @@ class DatabaseEmployeeService {
     });
   }
 
+  Future updateRating(String rating) async {
+    return await employeeCollection.document(uid).setData({'rating': rating});
+  }
+
   //employee details from snapshot
   EmployeeUserData _employeeDetailsFromSnapshot(DocumentSnapshot snapshot) {
     return EmployeeUserData(
-      //uid: snapshot.data['uid'],
-      uid: uid,
-      userCategory: snapshot.data['userCategory'],
-      name: snapshot.data['name'],
-      phoneNo: snapshot.data['phoneNo'],
-      gender: snapshot.data['gender'],
-      aadharNo: snapshot.data['aadharNo'],
-      location: snapshot.data['location'],
-      jobProfile: snapshot.data['jobProfile'],
-      workExperience: snapshot.data['workExperience'],
-    );
+        //uid: snapshot.data['uid'],
+        uid: uid,
+        userCategory: snapshot.data['userCategory'],
+        name: snapshot.data['name'],
+        phoneNo: snapshot.data['phoneNo'],
+        gender: snapshot.data['gender'],
+        aadharNo: snapshot.data['aadharNo'],
+        location: snapshot.data['location'],
+        jobProfile: snapshot.data['jobProfile'],
+        rating: snapshot.data['rating'],
+        workExperience: snapshot.data['workExperience']);
   }
 
   Stream<QuerySnapshot> get employees {

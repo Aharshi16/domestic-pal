@@ -22,7 +22,7 @@ class _UpdateEmployeeDetailsState extends State<UpdateEmployeeDetails> {
   String _location;
   String _gender;
   String _workExperience;
-  int _rating;
+  String _rating;
   String _jobProfile;
 
   @override
@@ -168,7 +168,7 @@ class _UpdateEmployeeDetailsState extends State<UpdateEmployeeDetails> {
                               _aadhar ?? userData.aadharNo,
                               _location ?? userData.location,
                               _workExperience ?? userData.workExperience,
-                              _rating ?? 0,
+                              _rating ?? '0.0',
                               _jobProfile ?? userData.jobProfile,
                             );
                           }

@@ -25,7 +25,7 @@ class EmployeeUserData {
   final String location;
   final String workExperience;
   final String jobProfile;
-  final double rating;
+  final String rating;
 
   EmployeeUserData(
       {this.uid,

@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:domestic_pal/screens/home_customer/ratingbar.dart';
+import 'package:domestic_pal/models/user.dart';
+import 'package:domestic_pal/services/database_employee.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 class DetailScreen extends StatefulWidget {
@@ -12,8 +14,8 @@ class DetailScreen extends StatefulWidget {
 }
 
 class _DetailScreenState extends State<DetailScreen> {
-  //static const List<int> initialRating = [1, 2, 3, 4, 5];
-  static const double initialRating = 3.0;
+  //static const double docRating = 3.0;
+  String _rate, avgrating;
   @override
   Widget build(BuildContext context) {
     String image;
@@ -23,6 +25,10 @@ class _DetailScreenState extends State<DetailScreen> {
       image = 'assets/Final_male.jpeg';
     }
     Color color;
+
+    double docRating = double.parse(widget.employee['rating']);
+    double currentRating = 0;
+
     //if(employee['jobProfile'])
     switch (widget.employee['jobProfile']) {
       case 'Maid':
@@ -99,15 +105,41 @@ class _DetailScreenState extends State<DetailScreen> {
             SmoothStarRating(
               size: 40,
               color: color,
-              rating: initialRating,
-              onRated: (double value) {
-                 widget.employee['rating'] = value;
+              rating: currentRating,
+              onRated: (double value) async {
+                if (docRating == 0.0) {
+                  avgrating = value.toString();
+                } else {
+double avg = (docRating + value) / 2;
+                avgrating = avg.toString();
+                }
+                
+                currentRating = value;
+                await DatabaseEmployeeService(uid: widget.employee.documentID)
+                    .updateEmployeeUserData(
+                  'E',
+                  widget.employee['name'],
+                  widget.employee['phoneNo'],
+                  widget.employee['gender'],
+                  widget.employee['aadharNo'],
+                  widget.employee['location'],
+                  widget.employee['workExperience'],
+                  avgrating,
+                  widget.employee['jobProfile'],
+                );
+                print(_rate);
               },
               borderColor: color,
               allowHalfRating: false,
             ),
             SizedBox(
-              height: 200.0,
+              height: 100.0,
+            ),
+            Center(
+              child: Text('Average rating: $docRating'),
+            ),
+            SizedBox(
+              height: 100.0,
             ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
