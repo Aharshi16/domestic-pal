@@ -100,9 +100,9 @@ class _DetailScreenState extends State<DetailScreen> {
               size: 40,
               color: color,
               rating: initialRating,
-              onRated: (double value) {
+              /*onRated: (double value) {
                  widget.employee['rating'] = value;
-              },
+              },*/
               borderColor: color,
               allowHalfRating: false,
             ),
