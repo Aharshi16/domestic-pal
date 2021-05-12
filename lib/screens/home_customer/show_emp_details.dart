@@ -136,7 +136,8 @@ double avg = (docRating + value) / 2;
               height: 100.0,
             ),
             Center(
-              child: Text('Average rating: $docRating'),
+              child: Text('Average rating: $docRating',
+              style: TextStyle(fontSize: 20.0,)),
             ),
             SizedBox(
               height: 100.0,
