@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:domestic_pal/models/user.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:domestic_pal/services/database_employee.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 class DetailScreen extends StatefulWidget {
@@ -16,6 +16,12 @@ class DetailScreen extends StatefulWidget {
 class _DetailScreenState extends State<DetailScreen> {
   //static const double docRating = 3.0;
   String _rate, avgrating;
+
+  _callNumber(String phoneNumber) async {
+  String number = phoneNumber;
+  await FlutterPhoneDirectCaller.callNumber(number);
+}
+
   @override
   Widget build(BuildContext context) {
     String image;
@@ -41,6 +47,7 @@ class _DetailScreenState extends State<DetailScreen> {
         color = Colors.blue[300];
         break;
     }
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: color,
@@ -110,10 +117,10 @@ class _DetailScreenState extends State<DetailScreen> {
                 if (docRating == 0.0) {
                   avgrating = value.toString();
                 } else {
-double avg = (docRating + value) / 2;
-                avgrating = avg.toString();
+                  double avg = (docRating + value) / 2;
+                  avgrating = avg.toString();
                 }
-                
+
                 currentRating = value;
                 await DatabaseEmployeeService(uid: widget.employee.documentID)
                     .updateEmployeeUserData(
@@ -137,7 +144,9 @@ double avg = (docRating + value) / 2;
             ),
             Center(
               child: Text('Average rating: $docRating',
-              style: TextStyle(fontSize: 20.0,)),
+                  style: TextStyle(
+                    fontSize: 20.0,
+                  )),
             ),
             SizedBox(
               height: 100.0,
@@ -151,6 +160,12 @@ double avg = (docRating + value) / 2;
                   size: 50.0,
                   color: Colors.green[400],
                 ),
+                ElevatedButton(
+  child: Text("Call"),
+  onPressed: () {
+    _callNumber(widget.employee['phoneNo'].text);
+  },
+),
                 Text(
                   'Contact Me',
                   style: TextStyle(fontSize: 20.0),
