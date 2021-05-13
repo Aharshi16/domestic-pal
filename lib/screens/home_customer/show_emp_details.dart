@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_open_whatsapp/flutter_open_whatsapp.dart';
 import 'package:domestic_pal/services/database_employee.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -15,14 +16,36 @@ class DetailScreen extends StatefulWidget {
 }
 
 class _DetailScreenState extends State<DetailScreen> {
-  //static const double docRating = 3.0;
   String _rate, avgrating;
 
- /* _callNumber(String phoneNumber) async {
-    String number = phoneNumber;
-    await FlutterPhoneDirectCaller.callNumber(number);
-  }*/
-   Future<void> _makePhoneCall(String url) async {
+  String _platformVersion = 'Unknown';
+
+  @override
+  void initState() {
+    super.initState();
+    initPlatformState();
+  }
+
+  Future<void> initPlatformState() async {
+    String platformVersion;
+    // Platform messages may fail, so we use a try/catch PlatformException.
+    try {
+      platformVersion = await FlutterOpenWhatsapp.platformVersion;
+    } on PlatformException {
+      platformVersion = 'Failed to get platform version.';
+    }
+
+    // If the widget was removed from the tree while the asynchronous platform
+    // message was in flight, we want to discard the reply rather than calling
+    // setState to update our non-existent appearance.
+    if (!mounted) return;
+
+    setState(() {
+      _platformVersion = platformVersion;
+    });
+  }
+
+  Future<void> _makePhoneCall(String url) async {
     if (await canLaunch(url)) {
       await launch(url);
     } else {
@@ -55,7 +78,7 @@ class _DetailScreenState extends State<DetailScreen> {
         color = Colors.blue[300];
         break;
     }
-
+    String _phone = widget.employee['phoneNo'];
     return Scaffold(
       appBar: AppBar(
         backgroundColor: color,
@@ -163,32 +186,31 @@ class _DetailScreenState extends State<DetailScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                Icon(
-                  Icons.phone_rounded,
-                  size: 50.0,
-                  color: Colors.green[400],
-                ),
-                /*  ElevatedButton(
-  child: Text("Call"),
-  onPressed: () {
-    _callNumber(widget.employee['phoneNo'].text);
-  },
-),*/
-                ElevatedButton(
+                IconButton(
                   onPressed: () => setState(() {
-                    String _phone = widget.employee['phoneNo'];
                     _makePhoneCall('tel:$_phone');
                   }),
-                  child: const Text('Make phone call'),
+                  icon: Icon(
+                    Icons.phone_rounded,
+                    size: 50.0,
+                    color: Colors.green[400],
+                  ),
+                   //const Text('Make phone call'),
                 ),
-                Text(
+                /*Text(
                   'Contact Me',
                   style: TextStyle(fontSize: 20.0),
-                ),
-                Icon(
-                  Icons.message_rounded,
-                  size: 50.0,
-                  color: Colors.blue[400],
+                ),*/
+                IconButton(
+                  onPressed: () {
+                    FlutterOpenWhatsapp.sendSingleMessage("919740136997", "");
+                  },
+                  //child: Text('Running on: $_platformVersion\n'),
+                  icon: Icon(
+                    Icons.message_rounded,
+                    size: 50.0,
+                    color: Colors.blue[400],
+                  ),
                 ),
               ],
             ),

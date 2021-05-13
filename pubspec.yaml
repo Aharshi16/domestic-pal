@@ -25,6 +25,7 @@ dependencies:
     sdk: flutter
   flutter_phone_direct_caller : ^1.0.1
   url_launcher: 
+  flutter_open_whatsapp: ^0.1.2
 
 
 
