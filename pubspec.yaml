@@ -24,6 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_phone_direct_caller : ^1.0.1
+  url_launcher: 
 
 
 

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:domestic_pal/services/database_employee.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 
@@ -17,10 +18,17 @@ class _DetailScreenState extends State<DetailScreen> {
   //static const double docRating = 3.0;
   String _rate, avgrating;
 
-  _callNumber(String phoneNumber) async {
-  String number = phoneNumber;
-  await FlutterPhoneDirectCaller.callNumber(number);
-}
+ /* _callNumber(String phoneNumber) async {
+    String number = phoneNumber;
+    await FlutterPhoneDirectCaller.callNumber(number);
+  }*/
+   Future<void> _makePhoneCall(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -160,12 +168,19 @@ class _DetailScreenState extends State<DetailScreen> {
                   size: 50.0,
                   color: Colors.green[400],
                 ),
-                ElevatedButton(
+                /*  ElevatedButton(
   child: Text("Call"),
   onPressed: () {
     _callNumber(widget.employee['phoneNo'].text);
   },
-),
+),*/
+                ElevatedButton(
+                  onPressed: () => setState(() {
+                    String _phone = widget.employee['phoneNo'];
+                    _makePhoneCall('tel:$_phone');
+                  }),
+                  child: const Text('Make phone call'),
+                ),
                 Text(
                   'Contact Me',
                   style: TextStyle(fontSize: 20.0),
