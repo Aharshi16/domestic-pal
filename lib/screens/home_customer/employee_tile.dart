@@ -41,6 +41,7 @@ class EmployeeTile extends StatelessWidget {
           ),
           title: Text(employee['name']),
           subtitle: Text(employee['location']),
+           
         ),
       ),
     );
