@@ -40,6 +40,7 @@ class EmployeeTile extends StatelessWidget {
             backgroundImage: AssetImage(image),
           ),
           title: Text(employee['name']),
+          trailing: Text(employee['rating']),
           subtitle: Text(employee['location']),
            
         ),
