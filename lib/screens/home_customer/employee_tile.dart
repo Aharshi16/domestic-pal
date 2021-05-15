@@ -7,10 +7,6 @@ class EmployeeTile extends StatelessWidget {
   EmployeeTile({this.employee});
 
 
-
-
-
-
   @override
   Widget build(BuildContext context) {
     String image;

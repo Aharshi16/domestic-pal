@@ -1,7 +1,10 @@
 import 'package:domestic_pal/screens/hire/hire.dart';
+import 'package:domestic_pal/screens/home_customer/babysitterSearch.dart';
+import 'package:domestic_pal/screens/home_customer/cookSearch.dart';
+import 'package:domestic_pal/screens/home_customer/maidSearch.dart';
 import 'package:domestic_pal/screens/home_customer/settings_form.dart';
 //import 'package:domestic_pal/screens/home_customer/view_list.dart';
-import 'package:domestic_pal/screens/home_customer/maidlist.dart';
+//import 'package:domestic_pal/screens/home_customer/maidlist.dart';
 import 'package:domestic_pal/screens/home_customer/cooklist.dart';
 import 'package:domestic_pal/screens/home_customer/babysitterlist.dart';
 import 'package:domestic_pal/services/auth_customer.dart';
@@ -90,7 +93,7 @@ class HomeCustomer extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Maidlist()),
+                    MaterialPageRoute(builder: (context) => MaidSearch()),
                   );
                 },
                 padding: EdgeInsets.all(10.0),
@@ -124,7 +127,7 @@ class HomeCustomer extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Cooklist()),
+                    MaterialPageRoute(builder: (context) => CookSearch()),
                   );
                 },
                 padding: EdgeInsets.all(10.0),
@@ -158,7 +161,7 @@ class HomeCustomer extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Babysitterlist()),
+                    MaterialPageRoute(builder: (context) => BabySearch()),
                   );
                 },
                 padding: EdgeInsets.all(10.0),
