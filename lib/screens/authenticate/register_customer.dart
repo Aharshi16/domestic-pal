@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:domestic_pal/services/auth_customer.dart';
 import 'package:domestic_pal/shared/constants.dart';
 import 'package:domestic_pal/shared/cusloading.dart';
-//import 'package:domestic_pal/screens/home_employe';
-//import 'package:domestic_pal/screens/home_employee/home_employee.dart';
-//import 'package:domestic_pal/screens/home_customer/home_customer.dart';
 
 class RegisterCustomer extends StatefulWidget {
   final Function toggleView;
