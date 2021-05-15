@@ -109,20 +109,4 @@ class _SettingsFormState extends State<SettingsForm> {
     );
   }
 }
-/*
-import 'package:domestic_pal/screens/home_employee/update.dart';
-import 'package:flutter/material.dart';
-
-class SettingsForm extends StatefulWidget {
-  @override
-  _SettingsFormState createState() => _SettingsFormState();
-}
-
-class _SettingsFormState extends State<SettingsForm> {
-  @override
-  Widget build(BuildContext context) {
-    return UpdateDetails();
-  }
-}
-*/
 
