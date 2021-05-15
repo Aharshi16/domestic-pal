@@ -30,7 +30,8 @@ class HomeCustomer extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.indigo[200],
+        //backgroundColor: Colors.indigo[200],
+        backgroundColor: Colors.purple[300],
         elevation: 0.0,
         title: Text('Home'),
         actions: <Widget>[
@@ -94,7 +95,7 @@ class HomeCustomer extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => Maidlist()),
+                          MaterialPageRoute(builder: (context) => MaidSearch()),
                         );
                       },
                       padding: EdgeInsets.all(10.0),
@@ -114,7 +115,7 @@ class HomeCustomer extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => Cooklist()),
+                          MaterialPageRoute(builder: (context) => CookSearch()),
                         );
                       },
                       padding: EdgeInsets.all(10.0),
@@ -135,7 +136,7 @@ class HomeCustomer extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => Babysitterlist()),
+                              builder: (context) => BabySearch()),
                         );
                       },
                       padding: EdgeInsets.all(10.0),
