@@ -56,13 +56,13 @@ class _ViewDetailsState extends State<ViewDetails> {
                       Center(
                         child: CircleAvatar(
                           backgroundImage: AssetImage(image),
-                          radius: 40.0,
+                          radius: 50.0,
                         ),
                       ),
-                      Divider(
+                      /*Divider(
                         height: 90.0,
                         color: Colors.grey[800],
-                      ),
+                      ),*/
                       Container(
                         //margin:EdgeInsets.zero,
                         padding: EdgeInsets.symmetric(horizontal: 20),
@@ -77,12 +77,11 @@ class _ViewDetailsState extends State<ViewDetails> {
                                   blurRadius: 5,
                                   spreadRadius: 2)
                             ],
-                            gradient: LinearGradient(
+                            /*gradient: LinearGradient(
                                 begin: Alignment.topCenter,
                                 end: Alignment.bottomCenter,
                                 //colors:[Color(0xffffd22e),Color(0xffdc85ff)]
-                              colors: [Colors.teal[100],Colors.teal[900]]
-                            )
+                              )*/
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -126,13 +125,12 @@ class _ViewDetailsState extends State<ViewDetails> {
                                   blurRadius: 5,
                                   spreadRadius: 2)
                             ],
-                            gradient: LinearGradient(
+                            /*gradient: LinearGradient(
                                 begin: Alignment.topCenter,
                                 end: Alignment.bottomCenter,
                                 //colors:[Color(0xffffd22e),Color(0xffdc85ff)]
-                                colors: [Colors.teal[100],Colors.teal[900]]
 
-                            )
+                            )*/
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -176,12 +174,12 @@ class _ViewDetailsState extends State<ViewDetails> {
                                   blurRadius: 5,
                                   spreadRadius: 2)
                             ],
-                            gradient: LinearGradient(
+                            /*gradient: LinearGradient(
                                 begin: Alignment.topCenter,
                                 end: Alignment.bottomCenter,
-                                colors: [Colors.teal[100],Colors.teal[900]]
+
                               //colors:[Color(0xffffd22e),Color(0xffdc85ff)]
-                            )
+                            )*/
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -228,7 +226,7 @@ class _ViewDetailsState extends State<ViewDetails> {
                             gradient: LinearGradient(
                                 begin: Alignment.topCenter,
                                 end: Alignment.bottomCenter,
-                                colors: [Colors.teal[100],Colors.teal[900]]
+                                //colors: [Colors.teal[100],Colors.teal[900]]
                               //colors:[Color(0xffffd22e),Color(0xffdc85ff)]
                             )
                         ),
