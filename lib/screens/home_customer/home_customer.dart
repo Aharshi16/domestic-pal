@@ -1,4 +1,7 @@
 import 'package:domestic_pal/screens/hire/hire.dart';
+import 'package:domestic_pal/screens/home_customer/babysitterSearch.dart';
+import 'package:domestic_pal/screens/home_customer/cookSearch.dart';
+import 'package:domestic_pal/screens/home_customer/maidSearch.dart';
 import 'package:domestic_pal/screens/home_customer/settings_form.dart';
 //import 'package:domestic_pal/screens/home_customer/view_list.dart';
 import 'package:domestic_pal/screens/home_customer/maidlist.dart';
@@ -124,7 +127,7 @@ class HomeCustomer extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Maidlist()),
+                                  builder: (context) => MaidSearch()),
                             );
                           },
                         ),
@@ -158,7 +161,7 @@ class HomeCustomer extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Cooklist()),
+                                  builder: (context) => CookSearch()),
                             );
                           },
                         ),
@@ -195,7 +198,7 @@ class HomeCustomer extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => Babysitterlist()),
+                              builder: (context) => BabySearch()),
                         );
                       },
                     ),

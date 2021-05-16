@@ -4,7 +4,7 @@ import 'package:flutter_open_whatsapp/flutter_open_whatsapp.dart';
 import 'package:domestic_pal/services/database_employee.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 class DetailScreen extends StatefulWidget {
@@ -100,11 +100,11 @@ class _DetailScreenState extends State<DetailScreen> {
             Text(
               widget.employee['name'],
               style: TextStyle(
-                fontSize: 40.0,
+                fontSize: 25.0,
               ),
             ),
             SizedBox(
-              height: 30.0,
+              height: 60.0,
             ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -136,9 +136,9 @@ class _DetailScreenState extends State<DetailScreen> {
               ],
             ),
             SizedBox(
-              height: 30.0,
+              height: 50.0,
             ),
-            Text('Rate your experience!', style: TextStyle(fontSize: 25.0)),
+            Text('Rate your experience!', style: TextStyle(fontSize: 23.0)),
             // RatingBar(),
             SmoothStarRating(
               size: 40,
@@ -171,7 +171,7 @@ class _DetailScreenState extends State<DetailScreen> {
               allowHalfRating: false,
             ),
             SizedBox(
-              height: 100.0,
+              height: 80.0,
             ),
             Center(
               child: Text('Average rating: $docRating',
@@ -206,12 +206,10 @@ class _DetailScreenState extends State<DetailScreen> {
                     FlutterOpenWhatsapp.sendSingleMessage("919740136997", "");
                   },
                   //child: Text('Running on: $_platformVersion\n'),
-                  icon: Icon(
-                    Icons.message_rounded,
-                    size: 50.0,
-                    color: Colors.blue[400],
-                  ),
-                ),
+                  icon: 
+                    FaIcon(FontAwesomeIcons.whatsappSquare),
+                    iconSize: 50.0,
+                    ),
               ],
             ),
           ],
