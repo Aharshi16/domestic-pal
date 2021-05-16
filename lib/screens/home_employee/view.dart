@@ -57,6 +57,8 @@ class _ViewDetailsState extends State<ViewDetails> {
                         child: CircleAvatar(
                           backgroundImage: AssetImage(image),
                           radius: 50.0,
+                          //radius: 50.0,
+                          backgroundColor: Colors.transparent,
                         ),
                       ),
                       /*Divider(
