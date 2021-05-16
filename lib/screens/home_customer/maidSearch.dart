@@ -11,7 +11,7 @@ class MaidSearch extends StatelessWidget {
       appBar: AppBar(
          backgroundColor: Colors.pink[300],
           elevation: 0.0,
-        title: Text("Search by Location"),
+        title: Text("Maid List"),
         actions: <Widget>[
           IconButton(icon: Icon(Icons.search), onPressed: () {
             showSearch(

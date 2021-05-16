@@ -25,14 +25,25 @@ class _UpdateCustomerDetailsState extends State<UpdateCustomerDetails> {
         builder: (context, snapshot) {
           CustomerUserData userData = snapshot.data;
           return Scaffold(
-            appBar: AppBar(
-              backgroundColor: Colors.amber[500],
-              elevation: 0.0,
-              title: Text('domesticPal'),
-            ),
+            // appBar: AppBar(
+            //   backgroundColor: Colors.purple[200],
+            //   elevation: 0.0,
+            //   title: Text(
+            //     'domesticPal',
+            //      style: TextStyle(color: Colors.black, fontSize: 20.0),
+            //     ),
+            // ),
             body: SingleChildScrollView(
               child: Container(
-                padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
+                 padding: EdgeInsets.symmetric(vertical: 180.0, horizontal: 50.0),
+               // constraints: BoxConstraints.expand(),
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/bg3.png'),
+                    fit: BoxFit.cover
+                )),
+                 
+              
                 child: Form(
                   key: _formKey,
                   child: Column(
@@ -40,7 +51,7 @@ class _UpdateCustomerDetailsState extends State<UpdateCustomerDetails> {
                       SizedBox(height: 20.0),
                       Text(
                         'Register Details',
-                        style: TextStyle(color: Colors.grey, fontSize: 20.0),
+                        style: TextStyle(color: Colors.grey[600], fontSize: 20.0),
                       ),
                       SizedBox(height: 40.0),
                       TextFormField(
@@ -75,9 +86,9 @@ class _UpdateCustomerDetailsState extends State<UpdateCustomerDetails> {
                           onChanged: (val) {
                             setState(() => _city = val);
                           }),
-                      SizedBox(height: 20.0),
+                      SizedBox(height: 30.0),
                       RaisedButton(
-                          color: Colors.blueGrey[400],
+                          color: Colors.deepPurple[200],
                           child: Text(
                             'Submit',
                             style: TextStyle(color: Colors.white),
@@ -101,7 +112,7 @@ class _UpdateCustomerDetailsState extends State<UpdateCustomerDetails> {
                 ),
               ),
             ),
-          );
-        });
+      );
+    });
   }
 }

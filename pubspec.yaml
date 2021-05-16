@@ -67,6 +67,8 @@ flutter:
      - assets/male_maid.png
      - assets/male_babysitter.png
      - assets/Male_cook.jpg
+     - assets/bg3.png
+     - assets/bg2.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
