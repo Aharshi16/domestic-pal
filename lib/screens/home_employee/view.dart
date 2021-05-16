@@ -60,8 +60,8 @@ class _ViewDetailsState extends State<ViewDetails> {
                         ),
                       ),
                       /*Divider(
-                        height: 90.0,
-                        color: Colors.grey[800],
+                        height: 190.0,
+                        color: Colors.white,
                       ),*/
                       Container(
                         //margin:EdgeInsets.zero,
@@ -109,7 +109,7 @@ class _ViewDetailsState extends State<ViewDetails> {
                         ),
                       ),
                       Divider(
-                        height: 50.0,
+                        height: 150.0,
                         color: Colors.white,
                       ),
                       Container(
