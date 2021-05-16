@@ -1,14 +1,21 @@
+import 'package:domestic_pal/models/user.dart';
 import 'package:domestic_pal/screens/home_employee/settings_form.dart';
 import 'package:domestic_pal/screens/home_employee/view.dart';
 import 'package:domestic_pal/screens/hire/hire.dart';
 import 'package:domestic_pal/services/auth_employee.dart';
+import 'package:domestic_pal/services/database_employee.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class HomeEmployee extends StatelessWidget {
   final AuthService _auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<User>(context);
+    String image;
+
     _showSettingsPanel() {
       showModalBottomSheet(
           context: context,
@@ -20,38 +27,303 @@ class HomeEmployee extends StatelessWidget {
           });
     }
 
-    return Scaffold(
-      backgroundColor: Colors.cyan[50],
-      appBar: AppBar(
-        title: Text('domesticPal'),
-        backgroundColor: Colors.cyan[400],
-        elevation: 0.0,
-        actions: <Widget>[
-          PopupMenuButton<String>(onSelected: (value) async {
-            if (value == "Logout") {
-              print("logged out of employee");
-              await _auth.signOut();
-              Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(builder: (context) => Hire()),
-                  (Route<dynamic> route) => false);
-            } else if (value == "Settings") {
-              _showSettingsPanel();
-            }
-          }, itemBuilder: (BuildContext context) {
-            return [
-              PopupMenuItem(
-                child: Text("Settings"),
-                value: "Settings",
+    return StreamBuilder<EmployeeUserData>(
+      stream: DatabaseEmployeeService(uid: user.uid).empDetails,
+      builder: (context, snapshot) {
+        EmployeeUserData userData = snapshot.data;
+        if (userData.jobProfile == 'Cook')
+          image = 'assets/chef.png';
+        else if (userData.jobProfile == 'Maid')
+          image = 'assets/maid.png';
+        else if (userData.jobProfile == 'Baby Sitter')
+          image = 'assets/baby.png';
+        return Scaffold(
+          body: Stack(children: [
+            Container(
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                image: AssetImage('assets/homebg2.png'),
+                fit: BoxFit.cover,
+              )),
+              child: Scaffold(
+                backgroundColor: Colors.transparent,
+                appBar: AppBar(
+                  backgroundColor: Colors.transparent,
+                  title: Text(
+                    'domesticPal',
+                    style: GoogleFonts.dancingScript(
+                      fontSize: 40,
+                      color: Colors.black,
+                    ),
+                  ),
+                  elevation: 0.0,
+                  actions: <Widget>[
+                    PopupMenuButton<String>(
+                        // color: Colors.white,
+                        icon: Icon(
+                          Icons.menu_open,
+                          color: Colors.black,
+                        ),
+                        onSelected: (value) async {
+                          if (value == "Logout") {
+                            print("logged out of employee");
+                            await _auth.signOut();
+                            Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(builder: (context) => Hire()),
+                                (Route<dynamic> route) => false);
+                          } else if (value == "Settings") {
+                            _showSettingsPanel();
+                          }
+                        },
+                        itemBuilder: (BuildContext context) {
+                          return [
+                            PopupMenuItem(
+                              child: Text("Settings"),
+                              value: "Settings",
+                            ),
+                            PopupMenuItem(
+                              child: Text("Logout"),
+                              value: "Logout",
+                            )
+                          ];
+                        }),
+                  ],
+                ),
+                body: Container(
+                  /*decoration: BoxDecoration(
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                )
+              ),*/
+
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(20.0, 40.0, 30.0, 0.0),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        //crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Center(
+                            child: CircleAvatar(
+                              backgroundImage: AssetImage(image),
+                              radius: 40.0,
+                            ),
+                          ),
+                          Divider(
+                            height: 90.0,
+                            color: Colors.grey[800],
+                          ),
+                          Container(
+                            //margin:EdgeInsets.zero,
+                            padding: EdgeInsets.symmetric(horizontal: 20),
+                            height: 80.0,
+                            width: 400.0,
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5)),
+                              boxShadow: <BoxShadow>[
+                                BoxShadow(
+                                    color: Colors.grey.shade200,
+                                    offset: Offset(2, 4),
+                                    blurRadius: 5,
+                                    spreadRadius: 2)
+                              ],
+                              /*  gradient: LinearGradient(
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                    //colors:[Color(0xffffd22e),Color(0xffdc85ff)]
+                                    colors: [
+                                      Colors.teal[100],
+                                      Colors.teal[900]
+                                    ])*/
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              //crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: <Widget>[
+                                SizedBox(width: 300.0),
+                                Text(
+                                  'Name:',
+                                  style: GoogleFonts.girassol(
+                                    fontSize: 20.0,
+                                    letterSpacing: 2.0,
+                                    color: Colors.black87,
+                                  ),
+                                ),
+                                SizedBox(height: 10.0),
+                                Text(
+                                  '${userData.name}',
+                                  style: GoogleFonts.alegreya(
+                                    fontSize: 35.0,
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Divider(
+                            height: 50.0,
+                            color: Colors.white,
+                          ),
+                          Container(
+                            padding: EdgeInsets.symmetric(horizontal: 20),
+                            height: 80.0,
+                            width: 400.0,
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5)),
+                              boxShadow: <BoxShadow>[
+                                BoxShadow(
+                                    color: Colors.grey.shade200,
+                                    offset: Offset(2, 4),
+                                    blurRadius: 5,
+                                    spreadRadius: 2)
+                              ],
+                              /* gradient: LinearGradient(
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                    //colors:[Color(0xffffd22e),Color(0xffdc85ff)]
+                                    colors: [
+                                      Colors.teal[100],
+                                      Colors.teal[900]
+                                    ])*/
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              //crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: <Widget>[
+                                //SizedBox(width: 300.0),
+                                Text(
+                                  'Phone No:',
+                                  style: GoogleFonts.girassol(
+                                    fontSize: 20.0,
+                                    letterSpacing: 2.0,
+                                    color: Colors.black87,
+                                  ),
+                                ),
+                                SizedBox(height: 10.0),
+                                Text(
+                                  '${userData.phoneNo}',
+                                  style: GoogleFonts.alegreya(
+                                    fontSize: 35.0,
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Divider(
+                            height: 50.0,
+                            color: Colors.white,
+                          ),
+                          Container(
+                            padding: EdgeInsets.symmetric(horizontal: 20),
+                            height: 80.0,
+                            width: 400.0,
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5)),
+                              boxShadow: <BoxShadow>[
+                                BoxShadow(
+                                    color: Colors.grey.shade200,
+                                    offset: Offset(2, 4),
+                                    blurRadius: 5,
+                                    spreadRadius: 2)
+                              ],
+                              /* gradient: LinearGradient(
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                    colors: [Colors.teal[100], Colors.teal[900]]
+                                    //colors:[Color(0xffffd22e),Color(0xffdc85ff)]
+                                    )*/
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              //crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: <Widget>[
+                                //SizedBox(width: 300.0),
+                                Text(
+                                  'Location:',
+                                  style: GoogleFonts.girassol(
+                                    fontSize: 20.0,
+                                    letterSpacing: 2.0,
+                                    color: Colors.black87,
+                                  ),
+                                ),
+                                SizedBox(height: 10.0),
+                                Text(
+                                  '${userData.location}',
+                                  style: GoogleFonts.alegreya(
+                                    fontSize: 35.0,
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Divider(
+                            height: 50.0,
+                            color: Colors.white,
+                          ),
+                          Container(
+                            padding: EdgeInsets.symmetric(horizontal: 20),
+                            height: 80.0,
+                            width: 400.0,
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5)),
+                              boxShadow: <BoxShadow>[
+                                BoxShadow(
+                                    color: Colors.grey.shade200,
+                                    offset: Offset(2, 4),
+                                    blurRadius: 5,
+                                    spreadRadius: 2)
+                              ],
+                              /*gradient: LinearGradient(
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                    colors: [Colors.teal[100], Colors.teal[900]]
+                                    //colors:[Color(0xffffd22e),Color(0xffdc85ff)]
+                                    )*/
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              //crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: <Widget>[
+                                //SizedBox(width: 300.0),
+                                Text(
+                                  'Aadhar No:',
+                                  style: GoogleFonts.girassol(
+                                    fontSize: 20.0,
+                                    letterSpacing: 2.0,
+                                    color: Colors.black87,
+                                  ),
+                                ),
+                                SizedBox(height: 10.0),
+                                Text(
+                                  '${userData.aadharNo}',
+                                  style: GoogleFonts.alegreya(
+                                    fontSize: 35.0,
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
               ),
-              PopupMenuItem(
-                child: Text("Logout"),
-                value: "Logout",
-              )
-            ];
-          }),
-        ],
-      ),
-      body: ViewDetails(),
+            ),
+          ]),
+        );
+      },
     );
   }
 }
