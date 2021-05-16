@@ -119,23 +119,24 @@ class HomeEmployee extends StatelessWidget {
                             height: 80.0,
                             width: 400.0,
                             decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(5)),
-                                boxShadow: <BoxShadow>[
-                                  BoxShadow(
-                                      color: Colors.grey.shade200,
-                                      offset: Offset(2, 4),
-                                      blurRadius: 5,
-                                      spreadRadius: 2)
-                                ],
-                                gradient: LinearGradient(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5)),
+                              boxShadow: <BoxShadow>[
+                                BoxShadow(
+                                    color: Colors.grey.shade200,
+                                    offset: Offset(2, 4),
+                                    blurRadius: 5,
+                                    spreadRadius: 2)
+                              ],
+                              /*  gradient: LinearGradient(
                                     begin: Alignment.topCenter,
                                     end: Alignment.bottomCenter,
                                     //colors:[Color(0xffffd22e),Color(0xffdc85ff)]
                                     colors: [
                                       Colors.teal[100],
                                       Colors.teal[900]
-                                    ])),
+                                    ])*/
+                            ),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               //crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -170,23 +171,24 @@ class HomeEmployee extends StatelessWidget {
                             height: 80.0,
                             width: 400.0,
                             decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(5)),
-                                boxShadow: <BoxShadow>[
-                                  BoxShadow(
-                                      color: Colors.grey.shade200,
-                                      offset: Offset(2, 4),
-                                      blurRadius: 5,
-                                      spreadRadius: 2)
-                                ],
-                                gradient: LinearGradient(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5)),
+                              boxShadow: <BoxShadow>[
+                                BoxShadow(
+                                    color: Colors.grey.shade200,
+                                    offset: Offset(2, 4),
+                                    blurRadius: 5,
+                                    spreadRadius: 2)
+                              ],
+                              /* gradient: LinearGradient(
                                     begin: Alignment.topCenter,
                                     end: Alignment.bottomCenter,
                                     //colors:[Color(0xffffd22e),Color(0xffdc85ff)]
                                     colors: [
                                       Colors.teal[100],
                                       Colors.teal[900]
-                                    ])),
+                                    ])*/
+                            ),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               //crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -221,21 +223,22 @@ class HomeEmployee extends StatelessWidget {
                             height: 80.0,
                             width: 400.0,
                             decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(5)),
-                                boxShadow: <BoxShadow>[
-                                  BoxShadow(
-                                      color: Colors.grey.shade200,
-                                      offset: Offset(2, 4),
-                                      blurRadius: 5,
-                                      spreadRadius: 2)
-                                ],
-                                gradient: LinearGradient(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5)),
+                              boxShadow: <BoxShadow>[
+                                BoxShadow(
+                                    color: Colors.grey.shade200,
+                                    offset: Offset(2, 4),
+                                    blurRadius: 5,
+                                    spreadRadius: 2)
+                              ],
+                              /* gradient: LinearGradient(
                                     begin: Alignment.topCenter,
                                     end: Alignment.bottomCenter,
                                     colors: [Colors.teal[100], Colors.teal[900]]
                                     //colors:[Color(0xffffd22e),Color(0xffdc85ff)]
-                                    )),
+                                    )*/
+                            ),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               //crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -270,21 +273,22 @@ class HomeEmployee extends StatelessWidget {
                             height: 80.0,
                             width: 400.0,
                             decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(5)),
-                                boxShadow: <BoxShadow>[
-                                  BoxShadow(
-                                      color: Colors.grey.shade200,
-                                      offset: Offset(2, 4),
-                                      blurRadius: 5,
-                                      spreadRadius: 2)
-                                ],
-                                gradient: LinearGradient(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5)),
+                              boxShadow: <BoxShadow>[
+                                BoxShadow(
+                                    color: Colors.grey.shade200,
+                                    offset: Offset(2, 4),
+                                    blurRadius: 5,
+                                    spreadRadius: 2)
+                              ],
+                              /*gradient: LinearGradient(
                                     begin: Alignment.topCenter,
                                     end: Alignment.bottomCenter,
                                     colors: [Colors.teal[100], Colors.teal[900]]
                                     //colors:[Color(0xffffd22e),Color(0xffdc85ff)]
-                                    )),
+                                    )*/
+                            ),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               //crossAxisAlignment: CrossAxisAlignment.stretch,
