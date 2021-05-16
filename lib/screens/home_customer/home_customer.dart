@@ -24,8 +24,6 @@ class HomeCustomer extends StatelessWidget {
           });
     }
 
-    final height = MediaQuery.of(context).size.height;
-
     return Scaffold(
       body: Stack(
         children: <Widget>[
