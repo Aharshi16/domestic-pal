@@ -6,10 +6,10 @@ class EmployeeTile extends StatelessWidget {
   final DocumentSnapshot employee;
   EmployeeTile({this.employee});
 
-
   @override
   Widget build(BuildContext context) {
     String image;
+    String _rate = employee['rating'];
     if (employee['gender'] == 'Female') {
       image = 'assets/Icon.jpg';
     } else {
@@ -24,11 +24,11 @@ class EmployeeTile extends StatelessWidget {
         child: ListTile(
           onTap: () {
             Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => DetailScreen(employee: employee),
-          ),
-        );
+              context,
+              MaterialPageRoute(
+                builder: (context) => DetailScreen(employee: employee),
+              ),
+            );
           },
           leading: CircleAvatar(
             radius: 25.0,
@@ -36,9 +36,8 @@ class EmployeeTile extends StatelessWidget {
             backgroundImage: AssetImage(image),
           ),
           title: Text(employee['name']),
-          trailing: Text(employee['rating']),
+          trailing: Text('$_rate/5'),
           subtitle: Text(employee['location']),
-           
         ),
       ),
     );

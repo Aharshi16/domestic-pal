@@ -165,7 +165,7 @@ class _DetailScreenState extends State<DetailScreen> {
                   avgrating,
                   widget.employee['jobProfile'],
                 );
-                print(_rate);
+               // print(_rate);
               },
               borderColor: color,
               allowHalfRating: false,
