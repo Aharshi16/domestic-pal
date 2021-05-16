@@ -3,6 +3,7 @@ import 'package:domestic_pal/screens/home_employee/view.dart';
 import 'package:domestic_pal/screens/hire/hire.dart';
 import 'package:domestic_pal/services/auth_employee.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomeEmployee extends StatelessWidget {
   final AuthService _auth = AuthService();
@@ -21,10 +22,13 @@ class HomeEmployee extends StatelessWidget {
     }
 
     return Scaffold(
-      backgroundColor: Colors.cyan[50],
+      //backgroundColor: Colors.cyan[50],
       appBar: AppBar(
-        title: Text('domesticPal'),
-        backgroundColor: Colors.cyan[400],
+        title: Text('domesticPal',style: GoogleFonts.dancingScript(
+          fontSize: 40,
+          color: Colors.white,
+        ),),
+        backgroundColor: Colors.teal[900],
         elevation: 0.0,
         actions: <Widget>[
           PopupMenuButton<String>(onSelected: (value) async {

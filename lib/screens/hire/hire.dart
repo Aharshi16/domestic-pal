@@ -56,6 +56,8 @@ class Hire extends StatelessWidget {
   }
 }*/
 
+import 'package:domestic_pal/Just_For_UI/Login.dart';
+import 'package:domestic_pal/Just_For_UI/Register.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:domestic_pal/screens/authenticate/authenticate_customer.dart';
@@ -184,14 +186,7 @@ class _HirePageState extends State<Hire> {
               gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  //colors: [Color(0xfffbb448), Color(0xffe46b10)]
-                  //colors: [Color(0xff9fa8da),Color(0xff1a237e)]
-                  //colors: [Color(0xffc5cae9),Color(0xff1a237e)]
-                  //colors: [Color(0xff8eaf6),Color(0xff2962ff)]
-                  //colors: [Color(0xff8eaf6),Color(0xff1a237e)]
-                  //colors: [Color(0xffd7ccc8),Color(0xff263238)]
-                  colors: [
-                    Colors.teal[100],Colors.teal[900]]
+                  colors:[Color(0xffffd22e),Color(0xffdc85ff)]
               )
           ),
           child: Column(
