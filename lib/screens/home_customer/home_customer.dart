@@ -123,20 +123,10 @@ class HomeCustomer extends StatelessWidget {
                             ),*/
                           ),
                           onPressed: () {
-                            showCupertinoDialog(
-                              context: context,
-                              builder: (BuildContext context) =>
-                                  CupertinoAlertDialog(
-                                title: const Text('Card is clicked.'),
-                                actions: <Widget>[
-                                  CupertinoDialogAction(
-                                    child: const Text('ok'),
-                                    onPressed: () {
-                                      Navigator.pop(context, 'ok');
-                                    },
-                                  ),
-                                ],
-                              ),
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Maidlist()),
                             );
                           },
                         ),
@@ -167,20 +157,10 @@ class HomeCustomer extends StatelessWidget {
                             ),*/
                           ),
                           onPressed: () {
-                            showCupertinoDialog(
-                              context: context,
-                              builder: (BuildContext context) =>
-                                  CupertinoAlertDialog(
-                                title: const Text('Card is clicked.'),
-                                actions: <Widget>[
-                                  CupertinoDialogAction(
-                                    child: const Text('ok'),
-                                    onPressed: () {
-                                      Navigator.pop(context, 'ok');
-                                    },
-                                  ),
-                                ],
-                              ),
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Cooklist()),
                             );
                           },
                         ),
@@ -214,20 +194,10 @@ class HomeCustomer extends StatelessWidget {
                         ),*/
                       ),
                       onPressed: () {
-                        showCupertinoDialog(
-                          context: context,
-                          builder: (BuildContext context) =>
-                              CupertinoAlertDialog(
-                            title: const Text('Card is clicked.'),
-                            actions: <Widget>[
-                              CupertinoDialogAction(
-                                child: const Text('ok'),
-                                onPressed: () {
-                                  Navigator.pop(context, 'ok');
-                                },
-                              ),
-                            ],
-                          ),
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Babysitterlist()),
                         );
                       },
                     ),
