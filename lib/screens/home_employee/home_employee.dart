@@ -40,11 +40,11 @@ class HomeEmployee extends StatelessWidget {
         return Scaffold(
           body: Stack(children: [
             Container(
-              decoration: BoxDecoration(
+              /*decoration: BoxDecoration(
                   image: DecorationImage(
                 image: AssetImage('assets/homebg2.png'),
                 fit: BoxFit.cover,
-              )),
+              )),*/
               child: Scaffold(
                 backgroundColor: Colors.transparent,
                 appBar: AppBar(
@@ -106,13 +106,15 @@ class HomeEmployee extends StatelessWidget {
                           Center(
                             child: CircleAvatar(
                               backgroundImage: AssetImage(image),
-                              radius: 40.0,
+                              radius: 50.0,
+                              backgroundColor: Colors.transparent,
                             ),
                           ),
-                          Divider(
+                          /*Divider(
                             height: 90.0,
                             color: Colors.grey[800],
-                          ),
+                          ),*/
+                          SizedBox(height: 60.0,),
                           Container(
                             //margin:EdgeInsets.zero,
                             padding: EdgeInsets.symmetric(horizontal: 20),

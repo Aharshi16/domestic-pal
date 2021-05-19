@@ -25,18 +25,12 @@ class _ViewDetailsState extends State<ViewDetails> {
         stream: DatabaseEmployeeService(uid: user.uid).empDetails,
         builder: (context, snapshot) {
           EmployeeUserData userData = snapshot.data;
-          if(userData.jobProfile=='Cook')
+          /*if(userData.jobProfile=='Cook')
             image='assets/chef.png';
           else if(userData.jobProfile=='Maid')
             image='assets/maid.png';
           else if(userData.jobProfile=='Baby Sitter')
-            image='assets/baby.png';
-          /*else if(userData.gender=='Male' && userData.jobProfile=='Cook')
-            image='assets/Male_cook.jpg';
-          else if(userData.gender=='Male' && userData.jobProfile=='Maid')
-            image='assets/male_maid.png';
-          else if(userData.gender=='Male' && userData.jobProfile=='Baby Sitter')
-            image='assets/male_babysitter.png';*/
+            image='assets/baby.png';*/
           return Scaffold(
             //backgroundColor: Colors.white,
             body: Container(
@@ -225,12 +219,12 @@ class _ViewDetailsState extends State<ViewDetails> {
                                   blurRadius: 5,
                                   spreadRadius: 2)
                             ],
-                            gradient: LinearGradient(
+                            /*gradient: LinearGradient(
                                 begin: Alignment.topCenter,
                                 end: Alignment.bottomCenter,
                                 //colors: [Colors.teal[100],Colors.teal[900]]
                               //colors:[Color(0xffffd22e),Color(0xffdc85ff)]
-                            )
+                            )*/
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
