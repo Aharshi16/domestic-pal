@@ -115,53 +115,6 @@ class _SignInCustomerState extends State<SignInCustomer> {
     );
   }
 
-  Widget _facebookButton() {
-    return Container(
-      height: 50,
-      margin: EdgeInsets.symmetric(vertical: 20),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(10)),
-      ),
-      child: Row(
-        children: <Widget>[
-          Expanded(
-            flex: 1,
-            child: Container(
-              decoration: BoxDecoration(
-                color: Color(0xff1959a9),
-                borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(5),
-                    topLeft: Radius.circular(5)),
-              ),
-              alignment: Alignment.center,
-              child: Text('f',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 25,
-                      fontWeight: FontWeight.w400)),
-            ),
-          ),
-          Expanded(
-            flex: 5,
-            child: Container(
-              decoration: BoxDecoration(
-                color: Color(0xff2872ba),
-                borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(5),
-                    topRight: Radius.circular(5)),
-              ),
-              alignment: Alignment.center,
-              child: Text('Log in with Facebook',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w400)),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 
   Widget _divider() {
     return Container(
@@ -251,10 +204,6 @@ class _SignInCustomerState extends State<SignInCustomer> {
                                 fontWeight: FontWeight.w700,
                                 color: Colors.black87)),
                       ),
-                      /*Text(
-                        'Sign In as a Customer',
-                        style: TextStyle(color: Colors.grey, fontSize: 20.0),
-                      ),*/
                       SizedBox(height: 40.0),
                       Container(
                           margin: EdgeInsets.symmetric(vertical: 10),
@@ -281,30 +230,6 @@ class _SignInCustomerState extends State<SignInCustomer> {
                             ],
                           )),
                       SizedBox(height: 20.0),
-                      /*TextFormField(
-                          decoration: textInputDecoration.copyWith(
-                              labelText: 'Password',
-                              hintText: 'Enter your password',
-                              suffixIcon: IconButton(
-                                icon: Icon(
-                                  _showPassword
-                                      ? Icons.visibility
-                                      : Icons.visibility_off,
-                                  color: Colors.pink[800],
-                                ),
-                                onPressed: () {
-                                  setState(() {
-                                    _showPassword = !_showPassword;
-                                  });
-                                },
-                              )),
-                          obscureText: !_showPassword,
-                          validator: (val) => val.length < 6
-                              ? 'Enter a password 6+ chars long'
-                              : null,
-                          onChanged: (val) {
-                            setState(() => password = val);
-                          }),*/
                       Container(
                         margin: EdgeInsets.symmetric(vertical: 10),
                         child: Column(
@@ -354,7 +279,6 @@ class _SignInCustomerState extends State<SignInCustomer> {
                         style: TextStyle(color: Colors.red, fontSize: 14.0),
                       ),
                       //SizedBox(height: 5.0),
-                      _facebookButton(),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
