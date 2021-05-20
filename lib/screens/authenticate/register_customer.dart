@@ -86,6 +86,11 @@ class _RegisterCustomerState extends State<RegisterCustomer> {
             body: SingleChildScrollView(
               child: Container(
                 padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
+                 decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/bg2.png'),
+                    fit: BoxFit.cover,
+                )),
                 child: Form(
                   key: _formKey,
                   child: Column(

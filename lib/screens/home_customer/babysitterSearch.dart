@@ -22,7 +22,7 @@ class BabySearch extends StatelessWidget {
       body: StreamBuilder(
           stream: Firestore.instance
               .collection("empDetails")
-              .where("jobProfile", isEqualTo: "Babysitter")
+              .where("jobProfile", isEqualTo: "Baby Sitter")
               .snapshots(),
           builder: (context, snapshot) {
             if (snapshot.data == null) return CusLoading();

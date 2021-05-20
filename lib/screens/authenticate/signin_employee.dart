@@ -253,6 +253,11 @@ class _SignInEmployeeState extends State<SignInEmployee> {
             body: SingleChildScrollView(
               child: Container(
                 padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
+                 decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/bg2.png'),
+                    fit: BoxFit.cover,
+                )),
                 //height: height,
                 child: Form(
                   key: _formKey,
