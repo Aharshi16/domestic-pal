@@ -41,7 +41,7 @@ class _UpdateCustomerDetailsState extends State<UpdateCustomerDetails> {
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage('assets/bg3.png'),
-                    fit: BoxFit.fill
+                    fit: BoxFit.cover,
                 )),
                  
               

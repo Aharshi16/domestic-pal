@@ -45,6 +45,13 @@ class _UpdateEmployeeDetailsState extends State<UpdateEmployeeDetails> {
             body: SingleChildScrollView(
               child: Container(
                 padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
+                 decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/bg3.png'),
+                    fit: BoxFit.cover,
+                )),
+                 
+              
                 child: Form(
                   key: _formKey,
                   child: Column(
