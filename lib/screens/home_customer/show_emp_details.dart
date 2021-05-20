@@ -165,7 +165,7 @@ class _DetailScreenState extends State<DetailScreen> {
                   avgrating,
                   widget.employee['jobProfile'],
                 );
-               // print(_rate);
+                // print(_rate);
               },
               borderColor: color,
               allowHalfRating: false,
@@ -195,7 +195,7 @@ class _DetailScreenState extends State<DetailScreen> {
                     size: 50.0,
                     color: Colors.green[400],
                   ),
-                   //const Text('Make phone call'),
+                  //const Text('Make phone call'),
                 ),
                 /*Text(
                   'Contact Me',
@@ -206,10 +206,10 @@ class _DetailScreenState extends State<DetailScreen> {
                     FlutterOpenWhatsapp.sendSingleMessage("919740136997", "");
                   },
                   //child: Text('Running on: $_platformVersion\n'),
-                  icon: 
-                    FaIcon(FontAwesomeIcons.whatsappSquare),
-                    iconSize: 50.0,
-                    ),
+                  icon: FaIcon(FontAwesomeIcons.whatsapp),
+                  iconSize: 50.0,
+                  color: Colors.green,
+                ),
               ],
             ),
           ],
