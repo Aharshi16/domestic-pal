@@ -22,7 +22,7 @@ class CookSearch extends StatelessWidget {
       body: StreamBuilder(
           stream: Firestore.instance
               .collection("empDetails")
-              .where("jobProfile", isEqualTo: "Maid")
+              .where("jobProfile", isEqualTo: "Cook")
               .snapshots(),
           builder: (context, snapshot) {
             if (snapshot.data == null) return CusLoading();
