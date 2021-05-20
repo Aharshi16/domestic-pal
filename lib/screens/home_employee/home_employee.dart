@@ -40,11 +40,11 @@ class HomeEmployee extends StatelessWidget {
         return Scaffold(
           body: Stack(children: [
             Container(
-              /*decoration: BoxDecoration(
+              decoration: BoxDecoration(
                   image: DecorationImage(
                 image: AssetImage('assets/homebg2.png'),
                 fit: BoxFit.cover,
-              )),*/
+              )),
               child: Scaffold(
                 backgroundColor: Colors.transparent,
                 appBar: AppBar(

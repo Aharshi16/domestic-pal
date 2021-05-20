@@ -1,8 +1,9 @@
+import 'package:domestic_pal/screens/authenticate/register_employee.dart';
 import 'package:domestic_pal/screens/home_employee/home_employee.dart';
 import 'package:domestic_pal/services/auth_employee.dart';
 import 'package:domestic_pal/shared/emploading.dart';
 import 'package:flutter/material.dart';
-//import 'package:domestic_pal/shared/constants.dart';
+import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:domestic_pal/shared/bezierContainer.dart';
@@ -128,7 +129,7 @@ class _SignInEmployeeState extends State<SignInEmployee> {
   }
 
   Widget _facebookButton() {
-    return Container(
+    /*return Container(
       height: 50,
       margin: EdgeInsets.symmetric(vertical: 20),
       decoration: BoxDecoration(
@@ -172,6 +173,12 @@ class _SignInEmployeeState extends State<SignInEmployee> {
           ),
         ],
       ),
+    );*/
+    return SignInButton(
+        Buttons.Facebook,
+        onPressed: () => Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => RegisterEmployee())
+        ),
     );
   }
 
