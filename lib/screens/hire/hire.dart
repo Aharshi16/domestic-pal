@@ -124,33 +124,6 @@ class _HirePageState extends State<Hire> {
     );
   }
 
-  Widget _label() {
-    return Container(
-        margin: EdgeInsets.only(top: 40, bottom: 20),
-        child: Column(
-          children: <Widget>[
-            Text(
-              'Quick login with Touch ID',
-              style: TextStyle(color: Colors.white, fontSize: 17),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Icon(Icons.fingerprint, size: 90, color: Colors.white),
-            SizedBox(
-              height: 20,
-            ),
-            Text(
-              'Touch ID',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 15,
-                decoration: TextDecoration.underline,
-              ),
-            ),
-          ],
-        ));
-  }
 
   Widget _title() {
     return RichText(
@@ -194,7 +167,7 @@ class _HirePageState extends State<Hire> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               _title(),
-              Divider(height: 5.0,indent: 30.0,color:Colors.white,endIndent: 30.0),
+              Divider(height: 5.0,indent: 30.0,color:Colors.black87,endIndent: 30.0),
               SizedBox(
                 height: 70,
               ),

@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:domestic_pal/shared/constants.dart';
 import 'package:domestic_pal/shared/cusloading.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 
 class SignInCustomer extends StatefulWidget {
   final Function toggleView;
@@ -69,16 +71,173 @@ class _SignInCustomerState extends State<SignInCustomer> {
         });
   }
 
+  Widget _submitButton() {
+    return InkWell(
+        onTap: () async {
+          if (_formKey.currentState.validate()) {
+            setState(() => loading = true);
+            dynamic result = await _authCustomer
+                .signInWithEmailAndPassword(email, password);
+            if (result == null) {
+              setState(() => error =
+              'could not sign in with those credentials');
+              loading = false;
+            } else {
+              setState(
+                      () => error = 'logged in successfully');
+              Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(
+                    builder: (context) => HomeCustomer()),
+                    (Route<dynamic> route) => false,
+              );
+              _showToast('You have logged in successfully');
+            }
+          }
+        },
+      child: Container(
+
+        width: MediaQuery.of(context).size.width,
+        padding: EdgeInsets.symmetric(vertical: 15),
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(5)),
+            boxShadow: <BoxShadow>[
+              BoxShadow(
+                  color: Colors.grey.shade200,
+                  offset: Offset(2, 4),
+                  blurRadius: 5,
+                  spreadRadius: 2)
+            ],
+            gradient: LinearGradient(
+                begin: Alignment.centerLeft,
+                end: Alignment.centerRight,
+                colors:[Color(0xffffd22e),Color(0xffdc85ff)]
+            )),
+        child: Text(
+          'Login',
+          style: TextStyle(fontSize: 20, color: Colors.white),
+        ),
+      ),
+    );
+  }
+
+
+  Widget _facebookButton() {
+    return Container(
+      height: 50,
+      margin: EdgeInsets.symmetric(vertical: 20),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+      ),
+      child: Row(
+        children: <Widget>[
+          Expanded(
+            flex: 1,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Color(0xff1959a9),
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(5),
+                    topLeft: Radius.circular(5)),
+              ),
+              alignment: Alignment.center,
+              child: Text('f',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 25,
+                      fontWeight: FontWeight.w400)),
+            ),
+          ),
+          Expanded(
+            flex: 5,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Color(0xff2872ba),
+                borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(5),
+                    topRight: Radius.circular(5)),
+              ),
+              alignment: Alignment.center,
+              child: Text('Log in with Facebook',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w400)),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+
+  Widget _divider() {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 10),
+      child: Row(
+        children: <Widget>[
+          SizedBox(
+            width: 20,
+          ),
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: Divider(
+                thickness: 1,
+              ),
+            ),
+          ),
+          Text('or'),
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: Divider(
+                thickness: 1,
+              ),
+            ),
+          ),
+          SizedBox(
+            width: 20,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _backButton() {
+    return InkWell(
+      onTap: () {
+        Navigator.pop(context);
+      },
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 10),
+        child: Row(
+          children: <Widget>[
+            Container(
+              padding: EdgeInsets.only(left: 0, top: 10, bottom: 10),
+              child: Icon(Icons.keyboard_arrow_left, color: Colors.black),
+            ),
+            Text('Back',
+                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500))
+          ],
+        ),
+      ),
+    );
+  }
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return loading
         ? CusLoading()
         : Scaffold(
-            appBar: AppBar(
+            /*appBar: AppBar(
               backgroundColor: Colors.amber[500],
               elevation: 0.0,
               title: Text('domesticPal'),
-            ),
+            ),*/
             body: SingleChildScrollView(
               child: Container(
                 padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
@@ -86,22 +245,53 @@ class _SignInCustomerState extends State<SignInCustomer> {
                   key: _formKey,
                   child: Column(
                     children: <Widget>[
-                      SizedBox(height: 20.0),
-                      Text(
+                      SizedBox(height: 150.0),
+                      RichText(
+                        textAlign: TextAlign.center,
+                        text: TextSpan(
+                            text: 'domesticPal',
+                            style: GoogleFonts.dancingScript(
+                                textStyle: Theme.of(context).textTheme.headline4,
+                                fontSize: 60,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.black87
+                            )
+                        ),
+                      ),
+                      /*Text(
                         'Sign In as a Customer',
                         style: TextStyle(color: Colors.grey, fontSize: 20.0),
-                      ),
+                      ),*/
                       SizedBox(height: 40.0),
-                      TextFormField(
-                          decoration: textInputDecoration.copyWith(
-                              labelText: 'Email', hintText: 'Enter your email'),
-                          validator: (val) =>
-                              val.isEmpty ? 'Enter an email' : null,
-                          onChanged: (val) {
-                            setState(() => email = val);
-                          }),
+                      Container(
+                          margin:EdgeInsets.symmetric(vertical: 10),
+                          child:Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                'Email ID',
+                                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                              ),
+                              SizedBox(height: 10),
+                              TextFormField(
+                                decoration:
+                                InputDecoration(
+                                    border: InputBorder.none,
+                                    fillColor: Color(0xfff3f3f4),
+                                    filled: true
+                                ),
+                                validator: (val) =>
+                                val.isEmpty ? 'Enter an email' : null,
+                                onChanged: (val) {
+                                  setState(() => email = val);
+                                },
+                              ),
+                            ],
+                          )
+
+                      ),
                       SizedBox(height: 20.0),
-                      TextFormField(
+                      /*TextFormField(
                           decoration: textInputDecoration.copyWith(
                               labelText: 'Password',
                               hintText: 'Enter your password',
@@ -124,41 +314,58 @@ class _SignInCustomerState extends State<SignInCustomer> {
                               : null,
                           onChanged: (val) {
                             setState(() => password = val);
-                          }),
-                      SizedBox(height: 20.0),
-                      RaisedButton(
-                          color: Colors.blueGrey[400],
-                          child: Text(
-                            'Sign In',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          onPressed: () async {
-                            if (_formKey.currentState.validate()) {
-                              setState(() => loading = true);
-                              dynamic result = await _authCustomer
-                                  .signInWithEmailAndPassword(email, password);
-                              if (result == null) {
-                                setState(() => error =
-                                    'could not sign in with those credentials');
-                                loading = false;
-                              } else {
-                                setState(
-                                    () => error = 'logged in successfully');
-                                Navigator.of(context).pushAndRemoveUntil(
-                                  MaterialPageRoute(
-                                      builder: (context) => HomeCustomer()),
-                                  (Route<dynamic> route) => false,
-                                );
-                                _showToast('You have logged in successfully');
-                              }
-                            }
-                          }),
-                      SizedBox(height: 12.0),
+                          }),*/
+                      Container(
+                        margin: EdgeInsets.symmetric(vertical: 10),
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                'Password',
+                                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                              ),
+                              SizedBox(height: 10),
+                              TextFormField(
+                                  decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      //labelText: 'Password',
+                                      //hintText: 'Enter your password',
+                                      fillColor: Color(0xfff3f3f4),
+                                      filled: true,
+                                      suffixIcon: IconButton(
+                                        icon: Icon(
+                                          _showPassword
+                                              ? Icons.visibility_sharp
+                                              : Icons.visibility_off_sharp,
+                                          color: Colors.blueGrey,
+                                        ),
+                                        onPressed: () {
+                                          setState(() {
+                                            _showPassword = !_showPassword;
+                                          });
+                                        },
+                                      )),
+                                  obscureText: !_showPassword,
+                                  validator: (val) => val.length < 6
+                                      ? 'Enter a password 6+ chars long'
+                                      : null,
+                                  onChanged: (val) {
+                                    setState(() => password = val);
+                                  }),
+                            ]
+
+                        ),
+                      ),
+                      SizedBox(height: 40.0),
+                      _submitButton(),
+                      SizedBox(height: 30.0),
+                      _divider(),
                       Text(
                         error,
                         style: TextStyle(color: Colors.red, fontSize: 14.0),
                       ),
-                      SizedBox(height: 5.0),
+                      //SizedBox(height: 5.0),
+                      _facebookButton(),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [

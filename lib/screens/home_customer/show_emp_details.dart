@@ -151,7 +151,7 @@ class _DetailScreenState extends State<DetailScreen> {
                   double avg = (docRating + value) / 2;
                   avgrating = avg.toString();
                 }
-
+//zabardati ka cooment
                 currentRating = value;
                 await DatabaseEmployeeService(uid: widget.employee.documentID)
                     .updateEmployeeUserData(
