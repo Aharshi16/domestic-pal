@@ -6,7 +6,6 @@ import 'package:domestic_pal/shared/cusloading.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
 class SignInCustomer extends StatefulWidget {
   final Function toggleView;
   SignInCustomer({this.toggleView});
@@ -73,29 +72,25 @@ class _SignInCustomerState extends State<SignInCustomer> {
 
   Widget _submitButton() {
     return InkWell(
-        onTap: () async {
-          if (_formKey.currentState.validate()) {
-            setState(() => loading = true);
-            dynamic result = await _authCustomer
-                .signInWithEmailAndPassword(email, password);
-            if (result == null) {
-              setState(() => error =
-              'could not sign in with those credentials');
-              loading = false;
-            } else {
-              setState(
-                      () => error = 'logged in successfully');
-              Navigator.of(context).pushAndRemoveUntil(
-                MaterialPageRoute(
-                    builder: (context) => HomeCustomer()),
-                    (Route<dynamic> route) => false,
-              );
-              _showToast('You have logged in successfully');
-            }
+      onTap: () async {
+        if (_formKey.currentState.validate()) {
+          setState(() => loading = true);
+          dynamic result =
+              await _authCustomer.signInWithEmailAndPassword(email, password);
+          if (result == null) {
+            setState(() => error = 'could not sign in with those credentials');
+            loading = false;
+          } else {
+            setState(() => error = 'logged in successfully');
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) => HomeCustomer()),
+              (Route<dynamic> route) => false,
+            );
+            _showToast('You have logged in successfully');
           }
-        },
+        }
+      },
       child: Container(
-
         width: MediaQuery.of(context).size.width,
         padding: EdgeInsets.symmetric(vertical: 15),
         alignment: Alignment.center,
@@ -111,61 +106,11 @@ class _SignInCustomerState extends State<SignInCustomer> {
             gradient: LinearGradient(
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight,
-                colors:[Color(0xffffd22e),Color(0xffdc85ff)]
-            )),
+                colors: [Color(0xffffd22e), Color(0xffdc85ff)])),
         child: Text(
           'Login',
           style: TextStyle(fontSize: 20, color: Colors.white),
         ),
-      ),
-    );
-  }
-
-
-  Widget _facebookButton() {
-    return Container(
-      height: 50,
-      margin: EdgeInsets.symmetric(vertical: 20),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(10)),
-      ),
-      child: Row(
-        children: <Widget>[
-          Expanded(
-            flex: 1,
-            child: Container(
-              decoration: BoxDecoration(
-                color: Color(0xff1959a9),
-                borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(5),
-                    topLeft: Radius.circular(5)),
-              ),
-              alignment: Alignment.center,
-              child: Text('f',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 25,
-                      fontWeight: FontWeight.w400)),
-            ),
-          ),
-          Expanded(
-            flex: 5,
-            child: Container(
-              decoration: BoxDecoration(
-                color: Color(0xff2872ba),
-                borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(5),
-                    topRight: Radius.circular(5)),
-              ),
-              alignment: Alignment.center,
-              child: Text('Log in with Facebook',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w400)),
-            ),
-          ),
-        ],
       ),
     );
   }
@@ -225,9 +170,6 @@ class _SignInCustomerState extends State<SignInCustomer> {
     );
   }
 
-
-
-
   @override
   Widget build(BuildContext context) {
     return loading
@@ -241,12 +183,11 @@ class _SignInCustomerState extends State<SignInCustomer> {
             body: SingleChildScrollView(
               child: Container(
                 padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
-                 decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/bg2.png'),
-                    fit: BoxFit.cover,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                  image: AssetImage('assets/bg2.png'),
+                  fit: BoxFit.cover,
                 )),
-                 
                 child: Form(
                   key: _formKey,
                   child: Column(
@@ -257,70 +198,38 @@ class _SignInCustomerState extends State<SignInCustomer> {
                         text: TextSpan(
                             text: 'domesticPal',
                             style: GoogleFonts.dancingScript(
-                                textStyle: Theme.of(context).textTheme.headline4,
+                                textStyle:
+                                    Theme.of(context).textTheme.headline4,
                                 fontSize: 60,
                                 fontWeight: FontWeight.w700,
-                                color: Colors.black87
-                            )
-                        ),
+                                color: Colors.black87)),
                       ),
-                      /*Text(
-                        'Sign In as a Customer',
-                        style: TextStyle(color: Colors.grey, fontSize: 20.0),
-                      ),*/
                       SizedBox(height: 40.0),
                       Container(
-                          margin:EdgeInsets.symmetric(vertical: 10),
-                          child:Column(
+                          margin: EdgeInsets.symmetric(vertical: 10),
+                          child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
                                 'Email ID',
-                                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 15),
                               ),
                               SizedBox(height: 10),
                               TextFormField(
-                                decoration:
-                                InputDecoration(
+                                decoration: InputDecoration(
                                     border: InputBorder.none,
                                     fillColor: Color(0xfff3f3f4),
-                                    filled: true
-                                ),
+                                    filled: true),
                                 validator: (val) =>
-                                val.isEmpty ? 'Enter an email' : null,
+                                    val.isEmpty ? 'Enter an email' : null,
                                 onChanged: (val) {
                                   setState(() => email = val);
                                 },
                               ),
                             ],
-                          )
-
-                      ),
+                          )),
                       SizedBox(height: 20.0),
-                      /*TextFormField(
-                          decoration: textInputDecoration.copyWith(
-                              labelText: 'Password',
-                              hintText: 'Enter your password',
-                              suffixIcon: IconButton(
-                                icon: Icon(
-                                  _showPassword
-                                      ? Icons.visibility
-                                      : Icons.visibility_off,
-                                  color: Colors.pink[800],
-                                ),
-                                onPressed: () {
-                                  setState(() {
-                                    _showPassword = !_showPassword;
-                                  });
-                                },
-                              )),
-                          obscureText: !_showPassword,
-                          validator: (val) => val.length < 6
-                              ? 'Enter a password 6+ chars long'
-                              : null,
-                          onChanged: (val) {
-                            setState(() => password = val);
-                          }),*/
                       Container(
                         margin: EdgeInsets.symmetric(vertical: 10),
                         child: Column(
@@ -328,7 +237,8 @@ class _SignInCustomerState extends State<SignInCustomer> {
                             children: <Widget>[
                               Text(
                                 'Password',
-                                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 15),
                               ),
                               SizedBox(height: 10),
                               TextFormField(
@@ -358,9 +268,7 @@ class _SignInCustomerState extends State<SignInCustomer> {
                                   onChanged: (val) {
                                     setState(() => password = val);
                                   }),
-                            ]
-
-                        ),
+                            ]),
                       ),
                       SizedBox(height: 40.0),
                       _submitButton(),
@@ -371,7 +279,6 @@ class _SignInCustomerState extends State<SignInCustomer> {
                         style: TextStyle(color: Colors.red, fontSize: 14.0),
                       ),
                       //SizedBox(height: 5.0),
-                      _facebookButton(),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -382,7 +289,7 @@ class _SignInCustomerState extends State<SignInCustomer> {
                           ),
                           FlatButton(
                             child: Text('Register',
-                                style: TextStyle(color: Colors.orange)),
+                                style: TextStyle(color: Color(0xffdc85ff))),
                             onPressed: () {
                               widget.toggleView();
                             },
