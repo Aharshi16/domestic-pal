@@ -9,7 +9,7 @@ class CusLoading extends StatelessWidget {
       color: Colors.white,
       child: Center(
         child: SpinKitCubeGrid(
-          color: Colors.orange[500],
+          color: Colors.purple[300],
           size: 50.0,
         ),
       ),

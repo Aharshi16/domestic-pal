@@ -6,10 +6,10 @@ class emploading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.cyan[100],
+      color: Colors.white,
       child: Center(
         child: SpinKitCubeGrid(
-          color: Colors.cyan[800],
+          color: Colors.purple[300],
           size: 50.0,
         ),
       ),
