@@ -1,25 +1,48 @@
-import 'package:domestic_pal/screens/home_customer/employee_tile.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:domestic_pal/models/user.dart';
 import 'package:domestic_pal/shared/cusloading.dart';
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
-class ShowList extends StatelessWidget {
+import 'employee_tile.dart';
+
+class ShowEmpList extends StatefulWidget {
+  final String job;
+  ShowEmpList({this.job});
+  @override
+  _ShowEmpListState createState() => _ShowEmpListState();
+}
+
+class _ShowEmpListState extends State<ShowEmpList> {
+  var queryResultSet = [];
+
   @override
   Widget build(BuildContext context) {
+    Color color;
+    switch (widget.job) {
+      case 'Maid':
+        color = Colors.pink[300];
+        break;
+      case 'Cook':
+        color = Colors.orange[300];
+        break;
+      case 'Baby Sitter':
+        color = Colors.blue[300];
+        break;
+    }
+
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.pink[300],
+          backgroundColor: color,
           elevation: 0.0,
-          title: Text('Maid List'),
+          title: Text('${widget.job} List'),
         ),
         body: StreamBuilder(
           stream: Firestore.instance
               .collection("empDetails")
-              .where("jobProfile", isEqualTo: "Maid")
+              .where("jobProfile", isEqualTo: widget.job)
               .snapshots(),
           builder: (context, snapshot) {
             if (snapshot.data == null) return CusLoading();
-
             return ListView.builder(
               itemCount: snapshot.data.documents.length,
               itemBuilder: (context, index) {

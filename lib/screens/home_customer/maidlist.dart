@@ -19,7 +19,6 @@ class Maidlist extends StatelessWidget {
               .snapshots(),
           builder: (context, snapshot) {
             if (snapshot.data == null) return CusLoading();
-
             return ListView.builder(
               itemCount: snapshot.data.documents.length,
               itemBuilder: (context, index) {

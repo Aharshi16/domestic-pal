@@ -3,12 +3,8 @@ import 'package:domestic_pal/screens/home_customer/babysitterSearch.dart';
 import 'package:domestic_pal/screens/home_customer/cookSearch.dart';
 import 'package:domestic_pal/screens/home_customer/maidSearch.dart';
 import 'package:domestic_pal/screens/home_customer/settings_form.dart';
-//import 'package:domestic_pal/screens/home_customer/view_list.dart';
-import 'package:domestic_pal/screens/home_customer/maidlist.dart';
-import 'package:domestic_pal/screens/home_customer/cooklist.dart';
-import 'package:domestic_pal/screens/home_customer/babysitterlist.dart';
+import 'package:domestic_pal/screens/home_customer/show_list.dart';
 import 'package:domestic_pal/services/auth_customer.dart';
-import 'package:domestic_pal/shared/bezierContainer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -127,7 +123,8 @@ class HomeCustomer extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => MaidSearch()),
+                                  builder: (context) =>
+                                      ShowEmpList(job: "Maid")),
                             );
                           },
                         ),
@@ -161,7 +158,9 @@ class HomeCustomer extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => CookSearch()),
+                                  builder: (context) => ShowEmpList(
+                                        job: "Cook",
+                                      )),
                             );
                           },
                         ),
@@ -198,7 +197,9 @@ class HomeCustomer extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => BabySearch()),
+                              builder: (context) => ShowEmpList(
+                                    job: 'Baby Sitter',
+                                  )),
                         );
                       },
                     ),
