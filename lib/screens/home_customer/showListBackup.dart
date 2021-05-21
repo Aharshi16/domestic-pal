@@ -1,5 +1,4 @@
-/*
-import 'package:cloud_firestore/cloud_firestore.dart';
+/*import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:domestic_pal/models/user.dart';
 import 'package:domestic_pal/shared/cusloading.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +13,22 @@ class ShowEmpList extends StatefulWidget {
 }
 
 class _ShowEmpListState extends State<ShowEmpList> {
-  var queryResultSet = [];
+  var _searchview = new TextEditingController();
+
+  bool _firstSearch = true;
+  String _query = "";
+
+  List<String> _employee;
+  List<String> _filterList;
+List<EmployeeUserData> _employeeLocationList(QuerySnapshot snapshot) {
+    return snapshot.documents.map((doc) {
+      return EmployeeUserData(
+          
+          location: doc.data['location'],
+          );
+    }).toList();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +44,7 @@ class _ShowEmpListState extends State<ShowEmpList> {
         color = Colors.blue[300];
         break;
     }
-    String searchKey;
-Stream streamQuery;
+
     return Scaffold(
         appBar: AppBar(
           backgroundColor: color,
@@ -46,46 +59,41 @@ Stream streamQuery;
           builder: (context, snapshot) {
             if (snapshot.data == null) return CusLoading();
             var len = snapshot.data.length;
-            if(len == 0){
+            if (len == 0) {
               return Column(
-        children: [
-          SizedBox(height: 100),
-          Center(
-            child: Text("No employees available", style: TextStyle(fontSize: 20, color: Colors.grey)),
-          )
-        ],
-      );
+                children: [
+                  SizedBox(height: 100),
+                  Center(
+                    child: Text("No employees available",
+                        style: TextStyle(fontSize: 20, color: Colors.grey)),
+                  )
+                ],
+              );
             }
-            List<EmployeeUserData> employee = snapshot.data.docs.map((doc)=> EmployeeUserData(
-          
-          location: doc.data['location'],
-          )
-        ).toList();
-    employee = employee.where((s)=>s.name.toLowerCase().contains(searchKey.toLowerCase())).toList();
+            List<EmployeeUserData> employee = snapshot.data.docs
+                .map((doc) => EmployeeUserData(
+                      location: doc.data['location'],
+                    ))
+                .toList();
+            employee = employee
+                .where((s) =>
+                    s.name.toLowerCase().contains(searchKey.toLowerCase()))
+                .toList();
 
             return Column(
-              children: [TextField(
-                
-              onChanged: (value){
-                  setState(() {
-                    searchKey = value;
-                    streamQuery = Firestore.instance.collection('empDetails')
-                        .where('location', isGreaterThanOrEqualTo: searchKey)
-                        .where('location', isLessThan: searchKey +'z')
-                        .snapshots();
-                  });
-    }),
+              children: [
                 ListView.builder(
-                    itemCount: snapshot.data.documents.length,
-                    itemBuilder: (context, index) {
-                      // DocumentSnapshot empdetailsSnapshot = snapshot.data.documents[index];
-                      return EmployeeTile(employee: snapshot.data.documents[index]);
-                    },
-                  ),
+                  itemCount: snapshot.data.documents.length,
+                  itemBuilder: (context, index) {
+                    // DocumentSnapshot empdetailsSnapshot = snapshot.data.documents[index];
+                    return EmployeeTile(
+                        employee: snapshot.data.documents[index]);
+                  },
+                ),
               ],
             );
           },
         ));
   }
 }
-*/ 
+*/

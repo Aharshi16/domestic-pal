@@ -36,43 +36,45 @@ class _UpdateCustomerDetailsState extends State<UpdateCustomerDetails> {
             // ),
             body: SingleChildScrollView(
               child: Container(
-                 padding: EdgeInsets.symmetric(vertical: 180.0, horizontal: 50.0),
-               // constraints: BoxConstraints.expand(),
+                padding:
+                    EdgeInsets.symmetric(vertical: 180.0, horizontal: 50.0),
+                // constraints: BoxConstraints.expand(),
                 decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/bg3.png'),
-                    fit: BoxFit.cover,
+                    image: DecorationImage(
+                  image: AssetImage('assets/bg3.png'),
+                  fit: BoxFit.cover,
                 )),
-                 
-              
+
                 child: Form(
                   key: _formKey,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      SizedBox(height: 90.0,),
+                      SizedBox(
+                        height: 90.0,
+                      ),
                       RichText(
                         textAlign: TextAlign.center,
                         text: TextSpan(
                             text: '  domesticPal',
                             style: GoogleFonts.dancingScript(
-                                textStyle: Theme.of(context).textTheme.headline4,
+                                textStyle:
+                                    Theme.of(context).textTheme.headline4,
                                 fontSize: 60,
                                 fontWeight: FontWeight.w700,
-                                color: Colors.black87
-                            )
-                        ),
+                                color: Colors.black87)),
                       ),
                       SizedBox(height: 40.0),
                       Text(
                         'Name',
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 15),
                       ),
                       TextFormField(
                           decoration: textInputDecoration.copyWith(
                               //labelText: 'Name',
                               //hintText: 'Enter name'
-                          ),
+                              ),
                           validator: (val) =>
                               val.isEmpty ? 'Enter a name' : null,
                           onChanged: (val) {
@@ -81,7 +83,8 @@ class _UpdateCustomerDetailsState extends State<UpdateCustomerDetails> {
                       SizedBox(height: 20.0),
                       Text(
                         'Phone Number',
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 15),
                       ),
                       TextFormField(
                           decoration: textInputDecoration.copyWith(
@@ -101,13 +104,14 @@ class _UpdateCustomerDetailsState extends State<UpdateCustomerDetails> {
                       SizedBox(height: 20.0),
                       Text(
                         'City',
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 15),
                       ),
                       TextFormField(
                           decoration: textInputDecoration.copyWith(
                               //labelText: 'City',
                               //hintText: 'Enter city'
-                          ),
+                              ),
                           validator: (val) =>
                               val.isEmpty ? 'Enter a city' : null,
                           onChanged: (val) {
@@ -115,50 +119,53 @@ class _UpdateCustomerDetailsState extends State<UpdateCustomerDetails> {
                           }),
                       SizedBox(height: 30.0),
                       InkWell(
-                          onTap: () async {
-                            if (_formKey.currentState.validate()) {
-                              await DatabaseCustomerService(uid: user.uid)
-                                  .updateCustomerUserData(
-                                      'C',
-                                      _name ?? userData.name,
-                                      _phonenumber ?? userData.phone,
-                                      _city ?? userData.city);
-                            }
-                            Navigator.of(context).pushAndRemoveUntil(
-                                MaterialPageRoute(
-                                    builder: (context) => HomeCustomer()),
-                                (Route<dynamic> route) => false);
-                          },
-                          child: Container(
-                      width: MediaQuery.of(context).size.width,
-                  padding: EdgeInsets.symmetric(vertical: 15),
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(5)),
-                      boxShadow: <BoxShadow>[
-                        BoxShadow(
-                            color: Colors.grey.shade200,
-                            offset: Offset(2, 4),
-                            blurRadius: 5,
-                            spreadRadius: 2)
-                      ],
-                      gradient: LinearGradient(
-                          begin: Alignment.centerLeft,
-                          end: Alignment.centerRight,
-                          colors:[Color(0xffffd22e),Color(0xffdc85ff)]
-                      )),
-                  child: Text(
-                    'Register',
-                    style: TextStyle(fontSize: 20, color: Colors.white),
-                  ),
-                ),
+                        onTap: () async {
+                          if (_formKey.currentState.validate()) {
+                            await DatabaseCustomerService(uid: user.uid)
+                                .updateCustomerUserData(
+                                    'C',
+                                    _name ?? userData.name,
+                                    _phonenumber ?? userData.phone,
+                                    _city ?? userData.city);
+                          }
+                          Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(
+                                  builder: (context) => HomeCustomer()),
+                              (Route<dynamic> route) => false);
+                        },
+                        child: Container(
+                          width: MediaQuery.of(context).size.width,
+                          padding: EdgeInsets.symmetric(vertical: 15),
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5)),
+                              boxShadow: <BoxShadow>[
+                                BoxShadow(
+                                    color: Colors.grey.shade200,
+                                    offset: Offset(2, 4),
+                                    blurRadius: 5,
+                                    spreadRadius: 2)
+                              ],
+                              gradient: LinearGradient(
+                                  begin: Alignment.centerLeft,
+                                  end: Alignment.centerRight,
+                                  colors: [
+                                    Color(0xffffd22e),
+                                    Color(0xffdc85ff)
+                                  ])),
+                          child: Text(
+                            'Register',
+                            style: TextStyle(fontSize: 20, color: Colors.white),
                           ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
               ),
             ),
-      );
-    });
+          );
+        });
   }
 }
