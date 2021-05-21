@@ -52,6 +52,15 @@ class DatabaseEmployeeService {
         workExperience: snapshot.data['workExperience']);
   }
 
+  List<EmployeeUserData> _employeeLocationList(QuerySnapshot snapshot) {
+    return snapshot.documents.map((doc) {
+      return EmployeeUserData(
+          
+          location: doc.data['location'],
+          );
+    }).toList();
+  }
+
   Stream<QuerySnapshot> get employees {
     return employeeCollection.snapshots();
   }
